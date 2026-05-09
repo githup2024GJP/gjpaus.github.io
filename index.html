@@ -3,54 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GP9434 | Official Site</title>
+    <title>GP9434 | YouTube Channel</title>
     <style>
-        /* ตั้งค่าหน้าจอให้เป็นสีดำสนิทและอยู่ตรงกลาง */
+        /* ตั้งค่าหน้าจอให้สะอาดและดู Pro */
         body, html {
             margin: 0; padding: 0; height: 100%;
             background: #000; color: #fff;
             display: flex; align-items: center; justify-content: center;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
         }
 
-        .container { text-align: center; }
+        .container { text-align: center; padding: 20px; }
 
-        /* ชื่อแบรนด์/ช่อง */
-        h1 {
-            font-size: 2.5rem;
+        /* ชื่อช่อง @gp9434 */
+        .channel-name {
+            font-size: 2.8rem;
+            font-weight: bold;
             color: #fff;
-            margin-bottom: 40px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
         }
 
-        /* ตกแต่งปุ่ม YouTube ให้ดู Pro */
+        .sub-text {
+            color: #888;
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+        }
+
+        /* ปุ่ม Subscribe สีแดงโดดเด่น */
         .btn-yt {
             display: inline-block;
-            padding: 18px 45px;
+            padding: 18px 50px;
             background: #ff0000;
             color: #fff;
             text-decoration: none;
             border-radius: 50px;
             font-weight: bold;
             font-size: 1.2rem;
-            box-shadow: 0 0 20px rgba(255,0,0,0.5);
-            transition: 0.3s ease;
+            box-shadow: 0 10px 20px rgba(255, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
         }
 
         .btn-yt:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 35px #ff0000;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(255, 0, 0, 0.5);
             background: #e60000;
         }
 
         /* อีเมลติดต่อ */
         .email {
             display: block;
-            margin-top: 30px;
-            color: #888;
+            margin-top: 40px;
+            color: #555;
             text-decoration: none;
-            font-size: 1rem;
+            font-size: 0.95rem;
             transition: 0.3s;
         }
 
@@ -60,10 +67,12 @@
 <body>
 
     <div class="container">
-        <h1>@GP9434</h1>
+        <div class="channel-name">@gp9434</div>
+        <div class="sub-text">YouTube Content Creator</div>
         
+        <!-- ลิงก์ตรงไปที่หน้าช่องของคุณ -->
         <a href="https://youtube.com" target="_blank" class="btn-yt">
-            📺 SUBSCRIBE ON YOUTUBE
+            📺 SUBSCRIBE NOW
         </a>
 
         <a href="mailto:contact@gjpaus.com" class="email">
