@@ -5,75 +5,67 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GP9434 | Official Site</title>
     <style>
-        /* จัดการพื้นฐานหน้าจอ */
-        body, html { 
-            margin: 0; padding: 0; height: 100%; 
-            background: #000; overflow: hidden; 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+        /* ตั้งค่าหน้าจอให้เป็นสีดำสนิทและอยู่ตรงกลาง */
+        body, html {
+            margin: 0; padding: 0; height: 100%;
+            background: #000; color: #fff;
+            display: flex; align-items: center; justify-content: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        /* ส่วนแสดงรูปพื้นหลัง (รูปเวทีไฟส่อง) */
-        .background {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.6)), url('logo.png');
-            background-size: cover; 
-            background-position: center; 
-            z-index: -1;
-        }
+        .container { text-align: center; }
 
-        /* ส่วนเนื้อหาและปุ่มด้านล่าง */
-        .content {
-            height: 100%; 
-            display: flex; 
-            flex-direction: column;
-            align-items: center; 
-            justify-content: flex-end; 
-            padding-bottom: 60px;
-        }
-
-        /* ตกแต่งปุ่ม YouTube */
-        .btn-yt {
-            padding: 16px 45px; 
-            background: #ff0000; 
+        /* ชื่อแบรนด์/ช่อง */
+        h1 {
+            font-size: 2.5rem;
             color: #fff;
-            text-decoration: none; 
-            border-radius: 50px; 
-            font-weight: bold;
-            font-size: 1.1rem;
-            box-shadow: 0 0 25px rgba(255,0,0,0.6); 
-            transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            letter-spacing: 1px;
+            margin-bottom: 40px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
 
-        .btn-yt:hover { 
-            transform: scale(1.1); 
-            box-shadow: 0 0 40px #ff0000; 
+        /* ตกแต่งปุ่ม YouTube ให้ดู Pro */
+        .btn-yt {
+            display: inline-block;
+            padding: 18px 45px;
+            background: #ff0000;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            box-shadow: 0 0 20px rgba(255,0,0,0.5);
+            transition: 0.3s ease;
+        }
+
+        .btn-yt:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 35px #ff0000;
             background: #e60000;
         }
 
-        /* ตกแต่งอีเมล */
-        .email { 
-            margin-top: 25px; 
-            color: rgba(255,255,255,0.7); 
-            text-decoration: none; 
-            font-size: 0.95rem;
+        /* อีเมลติดต่อ */
+        .email {
+            display: block;
+            margin-top: 30px;
+            color: #888;
+            text-decoration: none;
+            font-size: 1rem;
             transition: 0.3s;
         }
 
-        .email:hover { color: #fff; text-shadow: 0 0 10px rgba(255,255,255,0.5); }
+        .email:hover { color: #fff; }
     </style>
 </head>
 <body>
 
-    <div class="background"></div>
-
-    <div class="content">
-        <!-- ลิงก์ตรงไปที่ช่อง YouTube ของคุณ -->
+    <div class="container">
+        <h1>@GP9434</h1>
+        
         <a href="https://youtube.com" target="_blank" class="btn-yt">
             📺 SUBSCRIBE ON YOUTUBE
         </a>
-        
-        <!-- ลิงก์อีเมลติดต่อ -->
+
         <a href="mailto:contact@gjpaus.com" class="email">
             📧 contact@gjpaus.com
         </a>
