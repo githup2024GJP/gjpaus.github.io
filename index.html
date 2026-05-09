@@ -9,32 +9,38 @@
             margin: 0; padding: 0; height: 100%;
             background: #000; font-family: 'Sarabun', sans-serif;
             display: flex; align-items: center; justify-content: center;
+            overflow: hidden;
         }
-        /* พื้นหลังใช้รูปที่คุณส่งมา */
+        /* พื้นหลังใช้รูปเวทีที่คุณส่งมา (ต้องชื่อ logo.png) */
         .bg-container {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)), url('logo.png');
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.7)), url('logo.png');
             background-size: cover; background-position: center;
             z-index: -1;
         }
         .content {
             text-align: center; color: white;
-            padding: 20px; border-radius: 20px;
-            backdrop-filter: blur(5px);
-            background: rgba(0,0,0,0.4);
+            padding: 30px; border-radius: 20px;
+            backdrop-filter: blur(8px);
+            background: rgba(0,0,0,0.5);
             border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
         .btn-yt {
             display: inline-block; padding: 15px 40px;
             background: #ff0000; color: #fff;
             text-decoration: none; border-radius: 50px;
-            font-weight: bold; margin-bottom: 20px;
-            box-shadow: 0 0 20px rgba(255,0,0,0.5);
-            transition: 0.3s;
+            font-weight: bold; margin-bottom: 25px;
+            box-shadow: 0 0 20px rgba(255,0,0,0.4);
+            transition: 0.3s ease;
+            font-size: 1.1rem;
         }
-        .btn-yt:hover { transform: scale(1.1); box-shadow: 0 0 30px #ff0000; }
-        .email { color: #ccc; text-decoration: none; font-size: 1rem; opacity: 0.8; }
-        .email:hover { opacity: 1; color: #fff; }
+        .btn-yt:hover { transform: scale(1.05); box-shadow: 0 0 30px #ff0000; }
+        .email { 
+            color: #bdc3c7; text-decoration: none; font-size: 1rem; 
+            display: block; transition: 0.3s;
+        }
+        .email:hover { color: #fff; }
     </style>
 </head>
 <body>
@@ -42,15 +48,14 @@
     <div class="bg-container"></div>
 
     <div class="content">
-        <div style="margin-bottom: 30px;">
-            <a href="https://youtube.com" target="_blank" class="btn-yt">
-                📺 VISIT MY YOUTUBE
-            </a>
-            <br>
-            <a href="mailto:contact@gjpaus.com" class="email">
-                📧 contact@gjpaus.com
-            </a>
-        </div>
+        <!-- ลิงก์ตรงเข้าสู่ช่อง @gp9434 -->
+        <a href="https://youtube.com" target="_blank" class="btn-yt">
+            📺 SUBSCRIBE @GP9434
+        </a>
+        
+        <a href="mailto:contact@gjpaus.com" class="email">
+            📧 contact@gjpaus.com
+        </a>
     </div>
 
 </body>
