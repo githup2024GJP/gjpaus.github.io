@@ -74,10 +74,7 @@ body {
   text-transform: uppercase;
   letter-spacing: 0.25em;
   font-size: 14px;
-  transition: color 0.3s ease;
-  cursor: pointer;
 }
-.nav a:hover,
 .nav a.active { color: var(--gold); }
 
 /* LOGO */
@@ -95,11 +92,6 @@ body {
   justify-content: center;
   align-items: center;
   position: relative;
-  animation: glow 3s ease-in-out infinite;
-}
-@keyframes glow {
-  0%, 100% { box-shadow: 0 0 20px rgba(245,199,106,0.3); }
-  50% { box-shadow: 0 0 40px rgba(245,199,106,0.6); }
 }
 .logo-shield {
   width: 70%;
@@ -121,11 +113,6 @@ body {
   top: -8px;
   font-size: 22px;
   color: #2b1a05;
-  animation: bounce 2s ease-in-out infinite;
-}
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
 }
 
 /* TITLES */
@@ -135,7 +122,6 @@ body {
   letter-spacing: 0.3em;
   text-transform: uppercase;
   margin-bottom: 8px;
-  animation: fadeInDown 0.8s ease-out;
 }
 .title-main span { color: var(--gold); }
 
@@ -146,7 +132,6 @@ body {
   text-transform: uppercase;
   color: var(--gold-soft);
   margin-bottom: 20px;
-  animation: fadeInUp 0.8s ease-out 0.2s both;
 }
 
 /* DESCRIPTION */
@@ -157,7 +142,6 @@ body {
   font-size: 16px;
   line-height: 1.7;
   color: #e3e3e3;
-  animation: fadeInUp 0.8s ease-out 0.4s both;
 }
 
 /* BUTTONS */
@@ -166,8 +150,6 @@ body {
   justify-content: center;
   gap: 16px;
   margin-bottom: 40px;
-  animation: fadeInUp 0.8s ease-out 0.6s both;
-  flex-wrap: wrap;
 }
 .btn {
   padding: 12px 28px;
@@ -176,27 +158,15 @@ body {
   letter-spacing: 0.2em;
   font-size: 13px;
   text-decoration: none;
-  transition: all 0.3s ease;
-  cursor: pointer;
-  border: none;
 }
 .btn-primary {
   background: linear-gradient(135deg, var(--gold), #b8862b);
   color: #1a1205;
-  font-weight: 600;
-}
-.btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(245,199,106,0.3);
 }
 .btn-ghost {
   background: rgba(0,0,0,0.6);
   border: 1px solid var(--gold);
   color: var(--gold);
-}
-.btn-ghost:hover {
-  background: rgba(245,199,106,0.1);
-  box-shadow: 0 0 20px rgba(245,199,106,0.3);
 }
 
 /* CARDS */
@@ -205,18 +175,12 @@ body {
   grid-template-columns: 1fr 1fr;
   gap: 20px;
   margin-bottom: 30px;
-  animation: fadeInUp 0.8s ease-out 0.8s both;
 }
 .card {
   background: #0f0f0f;
   border: 1px solid rgba(255,255,255,0.08);
   border-radius: 20px;
   padding: 20px 24px;
-  transition: all 0.3s ease;
-}
-.card:hover {
-  border-color: rgba(245,199,106,0.4);
-  box-shadow: 0 0 20px rgba(245,199,106,0.2);
 }
 .card-title {
   font-size: 14px;
@@ -237,28 +201,14 @@ body {
   font-size: 12px;
   letter-spacing: 0.2em;
   color: var(--muted);
-  animation: fadeInUp 0.8s ease-out 1s both;
 }
 .footer span { color: var(--gold); }
 
-/* ANIMATIONS */
-@keyframes fadeInDown {
-  from { opacity: 0; transform: translateY(-20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
 /* RESPONSIVE */
 @media (max-width: 700px) {
-  .frame { padding: 30px 20px; }
   .cards { grid-template-columns: 1fr; }
   .buttons { flex-direction: column; }
   .btn { width: 100%; text-align: center; }
-  .title-main { font-size: 32px; }
-  .nav { gap: 20px; font-size: 12px; }
 }
 </style>
 </head>
@@ -308,9 +258,7 @@ body {
   <!-- BUTTONS -->
   <div class="buttons">
     <a href="https://www.youtube.com/@gp9434" target="_blank" class="btn btn-primary">Visit My YouTube</a>
-    <a href="weather.html" class="btn btn-ghost">Weather Dashboard</a>
-    <a href="clock.html" class="btn btn-ghost">World Clock</a>
-    <a href="#contact" class="btn btn-ghost">Contact Me</a>
+    <a href="#" class="btn btn-ghost">Contact Me</a>
   </div>
 
   <!-- CARDS -->
