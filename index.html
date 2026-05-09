@@ -1,289 +1,126 @@
-<!DOCTYPE html>
+html<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<title>GJPAUS | Pause. Protect Your Power.</title>
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<style>
-/* COLORS */
-:root {
-  --gold: #f5c76a;
-  --gold-soft: #e4b75c;
-  --text: #ffffff;
-  --muted: #b3b3b3;
-  --bg: #000000;
-}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GJPAUS Inspired Landing Page</title>
+    <style>
+        :root {
+            --gold: linear-gradient(to bottom, #d4af37, #fcf6ba, #b8860b);
+            --bg-black: #050505;
+        }
 
-/* GLOBAL */
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body {
-  background: #000;
-  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
-  color: var(--text);
-  display: flex;
-  justify-content: center;
-  padding: 30px 20px;
-}
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-black);
+            color: #fff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+        }
 
-/* FRAME */
-.frame {
-  width: 100%;
-  max-width: 1100px;
-  background: #0a0a0a;
-  border-radius: 28px;
-  border: 1px solid rgba(245,199,106,0.25);
-  padding: 40px 50px;
-}
+        /* Hero Section */
+        .hero {
+            padding: 100px 20px;
+            background: radial-gradient(circle at center, #1a1a1a 0%, var(--bg-black) 70%);
+        }
 
-/* TOP BAR */
-.top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 25px;
-}
-.handle {
-  font-family: "Segoe Script", cursive;
-  font-size: 22px;
-  color: var(--gold);
-}
+        .logo {
+            font-size: 80px;
+            font-weight: bold;
+            letter-spacing: 10px;
+            background: var(--gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
 
-/* FLAG */
-.flag {
-  width: 40px;
-  height: 26px;
-  border-radius: 6px;
-  overflow: hidden;
-  border: 1px solid rgba(255,255,255,0.2);
-}
-.flag div { height: 33%; }
-.red { background: #e53935; }
-.white { background: #ffffff; }
-.blue { background: #1e88e5; }
+        .tagline {
+            font-size: 24px;
+            letter-spacing: 5px;
+            color: #d4af37;
+            margin-bottom: 30px;
+        }
 
-/* NAV */
-.nav {
-  display: flex;
-  justify-content: center;
-  gap: 40px;
-  margin-bottom: 40px;
-}
-.nav a {
-  text-decoration: none;
-  color: var(--muted);
-  text-transform: uppercase;
-  letter-spacing: 0.25em;
-  font-size: 14px;
-}
-.nav a.active { color: var(--gold); }
+        /* Buttons */
+        .btn-container {
+            margin: 40px 0;
+        }
 
-/* LOGO */
-.logo-wrap {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 20px;
-}
-.logo {
-  width: 120px;
-  height: 120px;
-  border-radius: 35px;
-  background: linear-gradient(135deg, #fbe3a4, #b8862b);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-}
-.logo-shield {
-  width: 70%;
-  height: 70%;
-  border-radius: 30px;
-  background: linear-gradient(135deg, #fbe3a4, #b8862b);
-  border: 2px solid #2b1a05;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.logo-letter {
-  font-size: 50px;
-  font-weight: 800;
-  color: #2b1a05;
-}
-.logo-crown {
-  position: absolute;
-  top: -8px;
-  font-size: 22px;
-  color: #2b1a05;
-}
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            margin: 10px;
+            border: 2px solid #d4af37;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
 
-/* TITLES */
-.title-main {
-  text-align: center;
-  font-size: 40px;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  margin-bottom: 8px;
-}
-.title-main span { color: var(--gold); }
+        .btn:hover {
+            background: #d4af37;
+            color: #000;
+        }
 
-.title-sub {
-  text-align: center;
-  font-size: 14px;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  color: var(--gold-soft);
-  margin-bottom: 20px;
-}
+        /* Info Cards */
+        .grid {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 50px;
+            flex-wrap: wrap;
+        }
 
-/* DESCRIPTION */
-.desc {
-  text-align: center;
-  max-width: 650px;
-  margin: 0 auto 25px;
-  font-size: 16px;
-  line-height: 1.7;
-  color: #e3e3e3;
-}
+        .card {
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 30px;
+            width: 350px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.05);
+        }
 
-/* BUTTONS */
-.buttons {
-  display: flex;
-  justify-content: center;
-  gap: 16px;
-  margin-bottom: 40px;
-}
-.btn {
-  padding: 12px 28px;
-  border-radius: 999px;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  font-size: 13px;
-  text-decoration: none;
-}
-.btn-primary {
-  background: linear-gradient(135deg, var(--gold), #b8862b);
-  color: #1a1205;
-}
-.btn-ghost {
-  background: rgba(0,0,0,0.6);
-  border: 1px solid var(--gold);
-  color: var(--gold);
-}
+        .card h3 {
+            color: #d4af37;
+            text-transform: uppercase;
+        }
 
-/* CARDS */
-.cards {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-  margin-bottom: 30px;
-}
-.card {
-  background: #0f0f0f;
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 20px;
-  padding: 20px 24px;
-}
-.card-title {
-  font-size: 14px;
-  text-transform: uppercase;
-  letter-spacing: 0.25em;
-  color: var(--gold);
-  margin-bottom: 12px;
-}
-.card-body {
-  font-size: 15px;
-  line-height: 1.7;
-  color: #e0e0e0;
-}
-
-/* FOOTER */
-.footer {
-  text-align: center;
-  font-size: 12px;
-  letter-spacing: 0.2em;
-  color: var(--muted);
-}
-.footer span { color: var(--gold); }
-
-/* RESPONSIVE */
-@media (max-width: 700px) {
-  .cards { grid-template-columns: 1fr; }
-  .buttons { flex-direction: column; }
-  .btn { width: 100%; text-align: center; }
-}
-</style>
+        footer {
+            padding: 20px;
+            font-size: 12px;
+            color: #555;
+            border-top: 1px solid #222;
+        }
+    </style>
 </head>
-
 <body>
-<div class="frame">
 
-  <!-- TOP -->
-  <div class="top">
-    <div class="handle">@gp9434</div>
+    <section class="hero">
+        <div class="logo">GJPAUS</div>
+        <div class="tagline">PAUSE. PROTECT YOUR POWER.</div>
+        <p>Motivational content to help you pause, reset, and protect your inner power.</p>
+        
+        <div class="btn-container">
+            <a href="#" class="btn">VISIT MY YOUTUBE</a>
+            <a href="#" class="btn">CONTACT ME</a>
+        </div>
+    </section>
 
-    <div class="flag">
-      <div class="red"></div>
-      <div class="white"></div>
-      <div class="blue"></div>
-    </div>
-  </div>
-
-  <!-- NAV -->
-  <div class="nav">
-    <a class="active">Home</a>
-    <a>My Message</a>
-    <a>Journey</a>
-    <a>Contact</a>
-  </div>
-
-  <!-- LOGO -->
-  <div class="logo-wrap">
-    <div class="logo">
-      <div class="logo-crown">♛</div>
-      <div class="logo-shield">
-        <div class="logo-letter">G</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- TITLES -->
-  <h1 class="title-main"><span>GJPAUS</span></h1>
-  <div class="title-sub">Pause. Protect your power.</div>
-
-  <!-- DESCRIPTION -->
-  <p class="desc">
-    Motivational content to help you <strong>pause, reset, and protect your inner power</strong>.
-    Strong mind. Strong energy. Strong life.
-  </p>
-
-  <!-- BUTTONS -->
-  <div class="buttons">
-    <a href="https://www.youtube.com/@gp9434" target="_blank" class="btn btn-primary">Visit My YouTube</a>
-    <a href="#" class="btn btn-ghost">Contact Me</a>
-  </div>
-
-  <!-- CARDS -->
-  <div class="cards">
-    <div class="card">
-      <div class="card-title">My Message</div>
-      <div class="card-body">
-        I create motivational content to help you pause, reset, and protect your inner power.
-        Strong mind. Strong energy. Strong life.
-      </div>
+    <div class="grid">
+        <div class="card">
+            <h3>My Message</h3>
+            <p>I create motivational content to help you pause, reset, and protect your inner power.</p>
+        </div>
+        <div class="card">
+            <h3>Follow My Journey</h3>
+            <p>More platforms and premium content coming soon.</p>
+        </div>
     </div>
 
-    <div class="card">
-      <div class="card-title">Follow My Journey</div>
-      <div class="card-body">
-        More platforms and premium content coming soon.
-      </div>
-    </div>
-  </div>
+    <footer>
+        &copy; 2026 GJPAUS — All Rights Reserved.
+    </footer>
 
-  <!-- FOOTER -->
-  <div class="footer">
-    © 2026 <span>GJPAUS</span> — All Rights Reserved.
-  </div>
-
-</div>
 </body>
 </html>
