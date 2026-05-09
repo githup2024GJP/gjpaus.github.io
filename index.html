@@ -1,104 +1,353 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
 <title>GJPAUS — Pause. Protect Your Power.</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
-    body {
-        margin: 0;
-        padding: 0;
-        background: #000;
-        font-family: Arial, sans-serif;
-        color: #fff;
-        text-align: center;
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#000;
+    color:#fff;
+    font-family:'Montserrat', sans-serif;
+    overflow-x:hidden;
+}
+
+/* BACKGROUND */
+
+.bg-glow{
+    position:fixed;
+    width:800px;
+    height:800px;
+    background:radial-gradient(circle, rgba(255,215,0,0.12), transparent 70%);
+    top:-250px;
+    left:50%;
+    transform:translateX(-50%);
+    z-index:-1;
+    animation:glowMove 8s ease-in-out infinite alternate;
+}
+
+@keyframes glowMove{
+    from{
+        transform:translateX(-50%) scale(1);
+    }
+    to{
+        transform:translateX(-50%) scale(1.2);
+    }
+}
+
+/* HERO */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:40px 20px;
+    position:relative;
+}
+
+/* LOGO */
+
+.logo{
+    margin-bottom:25px;
+}
+
+.logo img{
+    width:180px;
+    max-width:80%;
+    filter:
+    drop-shadow(0 0 12px gold)
+    drop-shadow(0 0 25px rgba(255,215,0,0.5));
+    animation:floatLogo 4s ease-in-out infinite;
+}
+
+@keyframes floatLogo{
+    0%{
+        transform:translateY(0px);
+    }
+    50%{
+        transform:translateY(-10px);
+    }
+    100%{
+        transform:translateY(0px);
+    }
+}
+
+/* TITLES */
+
+h1{
+    font-size:78px;
+    letter-spacing:8px;
+    font-weight:700;
+    color:gold;
+    text-shadow:
+    0 0 12px gold,
+    0 0 25px rgba(255,215,0,0.6);
+}
+
+.tagline{
+    margin-top:12px;
+    font-size:24px;
+    color:#f1d27a;
+    letter-spacing:2px;
+}
+
+.description{
+    margin-top:30px;
+    max-width:760px;
+    color:#ccc;
+    font-size:18px;
+    line-height:1.8;
+}
+
+/* BUTTONS */
+
+.buttons{
+    margin-top:40px;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:20px;
+}
+
+.btn{
+    position:relative;
+    padding:16px 34px;
+    border:1px solid gold;
+    color:gold;
+    text-decoration:none;
+    font-weight:600;
+    border-radius:50px;
+    overflow:hidden;
+    transition:0.4s ease;
+    backdrop-filter:blur(6px);
+    background:rgba(255,215,0,0.05);
+    box-shadow:0 0 18px rgba(255,215,0,0.15);
+}
+
+.btn:hover{
+    background:gold;
+    color:#000;
+    transform:translateY(-3px);
+    box-shadow:0 0 25px gold;
+}
+
+/* SECTIONS */
+
+.section{
+    padding:100px 20px;
+    text-align:center;
+    border-top:1px solid rgba(255,255,255,0.08);
+    background:linear-gradient(to bottom,#050505,#0d0d0d);
+}
+
+.section h2{
+    font-size:42px;
+    margin-bottom:25px;
+    color:gold;
+    letter-spacing:2px;
+}
+
+.section p{
+    max-width:850px;
+    margin:auto;
+    color:#bbb;
+    line-height:1.9;
+    font-size:18px;
+}
+
+/* CARDS */
+
+.cards{
+    margin-top:60px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:30px;
+    max-width:1200px;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.card{
+    background:rgba(255,255,255,0.03);
+    border:1px solid rgba(255,215,0,0.15);
+    border-radius:24px;
+    padding:40px 30px;
+    transition:0.4s ease;
+    backdrop-filter:blur(10px);
+    box-shadow:0 0 20px rgba(255,215,0,0.05);
+}
+
+.card:hover{
+    transform:translateY(-10px);
+    border-color:gold;
+    box-shadow:0 0 30px rgba(255,215,0,0.18);
+}
+
+.card h3{
+    color:gold;
+    margin-bottom:18px;
+    font-size:24px;
+}
+
+.card p{
+    color:#bbb;
+    font-size:16px;
+}
+
+/* FOOTER */
+
+.footer{
+    padding:30px;
+    text-align:center;
+    color:#777;
+    background:#050505;
+    border-top:1px solid rgba(255,255,255,0.06);
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+    h1{
+        font-size:48px;
+        letter-spacing:4px;
     }
 
-    .hero {
-        padding: 80px 20px;
-        background: linear-gradient(180deg, #000, #111);
+    .tagline{
+        font-size:18px;
     }
 
-    .logo img {
-        width: 180px;
-        filter: drop-shadow(0 0 12px gold);
+    .description{
+        font-size:16px;
     }
 
-    h1 {
-        font-size: 48px;
-        margin-top: 20px;
-        color: gold;
-        text-shadow: 0 0 15px gold;
+    .section h2{
+        font-size:32px;
     }
 
-    h2 {
-        font-size: 22px;
-        margin-top: 10px;
-        color: #e6c76f;
-        text-shadow: 0 0 10px #b89b3c;
-    }
+}
 
-    .btn {
-        display: inline-block;
-        margin: 20px;
-        padding: 14px 28px;
-        background: gold;
-        color: #000;
-        font-weight: bold;
-        border-radius: 8px;
-        text-decoration: none;
-        box-shadow: 0 0 15px gold;
-    }
-
-    .btn:hover {
-        background: #ffdd55;
-    }
-
-    .section {
-        padding: 50px 20px;
-        background: #0a0a0a;
-        border-top: 1px solid #222;
-    }
-
-    .footer {
-        padding: 20px;
-        font-size: 14px;
-        color: #777;
-    }
 </style>
 </head>
 
 <body>
 
-<div class="hero">
+<div class="bg-glow"></div>
+
+<!-- HERO -->
+
+<section class="hero">
+
     <div class="logo">
         <img src="logo.png" alt="GJPAUS Logo">
     </div>
 
     <h1>GJPAUS</h1>
-    <h2>Pause. Protect Your Power.</h2>
 
-    <a class="btn" href="https://www.youtube.com/@gp9434" target="_blank">Visit My YouTube</a>
-    <a class="btn" href="mailto:contact@gjpaus.com">Contact Me</a>
-</div>
+    <div class="tagline">
+        Pause. Protect Your Power.
+    </div>
 
-<div class="section">
+    <div class="description">
+        Luxury motivational content designed to help you reset your mind,
+        reclaim your energy, and rise stronger with purpose.
+    </div>
+
+    <div class="buttons">
+
+        <a class="btn"
+           href="https://www.youtube.com/@gp9434"
+           target="_blank">
+           YouTube
+        </a>
+
+        <a class="btn"
+           href="mailto:contact@gjpaus.com">
+           Contact
+        </a>
+
+    </div>
+
+</section>
+
+<!-- MESSAGE -->
+
+<section class="section">
+
     <h2>My Message</h2>
+
     <p>
-        I create motivational content to help you pause, reset, and protect your inner power.  
-        Strong mind. Strong energy. Strong life.
+        GJPAUS represents calm strength, self-control,
+        resilience, and personal power.
+        Every challenge can become a new level.
     </p>
-</div>
 
-<div class="section">
-    <h2>Follow My Journey</h2>
-    <p>More platforms coming soon.</p>
-</div>
+    <div class="cards">
 
-<div class="footer">
+        <div class="card">
+            <h3>Mindset</h3>
+            <p>
+                Train your mind to stay calm,
+                focused, and powerful.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Energy</h3>
+            <p>
+                Protect your inner energy
+                from negativity and pressure.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Growth</h3>
+            <p>
+                Turn difficult moments
+                into personal transformation.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- JOURNEY -->
+
+<section class="section">
+
+    <h2>Follow The Journey</h2>
+
+    <p>
+        More premium content, motivational videos,
+        and future platforms are coming soon.
+    </p>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer class="footer">
     © 2026 GJPAUS — All Rights Reserved.
-</div>
+</footer>
 
 </body>
 </html>
