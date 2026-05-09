@@ -1,342 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>GJPAUS — Pause. Protect Your Power.</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-<style>
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-body{
-    background:#000;
-    color:#fff;
-    font-family:'Montserrat',sans-serif;
-    overflow-x:hidden;
-}
-
-/* GOLD BACKGROUND GLOW */
-
-.bg-glow{
-    position:fixed;
-    width:900px;
-    height:900px;
-    background:
-    radial-gradient(circle,
-    rgba(255,215,0,0.18) 0%,
-    rgba(255,215,0,0.04) 40%,
-    transparent 70%);
-    top:-300px;
-    left:50%;
-    transform:translateX(-50%);
-    z-index:-1;
-    animation:glowMove 8s ease-in-out infinite alternate;
-}
-
-@keyframes glowMove{
-    from{
-        transform:translateX(-50%) scale(1);
-    }
-    to{
-        transform:translateX(-50%) scale(1.15);
-    }
-}
-
-/* HERO */
-
-.hero{
-    min-height:100vh;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-    padding:40px 20px;
-}
-
-/* SMALL PREMIUM LOGO */
-
-.logo img{
-    width:120px;
-    margin-bottom:30px;
-    border-radius:50%;
-    box-shadow:
-    0 0 15px gold,
-    0 0 35px rgba(255,215,0,0.4);
-    animation:floatLogo 4s ease-in-out infinite;
-}
-
-@keyframes floatLogo{
-    0%{
-        transform:translateY(0px);
-    }
-    50%{
-        transform:translateY(-10px);
-    }
-    100%{
-        transform:translateY(0px);
-    }
-}
-
-/* TITLE */
-
-h1{
-    font-size:72px;
-    letter-spacing:8px;
-    color:gold;
-    text-shadow:
-    0 0 10px gold,
-    0 0 25px rgba(255,215,0,0.6);
-}
-
-.tagline{
-    margin-top:15px;
-    font-size:24px;
-    color:#f3d57c;
-    letter-spacing:2px;
-}
-
-.description{
-    margin-top:30px;
-    max-width:760px;
-    font-size:18px;
-    line-height:1.8;
-    color:#c9c9c9;
-}
-
-/* BUTTONS */
-
-.buttons{
-    margin-top:45px;
-    display:flex;
-    gap:20px;
-    flex-wrap:wrap;
-    justify-content:center;
-}
-
-.btn{
-    padding:15px 34px;
-    border:1px solid gold;
-    border-radius:50px;
-    color:gold;
-    text-decoration:none;
-    font-weight:600;
-    transition:0.4s;
-    background:rgba(255,215,0,0.05);
-    box-shadow:0 0 18px rgba(255,215,0,0.12);
-}
-
-.btn:hover{
-    background:gold;
-    color:#000;
-    transform:translateY(-3px);
-    box-shadow:0 0 25px gold;
-}
-
-/* SECTIONS */
-
-.section{
-    padding:100px 20px;
-    border-top:1px solid rgba(255,255,255,0.08);
-    background:linear-gradient(to bottom,#050505,#0c0c0c);
-    text-align:center;
-}
-
-.section h2{
-    font-size:42px;
-    margin-bottom:25px;
-    color:gold;
-}
-
-.section p{
-    max-width:850px;
-    margin:auto;
-    font-size:18px;
-    color:#bdbdbd;
-    line-height:1.9;
-}
-
-/* CARDS */
-
-.cards{
-    margin-top:60px;
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:30px;
-    max-width:1100px;
-    margin-left:auto;
-    margin-right:auto;
-}
-
-.card{
-    background:rgba(255,255,255,0.03);
-    border:1px solid rgba(255,215,0,0.15);
-    border-radius:24px;
-    padding:40px 30px;
-    transition:0.4s;
-    backdrop-filter:blur(10px);
-}
-
-.card:hover{
-    transform:translateY(-10px);
-    border-color:gold;
-    box-shadow:0 0 25px rgba(255,215,0,0.18);
-}
-
-.card h3{
-    color:gold;
-    margin-bottom:18px;
-    font-size:24px;
-}
-
-.card p{
-    font-size:16px;
-    color:#bbb;
-}
-
-/* FOOTER */
-
-.footer{
-    padding:30px;
-    text-align:center;
-    color:#777;
-    border-top:1px solid rgba(255,255,255,0.08);
-    background:#050505;
-}
-
-/* MOBILE */
-
-@media(max-width:768px){
-
-    h1{
-        font-size:46px;
-        letter-spacing:4px;
+  <meta charset="UTF-8" />
+  <title>GJPAUS | Pause. Protect Your Power.</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #050507;
+      --bg-alt: #0b0b10;
+      --gold: #f5c76a;
+      --gold-soft: #d9a94f;
+      --gold-deep: #b8862b;
+      --text-main: #f7f7f7;
+      --text-muted: #b3b3b3;
+      --accent-red: #e53935;
+      --accent-blue: #1e88e5;
+      --accent-white: #f5f5f5;
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --radius-pill: 999px;
+      --shadow-soft: 0 0 40px rgba(0, 0, 0, 0.8);
+      --shadow-gold: 0 0 30px rgba(245, 199, 106, 0.35);
+      --border-subtle: 1px solid rgba(255, 255, 255, 0.06);
     }
 
-    .tagline{
-        font-size:18px;
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
-    .description{
-        font-size:16px;
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #151520 0, #050507 55%, #000 100%);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      padding: 24px;
     }
 
-    .section h2{
-        font-size:30px;
+    .page {
+      width: 100%;
+      max-width: 1120px;
+      background: linear-gradient(145deg, #050507 0, #0b0b10 40%, #050507 100%);
+      border-radius: 28px;
+      border: 1px solid rgba(245, 199, 106, 0.18);
+      box-shadow: var(--shadow-soft), var(--shadow-gold);
+      padding: 24px 28px 20px;
+      position: relative;
+      overflow: hidden;
     }
 
-    .logo img{
-        width:90px;
+    /* subtle glow overlay */
+    .page::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background:
+        radial-gradient(circle at 10% 0, rgba(245, 199, 106, 0.12) 0, transparent 55%),
+        radial-gradient(circle at 90% 0, rgba(245, 199, 106, 0.18) 0, transparent 60%);
+      opacity: 0.9;
+      pointer-events: none;
     }
-}
 
-</style>
-</head>
+    .page-inner {
+      position: relative;
+      z-index: 1;
+    }
 
-<body>
+    /* top bar */
+    .top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 18px;
+      gap: 16px;
+    }
 
-<div class="bg-glow"></div>
+    .handle {
+      font-size: 14px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold-soft);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
 
-<!-- HERO -->
+    .handle-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 10px rgba(245, 199, 106, 0.8);
+    }
 
-<section class="hero">
+    .top-right {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
 
-    <div class="logo">
-        <img src="logo.png" alt="GJPAUS Logo">
-    </div>
+    .icon-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(245, 199, 106, 0.35);
+      background: radial-gradient(circle at top left, rgba(245, 199, 106, 0.18), #050507);
+      font-size: 12px;
+      color: var(--gold-soft);
+    }
 
-    <h1>GJPAUS</h1>
+    .icon-pill span {
+      font-size: 14px;
+    }
 
-    <div class="tagline">
-        Pause. Protect Your Power.
-    </div>
+    .flag {
+      width: 32px;
+      height: 20px;
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
 
-    <div class="description">
-        Luxury motivational content focused on mindset,
-        inner strength, calm energy, and personal growth.
-    </div>
+    .flag-inner {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
 
-    <div class="buttons">
-
-        <a class="btn"
-        href="https://www.youtube.com/@gp9434"
-        target="_blank">
-        YouTube
-        </a>
-
-        <a class="btn"
-        href="mailto:contact@gjpaus.com">
-        Contact
-        </a>
-
-    </div>
-
-</section>
-
-<!-- MESSAGE -->
-
-<section class="section">
-
-    <h2>My Message</h2>
-
-    <p>
-        GJPAUS represents calm strength, resilience,
-        focus, and powerful transformation.
-        Every challenge can become a higher level.
-    </p>
-
-    <div class="cards">
-
-        <div class="card">
-            <h3>Mindset</h3>
-            <p>
-                Build mental strength and emotional control.
-            </p>
-        </div>
-
-        <div class="card">
-            <h3>Energy</h3>
-            <p>
-                Protect your peace and move with purpose.
-            </p>
-        </div>
-
-        <div class="card">
-            <h3>Growth</h3>
-            <p>
-                Turn pain into progress and become stronger.
-            </p>
-        </div>
-
-    </div>
-
-</section>
-
-<!-- JOURNEY -->
-
-<section class="section">
-
-    <h2>Follow The Journey</h2>
-
-    <p>
-        More premium motivational content and future platforms are coming soon.
-    </p>
-
-</section>
-
-<!-- FOOTER -->
-
-<footer class="footer">
-    © 2026 GJPAUS — All Rights Reserved.
-</footer>
-
-</body>
-</html>
+    .flag-stripe {
+      flex
