@@ -1,125 +1,139 @@
-html<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="th">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GJPAUS Inspired Landing Page</title>
+    <title>GJPAUS | Home</title>
     <style>
         :root {
-            --gold: linear-gradient(to bottom, #d4af37, #fcf6ba, #b8860b);
-            --bg-black: #050505;
+            --gold: #d4af37;
+            --gold-gradient: linear-gradient(135deg, #fcf6ba, #d4af37, #b8860b);
+            --bg-black: #0a0a0a;
         }
 
         body {
             margin: 0;
-            padding: 0;
             background-color: var(--bg-black);
-            color: #fff;
+            color: white;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             text-align: center;
         }
 
-        /* Hero Section */
-        .hero {
-            padding: 100px 20px;
-            background: radial-gradient(circle at center, #1a1a1a 0%, var(--bg-black) 70%);
+        /* --- Header Section --- */
+        header {
+            padding: 60px 20px;
+            background: radial-gradient(circle at center, #1a1a1a 0%, var(--bg-black) 100%);
         }
 
-        .logo {
-            font-size: 80px;
-            font-weight: bold;
-            letter-spacing: 10px;
-            background: var(--gold);
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 3px solid var(--gold);
+            margin-bottom: 20px;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin: 0;
+            background: var(--gold-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 10px;
-        }
-
-        .tagline {
-            font-size: 24px;
             letter-spacing: 5px;
-            color: #d4af37;
-            margin-bottom: 30px;
         }
 
-        /* Buttons */
-        .btn-container {
+        .description {
+            color: #ccc;
+            max-width: 600px;
+            margin: 20px auto;
+            line-height: 1.6;
+        }
+
+        /* --- Video Section --- */
+        .video-container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            border: 2px solid var(--gold);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* --- Buttons --- */
+        .btn-group {
             margin: 40px 0;
         }
 
         .btn {
             display: inline-block;
-            padding: 15px 30px;
+            padding: 12px 30px;
             margin: 10px;
-            border: 2px solid #d4af37;
-            color: #fff;
+            border: 2px solid var(--gold);
+            color: white;
             text-decoration: none;
-            border-radius: 5px;
+            text-transform: uppercase;
             font-weight: bold;
+            border-radius: 5px;
             transition: 0.3s;
         }
 
         .btn:hover {
-            background: #d4af37;
-            color: #000;
-        }
-
-        /* Info Cards */
-        .grid {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            padding: 50px;
-            flex-wrap: wrap;
-        }
-
-        .card {
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            padding: 30px;
-            width: 350px;
-            border-radius: 10px;
-            background: rgba(255, 255, 255, 0.05);
-        }
-
-        .card h3 {
-            color: #d4af37;
-            text-transform: uppercase;
+            background: var(--gold);
+            color: black;
+            box-shadow: 0 0 20px var(--gold);
         }
 
         footer {
-            padding: 20px;
-            font-size: 12px;
-            color: #555;
-            border-top: 1px solid #222;
+            padding: 40px;
+            font-size: 14px;
+            color: #666;
         }
     </style>
 </head>
 <body>
 
-    <section class="hero">
-        <div class="logo">GJPAUS</div>
-        <div class="tagline">PAUSE. PROTECT YOUR POWER.</div>
-        <p>Motivational content to help you pause, reset, and protect your inner power.</p>
-        
-        <div class="btn-container">
-            <a href="#" class="btn">VISIT MY YOUTUBE</a>
-            <a href="#" class="btn">CONTACT ME</a>
-        </div>
-    </section>
+    <header>
+        <!-- ใส่รูปโปรไฟล์ของคุณที่นี่ -->
+        <img src="your-profile-image.jpg" alt="GP Profile" class="profile-img">
+        <h1>G P</h1>
+        <p style="color: var(--gold); letter-spacing: 2px;">@gp9434</p>
+        <p class="description">
+            "คิดดี ทำดี แม้ยังไม่เห็นผล แค่จงยืนอยู่บนความดีของตัวเอง" <br>
+            Pause. Protect Your Power.
+        </p>
+    </header>
 
-    <div class="grid">
-        <div class="card">
-            <h3>My Message</h3>
-            <p>I create motivational content to help you pause, reset, and protect your inner power.</p>
-        </div>
-        <div class="card">
-            <h3>Follow My Journey</h3>
-            <p>More platforms and premium content coming soon.</p>
+    <div class="video-container">
+        <h3>LATEST VIDEO</h3>
+        <div class="video-wrapper">
+            <!-- เปลี่ยน VIDEO_ID เป็นไอดีวิดีโอจาก YouTube ของคุณ -->
+            <iframe src="https://youtube.com" frameborder="0" allowfullscreen></iframe>
         </div>
     </div>
 
+    <div class="btn-group">
+        <a href="https://youtube.com" target="_blank" class="btn">Subscribe on YouTube</a>
+        <a href="#" class="btn">Contact Me</a>
+    </div>
+
     <footer>
-        &copy; 2026 GJPAUS — All Rights Reserved.
+        &copy; 2026 GJPAUS.COM | All Rights Reserved.
     </footer>
 
 </body>
