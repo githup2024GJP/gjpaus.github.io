@@ -1,674 +1,337 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>GJPAUS | Pause. Protect Your Power.</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <style>
-    :root {
-      --bg: #050507;
-      --bg-alt: #0b0b10;
-      --gold: #f5c76a;
-      --gold-soft: #d9a94f;
-      --gold-deep: #b8862b;
-      --text-main: #f7f7f7;
-      --text-muted: #b3b3b3;
-      --accent-red: #e53935;
-      --accent-blue: #1e88e5;
-      --accent-white: #f5f5f5;
-      --radius-lg: 18px;
-      --radius-md: 12px;
-      --radius-pill: 999px;
-      --shadow-soft: 0 0 40px rgba(0, 0, 0, 0.8);
-      --shadow-gold: 0 0 30px rgba(245, 199, 106, 0.35);
-      --border-subtle: 1px solid rgba(255, 255, 255, 0.06);
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
-        "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #151520 0, #050507 55%, #000 100%);
-      color: var(--text-main);
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      padding: 24px;
-    }
-
-    .page {
-      width: 100%;
-      max-width: 1120px;
-      background: linear-gradient(145deg, #050507 0, #0b0b10 40%, #050507 100%);
-      border-radius: 28px;
-      border: 1px solid rgba(245, 199, 106, 0.18);
-      box-shadow: var(--shadow-soft), var(--shadow-gold);
-      padding: 24px 28px 20px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    /* subtle glow overlay */
-    .page::before {
-      content: "";
-      position: absolute;
-      inset: -40%;
-      background:
-        radial-gradient(circle at 10% 0, rgba(245, 199, 106, 0.12) 0, transparent 55%),
-        radial-gradient(circle at 90% 0, rgba(245, 199, 106, 0.18) 0, transparent 60%);
-      opacity: 0.9;
-      pointer-events: none;
-    }
-
-    .page-inner {
-      position: relative;
-      z-index: 1;
-    }
-
-    /* top bar */
-    .top-bar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 18px;
-      gap: 16px;
-    }
-
-    .handle {
-      font-size: 14px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--gold-soft);
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .handle-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--gold);
-      box-shadow: 0 0 10px rgba(245, 199, 106, 0.8);
-    }
-
-    .top-right {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-
-    .icon-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 6px 12px;
-      border-radius: var(--radius-pill);
-      border: 1px solid rgba(245, 199, 106, 0.35);
-      background: radial-gradient(circle at top left, rgba(245, 199, 106, 0.18), #050507);
-      font-size: 12px;
-      color: var(--gold-soft);
-    }
-
-    .icon-pill span {
-      font-size: 14px;
-    }
-
-    .flag {
-      width: 32px;
-      height: 20px;
-      border-radius: 6px;
-      overflow: hidden;
-      box-shadow: 0 0 12px rgba(0, 0, 0, 0.7);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-    }
-
-    .flag-inner {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .flag-stripe {
-      flex: 1;
-    }
-
-    .flag-stripe.red {
-      background: var(--accent-red);
-    }
-
-    .flag-stripe.white {
-      background: var(--accent-white);
-    }
-
-    .flag-stripe.blue {
-      background: var(--accent-blue);
-    }
-
-    /* nav */
-    .nav {
-      display: flex;
-      justify-content: center;
-      gap: 32px;
-      margin-bottom: 26px;
-      font-size: 13px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-    }
-
-    .nav a {
-      text-decoration: none;
-      color: inherit;
-      position: relative;
-      padding-bottom: 4px;
-    }
-
-    .nav a.active {
-      color: var(--gold);
-    }
-
-    .nav a.active::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 18px;
-      height: 2px;
-      border-radius: 999px;
-      background: linear-gradient(90deg, var(--gold), var(--gold-deep));
-      box-shadow: 0 0 10px rgba(245, 199, 106, 0.7);
-    }
-
-    /* main layout */
-    .main {
-      display: grid;
-      grid-template-columns: minmax(0, 3fr) minmax(0, 2.4fr);
-      gap: 28px;
-      align-items: stretch;
-    }
-
-    /* hero left */
-    .hero-card {
-      background: radial-gradient(circle at top left, rgba(245, 199, 106, 0.12), #050507);
-      border-radius: 24px;
-      padding: 24px 22px 22px;
-      border: var(--border-subtle);
-      box-shadow: 0 0 30px rgba(0, 0, 0, 0.7);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-card::before {
-      content: "";
-      position: absolute;
-      inset: -40%;
-      background:
-        radial-gradient(circle at 0 0, rgba(245, 199, 106, 0.18) 0, transparent 55%),
-        radial-gradient(circle at 100% 0, rgba(245, 199, 106, 0.12) 0, transparent 60%);
-      opacity: 0.7;
-      pointer-events: none;
-    }
-
-    .hero-inner {
-      position: relative;
-      z-index: 1;
-    }
-
-    .logo-row {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      margin-bottom: 18px;
-    }
-
-    .logo-badge {
-      width: 64px;
-      height: 64px;
-      border-radius: 20px;
-      background: radial-gradient(circle at 30% 0, #fbe3a4, #f5c76a 40%, #b8862b 100%);
-      box-shadow:
-        0 0 24px rgba(245, 199, 106, 0.9),
-        0 0 60px rgba(0, 0, 0, 0.9);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .logo-badge::before {
-      content: "";
-      position: absolute;
-      inset: 12%;
-      border-radius: 18px;
-      border: 1px solid rgba(255, 255, 255, 0.45);
-      opacity: 0.7;
-    }
-
-    .logo-letter {
-      font-size: 32px;
-      font-weight: 800;
-      color: #2b1a05;
-      text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
-    }
-
-    .logo-crown {
-      position: absolute;
-      top: 4px;
-      font-size: 16px;
-      color: #2b1a05;
-      text-shadow: 0 0 6px rgba(255, 255, 255, 0.7);
-    }
-
-    .brand-text {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-
-    .brand-name {
-      font-size: 26px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-    }
-
-    .brand-name span {
-      color: var(--gold);
-    }
-
-    .brand-tagline-small {
-      font-size: 11px;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-    }
-
-    .hero-heading {
-      margin-bottom: 12px;
-    }
-
-    .hero-heading-main {
-      font-size: 20px;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 4px;
-    }
-
-    .hero-heading-sub {
-      font-size: 13px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-    }
-
-    .hero-copy {
-      font-size: 14px;
-      line-height: 1.6;
-      color: #e3e3e3;
-      margin-bottom: 18px;
-      max-width: 460px;
-    }
-
-    .hero-copy strong {
-      color: var(--gold-soft);
-      font-weight: 600;
-    }
-
-    .hero-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-bottom: 10px;
-    }
-
-    .btn {
-      border-radius: var(--radius-pill);
-      padding: 10px 20px;
-      font-size: 13px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      border: none;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      text-decoration: none;
-      transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
-      white-space: nowrap;
-    }
-
-    .btn-primary {
-      background: linear-gradient(135deg, var(--gold), var(--gold-deep));
-      color: #1a1205;
-      box-shadow:
-        0 0 18px rgba(245, 199, 106, 0.8),
-        0 0 40px rgba(0, 0, 0, 0.9);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-1px);
-      box-shadow:
-        0 0 24px rgba(245, 199, 106, 0.95),
-        0 0 50px rgba(0, 0, 0, 1);
-    }
-
-    .btn-ghost {
-      background: rgba(5, 5, 7, 0.7);
-      color: var(--gold-soft);
-      border: 1px solid rgba(245, 199, 106, 0.4);
-      box-shadow: 0 0 16px rgba(0, 0, 0, 0.8);
-    }
-
-    .btn-ghost:hover {
-      background: rgba(15, 15, 20, 0.9);
-      transform: translateY(-1px);
-      box-shadow:
-        0 0 20px rgba(245, 199, 106, 0.4),
-        0 0 40px rgba(0, 0, 0, 1);
-    }
-
-    .hero-meta {
-      font-size: 11px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-    }
-
-    /* right column cards */
-    .side-column {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
-
-    .card {
-      background: radial-gradient(circle at top, rgba(245, 199, 106, 0.12), #050507);
-      border-radius: 18px;
-      padding: 16px 16px 14px;
-      border: var(--border-subtle);
-      box-shadow: 0 0 26px rgba(0, 0, 0, 0.7);
-    }
-
-    .card-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 8px;
-      gap: 8px;
-    }
-
-    .card-title {
-      font-size: 12px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--gold-soft);
-    }
-
-    .card-pill {
-      font-size: 10px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      padding: 4px 10px;
-      border-radius: var(--radius-pill);
-      border: 1px solid rgba(245, 199, 106, 0.4);
-      color: var(--text-muted);
-    }
-
-    .card-body {
-      font-size: 13px;
-      line-height: 1.6;
-      color: #e0e0e0;
-    }
-
-    .card-body strong {
-      color: var(--gold-soft);
-      font-weight: 600;
-    }
-
-    .card-footer {
-      margin-top: 10px;
-      font-size: 11px;
-      color: var(--text-muted);
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-    }
-
-    /* footer */
-    .footer {
-      margin-top: 22px;
-      padding-top: 14px;
-      border-top: 1px solid rgba(255, 255, 255, 0.06);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-      font-size: 11px;
-      color: var(--text-muted);
-    }
-
-    .footer span strong {
-      color: var(--gold-soft);
-      font-weight: 500;
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 16px;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-    }
-
-    .footer-links a {
-      text-decoration: none;
-      color: var(--text-muted);
-      font-size: 10px;
-    }
-
-    .footer-links a:hover {
-      color: var(--gold-soft);
-    }
-
-    /* responsive */
-    @media (max-width: 840px) {
-      body {
-        padding: 16px;
-      }
-
-      .page {
-        padding: 18px 16px 16px;
-        border-radius: 22px;
-      }
-
-      .nav {
-        gap: 18px;
-        font-size: 11px;
-      }
-
-      .main {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-card {
-        padding: 20px 18px 18px;
-      }
-
-      .hero-copy {
-        font-size: 13px;
-      }
-
-      .side-column {
-        flex-direction: column;
-      }
-    }
-
-    @media (max-width: 540px) {
-      .top-bar {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .top-right {
-        align-self: stretch;
-        justify-content: space-between;
-      }
-
-      .nav {
-        flex-wrap: wrap;
-        justify-content: center;
-        text-align: center;
-      }
-
-      .hero-buttons {
-        flex-direction: column;
-        align-items: stretch;
-      }
-
-      .btn {
-        width: 100%;
-      }
-
-      .footer {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-    }
-  </style>
+<meta charset="UTF-8" />
+<title>GJPAUS | Pause. Protect Your Power.</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+/* COLORS */
+:root {
+  --gold: #f5c76a;
+  --gold-soft: #e4b75c;
+  --text: #ffffff;
+  --muted: #b3b3b3;
+  --bg: #000000;
+}
+
+/* GLOBAL */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #000;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  color: var(--text);
+  display: flex;
+  justify-content: center;
+  padding: 30px 20px;
+}
+
+/* FRAME */
+.frame {
+  width: 100%;
+  max-width: 1100px;
+  background: #0a0a0a;
+  border-radius: 28px;
+  border: 1px solid rgba(245,199,106,0.25);
+  padding: 40px 50px;
+}
+
+/* TOP BAR */
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+.handle {
+  font-family: "Segoe Script", cursive;
+  font-size: 22px;
+  color: var(--gold);
+}
+
+/* FLAG */
+.flag {
+  width: 40px;
+  height: 26px;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+.flag div { height: 33%; }
+.red { background: #e53935; }
+.white { background: #ffffff; }
+.blue { background: #1e88e5; }
+
+/* NAV */
+.nav {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+.nav a {
+  text-decoration: none;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+.nav a:hover,
+.nav a.active { color: var(--gold); }
+
+/* LOGO */
+.logo-wrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.logo {
+  width: 120px;
+  height: 120px;
+  border-radius: 35px;
+  background: linear-gradient(135deg, #fbe3a4, #b8862b);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  animation: glow 3s ease-in-out infinite;
+}
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(245,199,106,0.3); }
+  50% { box-shadow: 0 0 40px rgba(245,199,106,0.6); }
+}
+.logo-shield {
+  width: 70%;
+  height: 70%;
+  border-radius: 30px;
+  background: linear-gradient(135deg, #fbe3a4, #b8862b);
+  border: 2px solid #2b1a05;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.logo-letter {
+  font-size: 50px;
+  font-weight: 800;
+  color: #2b1a05;
+}
+.logo-crown {
+  position: absolute;
+  top: -8px;
+  font-size: 22px;
+  color: #2b1a05;
+  animation: bounce 2s ease-in-out infinite;
+}
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* TITLES */
+.title-main {
+  text-align: center;
+  font-size: 40px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  animation: fadeInDown 0.8s ease-out;
+}
+.title-main span { color: var(--gold); }
+
+.title-sub {
+  text-align: center;
+  font-size: 14px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold-soft);
+  margin-bottom: 20px;
+  animation: fadeInUp 0.8s ease-out 0.2s both;
+}
+
+/* DESCRIPTION */
+.desc {
+  text-align: center;
+  max-width: 650px;
+  margin: 0 auto 25px;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #e3e3e3;
+  animation: fadeInUp 0.8s ease-out 0.4s both;
+}
+
+/* BUTTONS */
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 40px;
+  animation: fadeInUp 0.8s ease-out 0.6s both;
+}
+.btn {
+  padding: 12px 28px;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 13px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: none;
+}
+.btn-primary {
+  background: linear-gradient(135deg, var(--gold), #b8862b);
+  color: #1a1205;
+  font-weight: 600;
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(245,199,106,0.3);
+}
+.btn-ghost {
+  background: rgba(0,0,0,0.6);
+  border: 1px solid var(--gold);
+  color: var(--gold);
+}
+.btn-ghost:hover {
+  background: rgba(245,199,106,0.1);
+  box-shadow: 0 0 20px rgba(245,199,106,0.3);
+}
+
+/* CARDS */
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 30px;
+  animation: fadeInUp 0.8s ease-out 0.8s both;
+}
+.card {
+  background: #0f0f0f;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 20px;
+  padding: 20px 24px;
+  transition: all 0.3s ease;
+}
+.card:hover {
+  border-color: rgba(245,199,106,0.4);
+  box-shadow: 0 0 20px rgba(245,199,106,0.2);
+}
+.card-title {
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+.card-body {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #e0e0e0;
+}
+
+/* FOOTER */
+.footer {
+  text-align: center;
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  color: var(--muted);
+  animation: fadeInUp 0.8s ease-out 1s both;
+}
+.footer span { color: var(--gold); }
+
+/* ANIMATIONS */
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* RESPONSIVE */
+@media (max-width: 700px) {
+  .frame { padding: 30px 20px; }
+  .cards { grid-template-columns: 1fr; }
+  .buttons { flex-direction: column; }
+  .btn { width: 100%; text-align: center; }
+  .title-main { font-size: 32px; }
+  .nav { gap: 20px; font-size: 12px; }
+}
+</style>
 </head>
+
 <body>
-  <div class="page">
-    <div class="page-inner">
-      <!-- top bar -->
-      <header class="top-bar">
-        <div class="handle">
-          <span class="handle-dot"></span>
-          <span>@gp9434</span>
-        </div>
-        <div class="top-right">
-          <div class="icon-pill">
-            <span>▶</span>
-            <span>YouTube</span>
-          </div>
-          <div class="icon-pill">
-            <span>✉</span>
-            <span>Email</span>
-          </div>
-          <div class="flag">
-            <div class="flag-inner">
-              <div class="flag-stripe red"></div>
-              <div class="flag-stripe white"></div>
-              <div class="flag-stripe blue"></div>
-            </div>
-          </div>
-        </div>
-      </header>
+<div class="frame">
 
-      <!-- nav -->
-      <nav class="nav">
-        <a href="#home" class="active">Home</a>
-        <a href="#message">My Message</a>
-        <a href="#journey">Journey</a>
-        <a href="#contact">Contact</a>
-      </nav>
+  <!-- TOP -->
+  <div class="top">
+    <div class="handle">@gp9434</div>
 
-      <!-- main -->
-      <main class="main" id="home">
-        <!-- hero -->
-        <section class="hero-card">
-          <div class="hero-inner">
-            <div class="logo-row">
-              <div class="logo-badge">
-                <div class="logo-crown">♛</div>
-                <div class="logo-letter">G</div>
-              </div>
-              <div class="brand-text">
-                <div class="brand-name"><span>GJPAUS</span></div>
-                <div class="brand-tagline-small">Pause. Protect your power.</div>
-              </div>
-            </div>
-
-            <div class="hero-heading">
-              <div class="hero-heading-main">Pause. Protect your power.</div>
-              <div class="hero-heading-sub">Strong mind. Strong energy. Strong life.</div>
-            </div>
-
-            <p class="hero-copy">
-              Motivational content to help you <strong>pause, reset, and protect your inner power</strong>.
-              This is your space to slow down, breathe, and build a stronger mind, stronger energy,
-              and stronger life—one pause at a time.
-            </p>
-
-            <div class="hero-buttons">
-              <a
-                href="https://www.youtube.com/@gp9434"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="btn btn-primary"
-              >
-                Visit my YouTube
-              </a>
-              <a href="#contact" class="btn btn-ghost">
-                Contact me
-              </a>
-            </div>
-
-            <div class="hero-meta">
-              © 2026 GJPAUS — Pause. Protect your power.
-            </div>
-          </div>
-        </section>
-
-        <!-- side column -->
-        <aside class="side-column">
-          <section class="card" id="message">
-            <div class="card-header">
-              <div class="card-title">My message</div>
-              <div class="card-pill">Mindset • Energy • Focus</div>
-            </div>
-            <div class="card-body">
-              Motivational content to help you <strong>pause, reset, and protect your inner power</strong>.
-              When life feels loud, this is your reminder to slow down, protect your energy,
-              and choose thoughts that build you—not break you.
-            </div>
-            <div class="card-footer">
-              Strong mind. Strong energy. Strong life.
-            </div>
-          </section>
-
-          <section class="card" id="journey">
-            <div class="card-header">
-              <div class="card-title">Follow my journey</div>
-              <div class="card-pill">Coming soon</div>
-            </div>
-            <div class="card-body">
-              More platforms, deeper content, and premium experiences are on the way.
-              I’m building this step by step—just like you’re building your life.
-              Stay close. The next chapter is loading.
-            </div>
-            <div class="card-footer">
-              New drops • New energy • Same mission
-            </div>
-          </section>
-        </aside>
-      </main>
-
-      <!-- footer -->
-      <footer class="footer" id="contact">
-        <span>© 2026 <strong>GJPAUS</strong> — All Rights Reserved.</span>
-        <div class="footer-links">
-          <a href="mailto:contact@gjpaus.com">Email</a>
-          <a href="https://www.youtube.com/@gp9434" target="_blank" rel="noopener noreferrer">YouTube</a>
-        </div>
-      </footer>
+    <div class="flag">
+      <div class="red"></div>
+      <div class="white"></div>
+      <div class="blue"></div>
     </div>
   </div>
+
+  <!-- NAV -->
+  <div class="nav">
+    <a class="active">Home</a>
+    <a>My Message</a>
+    <a>Journey</a>
+    <a>Contact</a>
+  </div>
+
+  <!-- LOGO -->
+  <div class="logo-wrap">
+    <div class="logo">
+      <div class="logo-crown">♛</div>
+      <div class="logo-shield">
+        <div class="logo-letter">G</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TITLES -->
+  <h1 class="title-main"><span>GJPAUS</span></h1>
+  <div class="title-sub">Pause. Protect your power.</div>
+
+  <!-- DESCRIPTION -->
+  <p class="desc">
+    Motivational content to help you <strong>pause, reset, and protect your inner power</strong>.
+    Strong mind. Strong energy. Strong life.
+  </p>
+
+  <!-- BUTTONS -->
+  <div class="buttons">
+    <a href="https://www.youtube.com/@gp9434" target="_blank" class="btn btn-primary">Visit My YouTube</a>
+    <a href="#contact" class="btn btn-ghost">Contact Me</a>
+  </div>
+
+  <!-- CARDS -->
+  <div class="cards">
+    <div class="card">
+      <div class="card-title">My Message</div>
+      <div class="card-body">
+        I create motivational content to help you pause, reset, and protect your inner power.
+        Strong mind. Strong energy. Strong life.
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Follow My Journey</div>
+      <div class="card-body">
+        More platforms and premium content coming soon.
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    © 2026 <span>GJPAUS</span> — All Rights Reserved.
+  </div>
+
+</div>
 </body>
 </html>
