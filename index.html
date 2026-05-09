@@ -3,46 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GP9434 | Official Website</title>
+    <title>GP9434 | Official Site</title>
     <style>
-        body, html {
-            margin: 0; padding: 0; height: 100%;
-            background: #000; font-family: 'Sarabun', sans-serif;
-            display: flex; align-items: center; justify-content: center;
+        /* จัดการพื้นฐานหน้าจอ */
+        body, html { 
+            margin: 0; padding: 0; height: 100%; 
+            background: #000; overflow: hidden; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
         }
-        .bg-container {
+
+        /* ส่วนแสดงรูปพื้นหลัง (รูปเวทีไฟส่อง) */
+        .background {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.7)), url('logo.png');
-            background-size: cover; background-position: center;
+            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.6)), url('logo.png');
+            background-size: cover; 
+            background-position: center; 
             z-index: -1;
         }
+
+        /* ส่วนเนื้อหาและปุ่มด้านล่าง */
         .content {
-            text-align: center; color: white;
-            padding: 30px; border-radius: 20px;
-            backdrop-filter: blur(10px);
-            background: rgba(0,0,0,0.6);
-            border: 1px solid rgba(255,255,255,0.1);
+            height: 100%; 
+            display: flex; 
+            flex-direction: column;
+            align-items: center; 
+            justify-content: flex-end; 
+            padding-bottom: 60px;
         }
+
+        /* ตกแต่งปุ่ม YouTube */
         .btn-yt {
-            display: inline-block; padding: 15px 40px;
-            background: #ff0000; color: #fff;
-            text-decoration: none; border-radius: 50px;
-            font-weight: bold; margin-bottom: 25px;
+            padding: 16px 45px; 
+            background: #ff0000; 
+            color: #fff;
+            text-decoration: none; 
+            border-radius: 50px; 
+            font-weight: bold;
+            font-size: 1.1rem;
+            box-shadow: 0 0 25px rgba(255,0,0,0.6); 
+            transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            letter-spacing: 1px;
+        }
+
+        .btn-yt:hover { 
+            transform: scale(1.1); 
+            box-shadow: 0 0 40px #ff0000; 
+            background: #e60000;
+        }
+
+        /* ตกแต่งอีเมล */
+        .email { 
+            margin-top: 25px; 
+            color: rgba(255,255,255,0.7); 
+            text-decoration: none; 
+            font-size: 0.95rem;
             transition: 0.3s;
         }
-        .btn-yt:hover { transform: scale(1.1); background: #cc0000; }
-        .email { color: #bdc3c7; text-decoration: none; }
+
+        .email:hover { color: #fff; text-shadow: 0 0 10px rgba(255,255,255,0.5); }
     </style>
 </head>
 <body>
-    <div class="bg-container"></div>
+
+    <div class="background"></div>
+
     <div class="content">
-        <!-- ลิงก์ที่ถูกต้องไปยังช่องของคุณ -->
-        <a href="https://www.youtube.com/@gp9434" target="_blank" class="btn-yt">
+        <!-- ลิงก์ตรงไปที่ช่อง YouTube ของคุณ -->
+        <a href="https://youtube.com" target="_blank" class="btn-yt">
             📺 SUBSCRIBE ON YOUTUBE
         </a>
-        <br>
-        <a href="mailto:contact@gjpaus.com" class="email">📧 contact@gjpaus.com</a>
+        
+        <!-- ลิงก์อีเมลติดต่อ -->
+        <a href="mailto:contact@gjpaus.com" class="email">
+            📧 contact@gjpaus.com
+        </a>
     </div>
+
 </body>
 </html>
