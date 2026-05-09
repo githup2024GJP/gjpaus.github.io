@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>GJPAUS — Pause. Protect Your Power.</title>
 
@@ -16,25 +16,25 @@
     box-sizing:border-box;
 }
 
-html{
-    scroll-behavior:smooth;
-}
-
 body{
     background:#000;
     color:#fff;
-    font-family:'Montserrat', sans-serif;
+    font-family:'Montserrat',sans-serif;
     overflow-x:hidden;
 }
 
-/* BACKGROUND */
+/* GOLD BACKGROUND GLOW */
 
 .bg-glow{
     position:fixed;
-    width:800px;
-    height:800px;
-    background:radial-gradient(circle, rgba(255,215,0,0.12), transparent 70%);
-    top:-250px;
+    width:900px;
+    height:900px;
+    background:
+    radial-gradient(circle,
+    rgba(255,215,0,0.18) 0%,
+    rgba(255,215,0,0.04) 40%,
+    transparent 70%);
+    top:-300px;
     left:50%;
     transform:translateX(-50%);
     z-index:-1;
@@ -46,7 +46,7 @@ body{
         transform:translateX(-50%) scale(1);
     }
     to{
-        transform:translateX(-50%) scale(1.2);
+        transform:translateX(-50%) scale(1.15);
     }
 }
 
@@ -60,21 +60,17 @@ body{
     align-items:center;
     text-align:center;
     padding:40px 20px;
-    position:relative;
 }
 
-/* LOGO */
-
-.logo{
-    margin-bottom:25px;
-}
+/* SMALL PREMIUM LOGO */
 
 .logo img{
-    width:180px;
-    max-width:80%;
-    filter:
-    drop-shadow(0 0 12px gold)
-    drop-shadow(0 0 25px rgba(255,215,0,0.5));
+    width:120px;
+    margin-bottom:30px;
+    border-radius:50%;
+    box-shadow:
+    0 0 15px gold,
+    0 0 35px rgba(255,215,0,0.4);
     animation:floatLogo 4s ease-in-out infinite;
 }
 
@@ -90,56 +86,52 @@ body{
     }
 }
 
-/* TITLES */
+/* TITLE */
 
 h1{
-    font-size:78px;
+    font-size:72px;
     letter-spacing:8px;
-    font-weight:700;
     color:gold;
     text-shadow:
-    0 0 12px gold,
+    0 0 10px gold,
     0 0 25px rgba(255,215,0,0.6);
 }
 
 .tagline{
-    margin-top:12px;
+    margin-top:15px;
     font-size:24px;
-    color:#f1d27a;
+    color:#f3d57c;
     letter-spacing:2px;
 }
 
 .description{
     margin-top:30px;
     max-width:760px;
-    color:#ccc;
     font-size:18px;
     line-height:1.8;
+    color:#c9c9c9;
 }
 
 /* BUTTONS */
 
 .buttons{
-    margin-top:40px;
+    margin-top:45px;
     display:flex;
+    gap:20px;
     flex-wrap:wrap;
     justify-content:center;
-    gap:20px;
 }
 
 .btn{
-    position:relative;
-    padding:16px 34px;
+    padding:15px 34px;
     border:1px solid gold;
+    border-radius:50px;
     color:gold;
     text-decoration:none;
     font-weight:600;
-    border-radius:50px;
-    overflow:hidden;
-    transition:0.4s ease;
-    backdrop-filter:blur(6px);
+    transition:0.4s;
     background:rgba(255,215,0,0.05);
-    box-shadow:0 0 18px rgba(255,215,0,0.15);
+    box-shadow:0 0 18px rgba(255,215,0,0.12);
 }
 
 .btn:hover{
@@ -153,24 +145,23 @@ h1{
 
 .section{
     padding:100px 20px;
-    text-align:center;
     border-top:1px solid rgba(255,255,255,0.08);
-    background:linear-gradient(to bottom,#050505,#0d0d0d);
+    background:linear-gradient(to bottom,#050505,#0c0c0c);
+    text-align:center;
 }
 
 .section h2{
     font-size:42px;
     margin-bottom:25px;
     color:gold;
-    letter-spacing:2px;
 }
 
 .section p{
     max-width:850px;
     margin:auto;
-    color:#bbb;
-    line-height:1.9;
     font-size:18px;
+    color:#bdbdbd;
+    line-height:1.9;
 }
 
 /* CARDS */
@@ -178,9 +169,9 @@ h1{
 .cards{
     margin-top:60px;
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
     gap:30px;
-    max-width:1200px;
+    max-width:1100px;
     margin-left:auto;
     margin-right:auto;
 }
@@ -190,15 +181,14 @@ h1{
     border:1px solid rgba(255,215,0,0.15);
     border-radius:24px;
     padding:40px 30px;
-    transition:0.4s ease;
+    transition:0.4s;
     backdrop-filter:blur(10px);
-    box-shadow:0 0 20px rgba(255,215,0,0.05);
 }
 
 .card:hover{
     transform:translateY(-10px);
     border-color:gold;
-    box-shadow:0 0 30px rgba(255,215,0,0.18);
+    box-shadow:0 0 25px rgba(255,215,0,0.18);
 }
 
 .card h3{
@@ -208,8 +198,8 @@ h1{
 }
 
 .card p{
-    color:#bbb;
     font-size:16px;
+    color:#bbb;
 }
 
 /* FOOTER */
@@ -218,8 +208,8 @@ h1{
     padding:30px;
     text-align:center;
     color:#777;
+    border-top:1px solid rgba(255,255,255,0.08);
     background:#050505;
-    border-top:1px solid rgba(255,255,255,0.06);
 }
 
 /* MOBILE */
@@ -227,7 +217,7 @@ h1{
 @media(max-width:768px){
 
     h1{
-        font-size:48px;
+        font-size:46px;
         letter-spacing:4px;
     }
 
@@ -240,9 +230,12 @@ h1{
     }
 
     .section h2{
-        font-size:32px;
+        font-size:30px;
     }
 
+    .logo img{
+        width:90px;
+    }
 }
 
 </style>
@@ -267,21 +260,21 @@ h1{
     </div>
 
     <div class="description">
-        Luxury motivational content designed to help you reset your mind,
-        reclaim your energy, and rise stronger with purpose.
+        Luxury motivational content focused on mindset,
+        inner strength, calm energy, and personal growth.
     </div>
 
     <div class="buttons">
 
         <a class="btn"
-           href="https://www.youtube.com/@gp9434"
-           target="_blank">
-           YouTube
+        href="https://www.youtube.com/@gp9434"
+        target="_blank">
+        YouTube
         </a>
 
         <a class="btn"
-           href="mailto:contact@gjpaus.com">
-           Contact
+        href="mailto:contact@gjpaus.com">
+        Contact
         </a>
 
     </div>
@@ -295,9 +288,9 @@ h1{
     <h2>My Message</h2>
 
     <p>
-        GJPAUS represents calm strength, self-control,
-        resilience, and personal power.
-        Every challenge can become a new level.
+        GJPAUS represents calm strength, resilience,
+        focus, and powerful transformation.
+        Every challenge can become a higher level.
     </p>
 
     <div class="cards">
@@ -305,24 +298,21 @@ h1{
         <div class="card">
             <h3>Mindset</h3>
             <p>
-                Train your mind to stay calm,
-                focused, and powerful.
+                Build mental strength and emotional control.
             </p>
         </div>
 
         <div class="card">
             <h3>Energy</h3>
             <p>
-                Protect your inner energy
-                from negativity and pressure.
+                Protect your peace and move with purpose.
             </p>
         </div>
 
         <div class="card">
             <h3>Growth</h3>
             <p>
-                Turn difficult moments
-                into personal transformation.
+                Turn pain into progress and become stronger.
             </p>
         </div>
 
@@ -337,8 +327,7 @@ h1{
     <h2>Follow The Journey</h2>
 
     <p>
-        More premium content, motivational videos,
-        and future platforms are coming soon.
+        More premium motivational content and future platforms are coming soon.
     </p>
 
 </section>
