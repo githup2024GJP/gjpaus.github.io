@@ -9,17 +9,18 @@
     <style>
         :root {
             --gold: #d4af37;
-    --black: #0a0a0a;
-    --light-gold: #fff7c2;
-}
-.logo-handle {
-    color: #d4af37;
-    font-size: 20px;
-    font-family: "Brush Script MT", cursive;
-    font-style: italic;
-    transform: rotate(-4deg);
-    letter-spacing: 1px;
-    text-shadow: 0 0 12px rgba(212,175,55,0.6);
+            --black: #0a0a0a;
+            --light-gold: #fff7c2;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            background-color: var(--black);
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
         }
 
         /* Subtle gold glow background */
@@ -151,14 +152,13 @@
     <div class="bg-overlay"></div>
     
     <header>
-         <div class="logo-handle">@gp9434</div>  
+        <div class="logo-handle">@gp9434</div>
         <nav>
             <a href="index.html">Home</a>
             <a href="#">My Message</a>
             <a href="#">Journey</a>
-<a href="mailto:GJPAUS%20%3Ccontact@gjpaus.com%3E"
-style="text-decoration: none; color: white; border: none; background: none;">CONTACT</a>              
-        </nav>
+<a href="mailto:GJPAUS%20<contact@gjpaus.com>" style="text-decoration: none; color: white; border: none; background: none;">CONTACT</a>
+              </nav>
     </header>
 
     <main class="hero">
@@ -172,8 +172,8 @@ style="text-decoration: none; color: white; border: none; background: none;">CON
         <div class="cta-buttons">
             <a href="https://www.youtube.com/@gp9434" target="_blank" class="btn btn-gold">
                     ▶ VISIT MY YOUTUBE</a>
-        <a href="mailto:GJPAUS%20%3Ccontact@gjpaus.com%3E" class="btn btn-outline">✉ CONTACT ME </a>      
-        </div>
+           <a href="mailto:GJPAUS%20<contact@gjpaus.com>" class="btn btn-outline">✉ CONTACT ME </a>
+       </div>
 
         <section class="features">
             <div class="card">
