@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GJPAUS - Pause. Protect Your Power.</title>
-    <!-- Fixed font link below -->
+    <!-- Premium Fonts -->
     <link href="https://googleapis.com" rel="stylesheet">
     <style>
         :root {
             --gold: #d4af37;
-            --gold-gradient: linear-gradient(to bottom, #f9e195, #d4af37, #b8860b);
-            --black: #050505;
+            --black: #0a0a0a;
+            --text-gray: #cccccc;
         }
 
         body, html {
@@ -19,18 +19,17 @@
             background-color: var(--black);
             color: white;
             font-family: 'Montserrat', sans-serif;
-            min-height: 100vh;
+            overflow-x: hidden;
         }
 
-        .bg-glow {
+        /* Subtle gold glow background */
+        .bg-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: 
-                radial-gradient(circle at 50% 40%, rgba(212, 175, 55, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 50% 100%, rgba(212, 175, 55, 0.1) 0%, transparent 40%);
+            background: radial-gradient(circle at 50% 50%, #1a1a1a 0%, #000000 100%);
             z-index: -1;
         }
 
@@ -38,152 +37,404 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 30px 60px;
-        }
-
-        .handle {
-            font-family: 'Cinzel', serif;
-            color: var(--gold);
-            font-weight: 700;
-            font-size: 1.4rem;
-        }
-
-        nav a {
-            color: rgba(255,255,255,0.7);
-            text-decoration: none;
-            margin: 0 15px;
-            font-size: 0.75rem;
+            padding: 30px 50px;
+            text-transform: uppercase;
+            font-size: 13px;
             letter-spacing: 2px;
         }
 
-        .content {
-            text-align: center;
-            padding: 50px 20px;
-            max-width: 900px;
-            margin: 0 auto;
+        .logo-handle { color: var(--gold); font-weight: 600; }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            transition: 0.3s;
         }
 
-        .logo-shield {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            display: inline-block;
-            border: 2px solid var(--gold);
-            padding: 10px 25px;
-            border-radius: 10px;
-            color: var(--gold);
-            font-family: 'Cinzel', serif;
+        nav a:hover { color: var(--gold); }
+
+        .hero {
+            text-align: center;
+            padding: 80px 20px;
+            max-width: 850px;
+            margin: 0 auto;
         }
 
         h1 {
             font-family: 'Cinzel', serif;
-            font-size: 4.5rem;
+            font-size: 5rem;
             margin: 10px 0;
-            letter-spacing: 15px;
-            background: var(--gold-gradient);
+            letter-spacing: 12px;
+            background: linear-gradient(to bottom, #f9e195, #d4af37, #8a6d19);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .tagline {
-            color: var(--gold);
+            font-size: 18px;
             letter-spacing: 5px;
-            font-size: 1rem;
-            margin-bottom: 30px;
+            color: var(--gold);
+            margin-bottom: 40px;
         }
 
         .cta-buttons {
             display: flex;
             justify-content: center;
-            gap: 25px;
-            margin: 40px 0;
+            gap: 20px;
+            margin: 40px 0 80px;
         }
 
         .btn {
-            padding: 15px 40px;
+            padding: 15px 35px;
             text-decoration: none;
             font-weight: 600;
             border-radius: 4px;
-            font-size: 0.8rem;
             transition: 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            font-size: 14px;
         }
 
-        .btn-gold { background: var(--gold-gradient); color: black; }
+        .btn-gold { background: var(--gold); color: black; }
         .btn-outline { border: 1px solid var(--gold); color: white; }
 
-        .photo-upload {
-            margin: 40px auto;
-            border: 1px dashed var(--gold);
-            padding: 20px;
-            max-width: 300px;
-            border-radius: 10px;
-            color: #888;
-        }
-
-        .cards {
+        .features {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 30px;
-            margin-top: 50px;
+            padding-bottom: 100px;
         }
 
         .card {
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.1);
-            padding: 30px;
-            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            padding: 50px;
+            border-radius: 10px;
         }
 
-        .card h3 { color: var(--gold); font-size: 0.9rem; margin-top: 10px; }
+        footer {
+            text-align: center;
+            padding: 40px;
+            font-size: 12px;
+            color: #444;
+            border-top: 1px solid #1a1a1a;
+        }
     </style>
 </head>
 <body>
-    <div class="bg-glow"></div>
+    <div class="bg-overlay"></div>
     <header>
-        <div class="handle">@gp9434</div>
+        <div class="logo-handle">@gp9434</div>
         <nav>
-            <a href="#">HOME</a>
-            <a href="#">MY MESSAGE</a>
-            <a href="#">JOURNEY</a>
-            <a href="#">CONTACT</a>
+            <a href="#">Home</a>
+            <a href="#">My Message</a>
+            <a href="#">Journey</a>
+            <a href="#">Contact</a>
         </nav>
     </header>
 
-    <main class="content">
-        <div class="logo-shield">G</div>
+    <main class="hero">
         <h1>GJPAUS</h1>
-        <div class="tagline">PAUSE. PROTECT YOUR POWER.</div>
-        <p>Motivational content to help you pause, reset, and protect your inner power.</p>
-
+        <p class="tagline">PAUSE. PROTECT YOUR POWER.</p>
+        <p>Motivational content to help you pause, reset, and protect your inner power. <br> Strong mind. Strong energy. Strong life.</p>
+        
         <div class="cta-buttons">
-            <!-- Your YouTube link is ready -->
-            <a href="https://youtube.com" target="_blank" class="btn btn-gold">▶ VISIT MY YOUTUBE</a>
-            <a href="mailto:contact@gjpaus.com" class="btn btn-outline">✉ CONTACT ME</a>
+            <a href="#" class="btn btn-gold">VISIT MY YOUTUBE</a>
+            <a href="#" class="btn btn-outline">CONTACT ME</a>
         </div>
 
-        <div class="photo-upload">
-            <p>อัพโหลดรูปถ่าย (Upload Photo)</p>
-            <input type="file" id="imageInput" accept="image/*" style="font-size: 0.7rem;">
-        </div>
-
-        <section class="cards">
+        <section class="features">
             <div class="card">
-                <div style="font-size: 2rem;">👤</div>
                 <h3>MY MESSAGE</h3>
-                <p style="font-size: 0.8rem; color: #888;">Sharing my life experience and wisdom through my upcoming book.</p>
+                <p>Sharing my life experience and wisdom through my upcoming book.</p>
             </div>
             <div class="card">
-                <div style="font-size: 2rem;">🚀</div>
                 <h3>FOLLOW MY JOURNEY</h3>
-                <p style="font-size: 0.8rem; color: #888;">More platforms and premium content coming soon for my global audience.</p>
+                <p>New content and platforms coming soon for my global audience.</p>
             </div>
         </section>
     </main>
 
-    <footer style="padding: 40px; color: #444; font-size: 0.7rem;">
-        © 2026 GJPAUS — All Rights Reserved.
+    <footer>
+        &copy; 2026 GJPAUS — All Rights Reserved.
     </footer>
 </body>
 </html>
+ใช้โค้ดอย่างระมัดระวังRecommendation for Your New SiteSince you are launching a global business for your book, consider using modern website builders that offer similar high-end templates:Squarespace: Highly rated for its gorgeous templates and photography-focused designs.Wix: A versatile option that allows for deep customization, including adding e-commerce features to sell your book directly.WordPress: Best if you want full control over your content and long-term SEO.Would you like me to help you write a summary or introduction for your book to include on the new site?ซ่อนโค้ดpythonimport matplotlib.pyplot as plt
+import matplotlib.image as mpimg
+
+# The user wants code for a home page based on the provided image.
+# I will create a responsive HTML/CSS structure that matches the layout, 
+# color scheme (gold/black), and typography of the screenshot.
+
+# Define the HTML content
+html_content = """
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GJPAUS - Pause. Protect Your Power.</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #d4af37;
+            --dark-gold: #aa8c2e;
+            --black: #0a0a0a;
+            --text-gray: #cccccc;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background-color: var(--black);
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Background effects */
+        .bg-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 50%, #1a1a1a 0%, #000000 100%);
+            z-index: -1;
+        }
+
+        .glow {
+            position: absolute;
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(to bottom, transparent, rgba(212, 175, 55, 0.1), transparent);
+            top: 40%;
+            filter: blur(80px);
+            z-index: -1;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 2px;
+        }
+
+        .logo-text {
+            color: var(--gold);
+            font-family: 'Cinzel', serif;
+            font-size: 24px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--gold);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 60px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .shield-logo {
+            width: 80px;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.5));
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 4rem;
+            margin: 10px 0;
+            letter-spacing: 10px;
+            background: linear-gradient(to bottom, #f9e195 0%, #d4af37 50%, #8a6d19 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .tagline {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
+            letter-spacing: 4px;
+            margin-bottom: 30px;
+            color: var(--gold);
+        }
+
+        .description {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--text-gray);
+            margin-bottom: 40px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 60px;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 4px;
+            transition: 0.3s;
+            font-size: 14px;
+        }
+
+        .btn-gold {
+            background: linear-gradient(45deg, var(--dark-gold), var(--gold));
+            color: black;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn-outline {
+            border: 1px solid var(--gold);
+            color: white;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            opacity: 0.9;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding-bottom: 80px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            padding: 40px;
+            text-align: center;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            background: rgba(212, 175, 55, 0.05);
+            border-color: var(--gold);
+        }
+
+        .card-icon {
+            font-size: 30px;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            font-size: 14px;
+            color: var(--text-gray);
+            line-height: 1.5;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            font-size: 12px;
+            color: #555;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            header { flex-direction: column; gap: 20px; padding: 20px; }
+            .features { grid-template-columns: 1fr; padding: 20px; }
+            .cta-buttons { flex-direction: column; align-items: center; }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-overlay"></div>
+    <div class="glow"></div>
+
+    <header>
+        <div class="logo-text">@gp9434</div>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">My Message</a>
+            <a href="#">Journey</a>
+            <a href="#">Contact</a>
+        </nav>
+        <div class="social-icons">
+            <a href="#">🎥</a>
+            <a href="#">📸</a>
+            <a href="#">✉️</a>
+        </div>
+    </header>
+
+    <main class="hero">
+        <!-- Placeholder for the Gold Shield G Logo -->
+        <svg class="shield-logo" viewBox="0 0 100 120">
+            <path d="M50 0 L90 20 L90 70 C90 95 50 120 50 120 C50 120 10 95 10 70 L10 20 Z" fill="none" stroke="#d4af37" stroke-width="2"/>
+            <text x="50" y="75" text-anchor="middle" font-family="Cinzel" font-size="45" fill="#d4af37">G</text>
+            <path d="M35 25 L50 15 L65 25" fill="none" stroke="#d4af37" stroke-width="2"/>
+        </svg>
+
+        <h1>GJPAUS</h1>
+        <p class="tagline">PAUSE. PROTECT YOUR POWER.</p>
+        
+        <p class="description">
+            Motivational content to help you pause, reset, and <br>
+            protect your inner power. Strong mind. Strong energy. Strong life.
+        </p>
+
+        <div class="cta-buttons">
+            <a href="#" class="btn btn-gold">▶ VISIT MY YOUTUBE</a>
+            <a href="#" class="btn btn-outline">✉ CONTACT ME</a>
+        </div>
+
+        <section class="features">
+            <div class="card">
+                <div class="card-icon">👤</div>
+                <h3>MY MESSAGE</h3>
+                <p>I create motivational content to help you pause, reset, and protect your inner power. Strong mind. Strong energy. Strong life.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🚀</div>
+                <h3>FOLLOW MY JOURNEY</h3>
+                <p>More platforms and premium content coming soon. Stay tuned for the release of my book.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        &copy; 2026 GJPAUS — All Rights Reserved.
+    </footer>
+</body>
+</html>
+"""
+
+print(html_content)
