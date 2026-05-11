@@ -197,7 +197,17 @@
             </div>
         </section>
     </main>
-<p class="visitor-count">Worldwide Visitors ✨</p>
+<p class="visitor-count">
+    Worldwide Visitors
+    <span id="visitor-count">0</span>
+</p>
+<script>
+fetch('https://api.countapi.xyz/hit/gjpaus.com/visits')
+.then(response => response.json())
+.then(data => {
+    document.getElementById('visitor-count').innerText = data.value;
+});
+</script>
     <footer>
         &copy; 2026 GJPAUS — All Rights Reserved.
     </footer>
