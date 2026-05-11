@@ -198,15 +198,17 @@
         </section>
     </main>
 <p class="visitor-count">
-    Worldwide Visitors
-    <span id="visitor-count">0</span>
+    Worldwide Visitors:
+    <span id="visitor-count">Loading...</span>
 </p>
+
 <script>
-fetch('https://api.countapi.xyz/hit/gjpaus/visits')
-.then(res => res.json())
-.then(res => {
-    document.getElementById('visitor-count').innerHTML = res.value;
-});
+async function updateCounter() {
+    const response = await fetch('https://api.countapi.xyz/hit/gjpaus/visits');
+    const data = await response.json();
+    document.getElementById('visitor-count').innerText = data.value;
+}
+updateCounter();
 </script>
     <footer>
         &copy; 2026 GJPAUS — All Rights Reserved.
