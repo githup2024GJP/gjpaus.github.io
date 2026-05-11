@@ -202,10 +202,10 @@
     <span id="visitor-count">0</span>
 </p>
 <script>
-fetch('https://api.countapi.xyz/hit/gjpaus.com/visits')
-.then(response => response.json())
-.then(data => {
-    document.getElementById('visitor-count').innerText = data.value;
+fetch('https://api.countapi.xyz/hit/gjpaus/visits')
+.then(res => res.json())
+.then(res => {
+    document.getElementById('visitor-count').innerHTML = res.value;
 });
 </script>
     <footer>
