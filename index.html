@@ -206,22 +206,15 @@
     </p>
 
    <script>
-async function updateCounter() {
-    try {
-        const response = await fetch("https://api.countapi.xyz/hit/gjpaus.com/visits");
-        const data = await response.json();
-
-        document.getElementById("visitor-count").innerText = data.value;
-    } catch (error) {
-        console.error("Counter error:", error);
-
-        document.getElementById("visitor-count").innerText = "—";
-    }
-}
-
-updateCounter();
+fetch('https://api.countapi.xyz/hit/gjpaus/visits')
+  .then(response => response.json())
+  .then(data => {
+    document.getElementById('visitor-count').innerHTML = data.value;
+  })
+  .catch(error => {
+    document.getElementById('visitor-count').innerHTML = '0';
+  });
 </script>
-
     <footer>
         &copy; 2026 GJPAUS — All Rights Reserved.
     </footer>
