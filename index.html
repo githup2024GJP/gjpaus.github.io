@@ -142,13 +142,11 @@
             border-color: var(--gold);
             background: rgba(255, 255, 255, 0.05);
         }
-
         .card h3 {
             color: var(--gold);
             letter-spacing: 2px;
             margin-bottom: 15px;
         }
-
         footer {
             text-align: center;
             padding: 60px 0 80px
@@ -179,13 +177,11 @@
         <p class="description">
             Motivational content to help you pause, reset, and protect your inner power. <br> 
             <strong>Strong mind. Strong energy. Strong life.</strong>
-        </p>
-        
+        </p> 
         <div class="cta-buttons">
 <a href="https://www.youtube.com/@gp9434" target="_blank" class="btn btn-gold"><i class="fa-brands fa-youtube" style="color:red;"></i> VISIT MY YOUTUBE </a>
            <a href="mailto:GJPAUS%20<contact@gjpaus.com>" class="btn btn-outline">✉ CONTACT ME </a>
        </div>
-
         <section class="features">
             <div class="card">
                 <h3>MY MESSAGE</h3>
@@ -200,30 +196,13 @@
 <p class="visitor-count">
     Worldwide Visitors:
     <span id="visitor-count">0</span>
-<p class="visitor-count">
-    Worldwide Visitors:
-    <span id="visitor-count">0</span>
 </p>
 
 <script>
-fetch("https://api.countapi.xyz/get/gjpaus/visits")
-.then(response => response.json())
-.then(data => {
-    if (data.value !== undefined) {
-        document.getElementById("visitor-count").innerText = data.value;
-    } else {
-        return fetch("https://api.countapi.xyz/hit/gjpaus/visits")
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById("visitor-count").innerText = data.value;
-            });
-    }
-})
-.catch(error => {
-    console.error("Error fetching visitor count:", error);
-});
+fetch("https://api.countapi.xyz/hit/gjpaus/visits")
+.then(r => r.json())
+.then(d => document.getElementById("visitor-count").innerText = d.value);
 </script>
-
     <footer>
         &copy; 2026 GJPAUS — All Rights Reserved.
     </footer>
