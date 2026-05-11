@@ -5,8 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GJPAUS - Pause. Protect Your Power.</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <!-- Premium Fonts -->
-    <link href="https://googleapis.com" rel="stylesheet">
+  
+   <!-- Premium Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --gold: #d4af37;
@@ -201,14 +205,22 @@
         <span id="visitor-count">0</span>
     </p>
 
-    <script>
-        fetch("https://api.countapi.xyz/hit/gjpaus/visits")
-            .then(r => r.json())
-            .then(d => {
-                document.getElementById("visitor-count").innerText = d.value;
-            })
-            .catch(e => console.error("Counter error:", e));
-    </script>
+   <script>
+async function updateCounter() {
+    try {
+        const response = await fetch("https://api.countapi.xyz/hit/gjpaus.com/visits");
+        const data = await response.json();
+
+        document.getElementById("visitor-count").innerText = data.value;
+    } catch (error) {
+        console.error("Counter error:", error);
+
+        document.getElementById("visitor-count").innerText = "—";
+    }
+}
+
+updateCounter();
+</script>
 
     <footer>
         &copy; 2026 GJPAUS — All Rights Reserved.
