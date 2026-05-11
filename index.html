@@ -200,7 +200,11 @@
 <p class="visitor-count">
     Worldwide Visitors:
     <span id="visitor-count">0</span>
+<p class="visitor-count">
+    Worldwide Visitors:
+    <span id="visitor-count">0</span>
 </p>
+
 <script>
 fetch("https://api.countapi.xyz/get/gjpaus/visits")
 .then(response => response.json())
@@ -219,6 +223,7 @@ fetch("https://api.countapi.xyz/get/gjpaus/visits")
     console.error("Error fetching visitor count:", error);
 });
 </script>
+
     <footer>
         &copy; 2026 GJPAUS — All Rights Reserved.
     </footer>
