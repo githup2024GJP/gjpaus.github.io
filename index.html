@@ -5,26 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GJPAUS - Pause. Protect Your Power.</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  
-   <!-- Premium Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Premium Fonts -->
+    <link href="https://googleapis.com" rel="stylesheet">
     <style>
         :root {
             --gold: #d4af37;
             --black: #0a0a0a;
             --light-gold: #fff7c2;
-        }  
-        .visitor-count {
-            text-align: center;
-            color: #d4af37;
-            font-size: 12px;
-            letter-spacing: 2px;
-            margin-bottom: 10px;
-            opacity: 0.7;
-        } 
+           }  
+         .visitor-count{
+        text-align:center;
+        color:#d4af37;
+        font-size:12px;
+        letter-spacing:2px;
+        margin-bottom:10px;
+        opacity:0.7;
+    } 
         body, html {
             margin: 0;
             padding: 0;
@@ -76,7 +72,7 @@
 
         h1 {
             font-family: 'Cinzel', serif;
-            font-size: clamp(3rem, 10vw, 6rem);
+            font-size: clamp(3rem, 10vw, 6rem); /* Responsive size */
             margin: 10px 0;
             letter-spacing: 8px;
             background: linear-gradient(to bottom, #fff7c2 0%, #f4d96b 35%, #d4af37 60%, #8a6d19 100%);
@@ -87,15 +83,15 @@
 
         .tagline {
             font-size: clamp(14px, 2vw, 20px);
-            letter-spacing: 1px;
-            color: #d4af37;
-            margin-bottom: 40px;
-            text-transform: uppercase;
-            font-weight: 400;
-            font-family: Georgia, serif;
-            text-shadow: 0 0 6px rgba(212, 175, 55, 0.35);
+    letter-spacing: 1px;
+    color: #d4af37;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    font-weight: 400;
+    font-family: Georgia, serif;
+    text-shadow:
+        0 0 6px rgba(212,175,55,0.35),
         }
-        
         .description {
             color: #cccccc;
             line-height: 1.8;
@@ -146,16 +142,14 @@
             border-color: var(--gold);
             background: rgba(255, 255, 255, 0.05);
         }
-        
         .card h3 {
             color: var(--gold);
             letter-spacing: 2px;
             margin-bottom: 15px;
         }
-        
         footer {
             text-align: center;
-            padding: 60px 0 80px;
+            padding: 60px 0 80px
             font-size: 12px;
             color: rgba(212, 175, 55, 0.5);
             border-top: 1px solid rgba(255, 255, 255, 0.05);
@@ -172,22 +166,22 @@
             <a href="index.html">Home</a>
             <a href="#">My Message</a>
             <a href="#">Journey</a>
-            <a href="mailto:contact@gjpaus.com" style="text-decoration: none; color: white; border: none; background: none;">CONTACT</a>
-        </nav>
+<a href="mailto:GJPAUS%20<contact@gjpaus.com>" style="text-decoration: none; color: white; border: none; background: none;">CONTACT</a>
+              </nav>
     </header>
 
     <main class="hero">
         <h1>GJPAUS</h1>
-        <p class="tagline">PAUSE. PROTECT YOUR POWER.</p>
-        <div style="width:220px;height:2px;margin:0 auto 35px;background:linear-gradient(to right, transparent, #d4af37, #fff7c2, #d4af37, transparent);box-shadow:0 0 15px #d4af37;border-radius:10px;"></div>
+       <p class="tagline">PAUSE. PROTECT YOUR POWER.</p>
+<div style="width:220px;height:2px;margin:0 auto 35px;background:linear-gradient(to right, transparent, #d4af37, #fff7c2, #d4af37, transparent);box-shadow:0 0 15px #d4af37;border-radius:10px;"></div>
         <p class="description">
             Motivational content to help you pause, reset, and protect your inner power. <br> 
             <strong>Strong mind. Strong energy. Strong life.</strong>
         </p> 
         <div class="cta-buttons">
-            <a href="https://www.youtube.com/@gp9434" target="_blank" class="btn btn-gold"><i class="fa-brands fa-youtube" style="color:red;"></i> VISIT MY YOUTUBE </a>
-            <a href="mailto:contact@gjpaus.com" class="btn btn-outline">✉ CONTACT ME </a>
-        </div>
+<a href="https://www.youtube.com/@gp9434" target="_blank" class="btn btn-gold"><i class="fa-brands fa-youtube" style="color:red;"></i> VISIT MY YOUTUBE </a>
+           <a href="mailto:GJPAUS%20<contact@gjpaus.com>" class="btn btn-outline">✉ CONTACT ME </a>
+       </div>
         <section class="features">
             <div class="card">
                 <h3>MY MESSAGE</h3>
@@ -199,19 +193,16 @@
             </div>
         </section>
     </main>
-    <p class="visitor-count">
-        Worldwide Visitors:
-        <span id="visitor-count">0</span>
-    </p>
-<!-- VISITOR COUNTER SECTION -->
-<div style="text-align:center; padding:30px 0; font-size:28px; color:#d4af37; font-weight:bold; letter-spacing:2px;">
-    Visitors: <span id="visitor-count">0</span>
-</div>
+<p class="visitor-count">
+    Worldwide Visitors:
+    <span id="visitor-count">0</span>
+</p>
 
-<div style="text-align:center; padding:30px 0; font-size:28px; color:#d4af37; font-weight:bold; letter-spacing:2px;">
-    Visitors: <span id="visitor-count">0</span>
-</div>
-    
+<script>
+fetch("https://api.countapi.xyz/hit/gjpaus/visits?callback")
+.then(r => r.json())
+.then(d => document.getElementById("visitor-count").innerText = d.value);
+</script>
     <footer>
         &copy; 2026 GJPAUS — All Rights Reserved.
     </footer>
