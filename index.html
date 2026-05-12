@@ -193,7 +193,35 @@ margin-bottom:10px;
     <header>
 <div class="logo-handle">
     <a href="https://www.youtube.com/@gp9434" target="_blank" style="color: gold !important; text-decoration: none !important;">@gp9434</a>
+<div id="counter" style="display:none;"></div>
 
+<script>
+async function updateCounter() {
+  try {
+
+    const response = await fetch(
+      'https://api.counterapi.dev/v1/gjpauscom/homepage/up'
+    );
+
+    const data = await response.json();
+
+    const views = data?.data?.up_count || 0;
+
+    const counter = document.getElementById('counter');
+
+    counter.innerHTML = views.toLocaleString() + ' views';
+
+    counter.style.display = 'block';
+
+  } catch (error) {
+
+    console.log('Counter API Error:', error);
+
+  }
+}
+
+updateCounter();
+</script>
   
 </div>
 
