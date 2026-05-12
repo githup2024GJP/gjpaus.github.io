@@ -206,8 +206,8 @@ margin-bottom:10px;
 </div>
 
 <script>
-fetch('https://api.countapi.xyz/hit/.com/visits')
-  .then(res => res.json())
+fetch('https://api.countapi.xyz/hit/gjpaus.com/visits')
+    .then(res => res.json())
   .then(data => {
     document.getElementById('counter').innerText =
       Number(data.value).toLocaleString();
