@@ -197,18 +197,7 @@ margin-bottom:10px;
     <div id="counter" style="color: #ffffff; font-size: 14px; margin-top: 5px;">Loading...</div>
 </div>
 
-<script>
-  fetch("https://api.counterapi.dev/v1/gjpaus/visits/increment")
-    .then(res => res.json())
-    .then(data => {
-      document.getElementById("counter").innerText =
-        Number(data.data.up_count).toLocaleString();
-    })
-    .catch(() => {
-                                             document.getElementById("counter").innerText = "                  ";
-    });
-</script>
-        
+
 <div id="counter"
      style="
      color:#c9a227;
