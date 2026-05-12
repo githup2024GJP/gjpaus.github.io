@@ -172,6 +172,25 @@ gtag('config', 'G-55KSYPYWYL');
     
     <header>
         <div class="logo-handle">@gp9434</div>
+<div id="counter"
+     style="
+     color:#c9a227;
+     font-size:14px;
+     font-weight:400;
+     margin-top:2px;
+     font-family:Arial,sans-serif;
+     opacity:0.8;
+">
+</div>
+
+<script>
+fetch('https://api.countapi.xyz/hit/gjpaus.com/visits')
+  .then(res => res.json())
+  .then(data => {
+    document.getElementById('counter').innerText =
+      Number(data.value).toLocaleString();
+  });
+</script>
         <nav>
             <a href="index.html">Home</a>
             <a href="#">My Message</a>
