@@ -191,9 +191,24 @@ margin-bottom:10px;
     <div class="bg-overlay"></div>
     
     <header>
-<div class="logo-handle"><a href="https://www.youtube.com/@gp9434" target="_blank" style="color: gold !important; text-decoration: none !important;">@gp9434</a>
+<div class="logo-handle">
+    <a href="https://www.youtube.com/@gp9434" target="_blank" style="color: gold !important; text-decoration: none !important;">@gp9434</a>
+
+    <div id="counter" style="color: #ffffff; font-size: 14px; margin-top: 5px;">Loading...</div>
 </div>
-     <div id="visitor-count" style="color:gold;font-size:12px;"></div>
+
+<script>
+  fetch("https://api.counterapi.dev/v1/gjpaus/visits/increment")
+    .then(res => res.json())
+    .then(data => {
+      document.getElementById("counter").innerText =
+        Number(data.count).toLocaleString();
+    })
+    .catch(() => {
+      document.getElementById("counter").innerText = "1";
+    });
+</script>
+        
 <div id="counter"
      style="
      color:#c9a227;
