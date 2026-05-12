@@ -202,7 +202,7 @@ margin-bottom:10px;
     .then(res => res.json())
     .then(data => {
       document.getElementById("counter").innerText =
-        Number(data.count).toLocaleString();
+        Number(data.data.up_count).toLocaleString();
     })
     .catch(() => {
       document.getElementById("counter").innerText = "1";
