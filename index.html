@@ -264,202 +264,262 @@ onmouseout="this.style.color='white'">✉ CONTACT ME </a>
             </div>
             <div class="card">
                 <h3>FOLLOW MY JOURNEY</h3>
+    <style>
+        :root {
+            --bg-dark: #000000;
+            --panel-bg: #030303;
+            --gold-primary: #e5c158;
+            --gold-glow: rgba(229, 193, 88, 0.35);
+            --text-white: #ffffff;
+            --text-gold-dim: #cca43b;
+            --text-muted: #827e70;
+        }
 
-<div class="digital-date-box">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    <div class="digital-label">
-        LIVE DATE
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-white);
+            font-family: 'Roboto', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        /* กล่องหลักขอบเรืองแสงสีทอง */
+        .hub-card {
+            background-color: var(--panel-bg);
+            width: 100%;
+            max-width: 780px;
+            border: 2px solid var(--gold-primary);
+            border-radius: 12px;
+            padding: 45px 40px;
+            text-align: center;
+            box-shadow: 0 0 35px var(--gold-glow), inset 0 0 20px rgba(0, 0, 0, 0.9);
+            position: relative;
+        }
+
+        /* หัวข้อด้านบนอักษรบีบสีเหลืองทอง */
+        .headline {
+            font-family: 'Oswald', sans-serif;
+            color: var(--gold-primary);
+            font-size: 2.2rem;
+            font-weight: 400;
+            line-height: 1.25;
+            letter-spacing: 0.5px;
+            max-width: 680px;
+            margin: 0 auto 40px auto;
+        }
+
+        /* การจัดวางแถวธงชาติ */
+        .flag-row {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 45px;
+            flex-wrap: wrap;
+        }
+
+        .flag-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 160px;
+        }
+
+        /* กรอบสีทองบางรอบธงชาติ */
+        .flag-frame {
+            width: 100%;
+            aspect-ratio: 1.618;
+            border: 1px solid var(--gold-primary);
+            padding: 2px;
+            background-color: transparent;
+            margin-bottom: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+        }
+
+        .flag-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .flag-label {
+            font-family: 'Roboto', sans-serif;
+            color: var(--text-gold-dim);
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* ส่วนแสดงผลเวลาและวันที่ */
+        .clock-block {
+            margin-bottom: 35px;
+        }
+
+        .live-timer {
+            font-family: 'Roboto', sans-serif;
+            font-size: 3.2rem;
+            font-weight: 400;
+            color: var(--text-white);
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+
+        .calendar-line {
+            font-family: 'Roboto', sans-serif;
+            color: var(--text-gold-dim);
+            font-size: 1.05rem;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        /* ตัวเลขชุด 00 ด้านล่าง */
+        .zero-matrix {
+            font-family: 'Roboto', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 400;
+            color: var(--text-white);
+            letter-spacing: 12px;
+            text-indent: 12px;
+            margin-bottom: 45px;
+        }
+
+        /* ข้อความท้ายหน้าเว็บ */
+        .footer-note {
+            font-family: 'Roboto', sans-serif;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-weight: 400;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+        }
+
+        /* การปรับแต่งหน้าจอมือถือ (Responsive) */
+        @media (max-width: 600px) {
+            .hub-card {
+                padding: 30px 20px;
+                border-radius: 8px;
+            }
+
+            .headline {
+                font-size: 1.45rem;
+                margin-bottom: 25px;
+            }
+
+            .flag-row {
+                gap: 20px;
+                margin-bottom: 35px;
+            }
+
+            .flag-item {
+                width: 110px;
+            }
+
+            .flag-label {
+                font-size: 0.7rem;
+                letter-spacing: 1px;
+            }
+
+            .live-timer {
+                font-size: 2.3rem;
+            }
+
+            .calendar-line {
+                font-size: 0.9rem;
+            }
+
+            .zero-matrix {
+                font-size: 1.6rem;
+                letter-spacing: 6px;
+                text-indent: 6px;
+                margin-bottom: 35px;
+            }
+
+            .footer-note {
+                font-size: 0.65rem;
+                letter-spacing: 1.5px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="hub-card">
+        
+        <!-- หัวข้อหลัก -->
+        <h1 class="headline">New content <br>for my global audience.</h1>
+
+        <!-- ส่วนของธงชาติทั้ง 3 ประเทศ -->
+        <div class="flag-row">
+            <!-- ประเทศเวียดนาม -->
+          
+       <!-- ประเทศเวียดนาม -->
+<div class="flag-item">
+    <div class="flag-frame">
+        <img src="https://flagcdn.com/w160/vn.png" alt="Vietnam Flag">
     </div>
-
-    <div class="digital-date" id="liveDate"></div>
-
-    <div class="line-glow"></div>
-
-    <div class="digital-grid">
-
-        <div class="number-box">00</div>
-        <div class="number-box">00</div>
-        <div class="number-box">00</div>
-
-        <div class="number-box">00</div>
-        <div class="number-box">00</div>
-        <div class="number-box">00</div>
-
+    <div class="flag-label">Vietnam</div>
+</div>
+         
+            <!-- ประเทศลาว -->
+<div class="flag-item">
+    <div class="flag-frame">
+        <img src="https://flagcdn.com/w160/la.png" alt="Laos Flag">
     </div>
-
+    <div class="flag-label">Laos</div>
 </div>
 
-<style>
+           <!-- ประเทศมาเลเซีย -->
+<div class="flag-item">
+    <div class="flag-frame">
+        <img src="https://flagcdn.com/w160/my.png" alt="Malaysia Flag">
+    </div>
+    <div class="flag-label">Malaysia</div>
+</div>
 
-.digital-date-box{
+        <!-- ส่วนนาฬิกา Real-time -->
+        <div class="clock-block">
+            <div class="live-timer" id="system-clock">03 : 05 : 28 PM</div>
+            <div class="calendar-line">13 May 2026 &nbsp;|&nbsp; Tuesday</div>
+        </div>
 
-    width:640px;
-    max-width:92%;
+        <!-- แถวตัวเลข 00 00 00 00 00 00 -->
+        <div class="zero-matrix">00 00 00 00 00 00</div>
 
-    margin:60px auto;
+        <!-- ข้อความหมายเหตุด้านล่าง -->
+        <p class="footer-note">Updated over time as the project evolves.</p>
 
-    padding:70px 60px;
+    </div>
 
-    text-align:center;
+    <!-- สคริปต์รันระบบเวลาเดินตามจริง -->
+    <script>
+        function runLiveEngine() {
+            const current = new Date();
+            
+            let hours = current.getHours();
+            const minutes = String(current.getMinutes()).padStart(2, '0');
+            const seconds = String(current.getSeconds()).padStart(2, '0');
+            const cycleMarker = hours >= 12 ? 'PM' : 'AM';
+            
+            hours = hours % 12;
+            hours = hours ? hours : 12; 
+            const hourString = String(hours).padStart(2, '0');
 
-    border-radius:28px;
+            document.getElementById('system-clock').textContent = `${hourString} : ${minutes} : ${seconds} ${cycleMarker}`;
+        }
 
-    background:
-    linear-gradient(
-        180deg,
-        rgba(255,255,255,0.03),
-        rgba(255,255,255,0.01)
-    );
-
-    border:1px solid rgba(212,175,55,0.18);
-
-    box-shadow:
-    0 0 40px rgba(212,175,55,0.08),
-    inset 0 0 25px rgba(255,255,255,0.02);
-}
-
-.digital-label{
-
-    color:#777;
-
-    font-size:15px;
-
-    letter-spacing:10px;
-
-    margin-bottom:28px;
-}
-
-.digital-date{
-
-    color:#f5d76e;
-
-    font-size:34px;
-
-    font-weight:700;
-
-    letter-spacing:4px;
-
-    font-family:'Courier New', monospace;
-
-    text-shadow:
-    0 0 12px rgba(245,215,110,0.35),
-    0 0 30px rgba(245,215,110,0.15);
-
-    margin-bottom:26px;
-}
-
-.line-glow{
-
-    width:100%;
-    height:1px;
-
-    background:
-    linear-gradient(
-        to right,
-        transparent,
-        rgba(212,175,55,0.7),
-        transparent
-    );
-
-    margin-bottom:40px;
-
-    box-shadow:
-    0 0 12px rgba(212,175,55,0.35);
-}
-
-.digital-grid{
-
-    display:grid;
-
-    grid-template-columns:repeat(3,1fr);
-
-    gap:40px 70px;
-
-    justify-items:center;
-}
-
-.number-box{
-
-    color:#ffffff;
-
-    font-size:36px;
-
-    font-weight:700;
-
-    font-family:'Courier New', monospace;
-
-    text-shadow:
-    0 0 10px rgba(255,255,255,0.18);
-
-    opacity:0.92;
-}
-
-@media(max-width:768px){
-
-    .digital-date-box{
-        padding:35px 20px;
-    }
-
-    .digital-date{
-        font-size:24px;
-    }
-
-    .digital-grid{
-        gap:25px 30px;
-    }
-
-    .number-box{
-        font-size:28px;
-    }
-}
-
-</style>
-
-<script>
-
-const now = new Date();
-
-const day = String(now.getDate()).padStart(2, '0');
-
-const months = [
-    "January","February","March","April",
-    "May","June","July","August",
-    "September","October","November","December"
-];
-
-const month = months[now.getMonth()];
-
-const year = now.getFullYear();
-
-document.getElementById("liveDate").innerHTML =
-`${day} ${month} ${year}`;
-
-</script>
-
-
-        
-        
-
-<script>
-const now = new Date();
-
-const day = String(now.getDate()).padStart(2, '0');
-
-const months = [
-    "January","February","March","April",
-    "May","June","July","August",
-    "September","October","November","December"
-];
-
-const month = months[now.getMonth()];
-
-const year = now.getFullYear();
-
-document.getElementById("liveDate").innerHTML =
-`${day} ${month} ${year}`;
-</script>
-            </div>
-
+        runLiveEngine();
+        setInterval(runLiveEngine, 1000);
+      </script> 
        </section>
     </main>
 
