@@ -351,32 +351,25 @@ onmouseout="this.style.color='white'">✉ CONTACT ME </a>
     letter-spacing:3px;
 }
 
-</style>
 
+</style>
 <script>
 
-let views = 0;
+fetch("https://api.countapi.xyz/hit/gjpaus.com/visits")
 
-setInterval(()=>{
+.then(response => response.json())
 
-    views++;
+.then(data => {
 
-    const counter =
-    document.getElementById("viewCount");
+    document.getElementById("viewCount")
+    .innerText = data.value;
 
-    counter.textContent = views;
+});
 
-    counter.style.transform =
-    "scale(1.15)";
+</script>
+<script>
 
-    setTimeout(()=>{
 
-        counter.style.transform =
-        "scale(1)";
-
-    },120);
-
-},3000);
 
 </script>
 
