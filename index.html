@@ -235,11 +235,6 @@ updateCounter();
   
 </div>
 
-
-
-
-
-
         <nav>
             <a href="index.html">Home</a>
             <a href="#">My Message</a>
@@ -275,10 +270,115 @@ onmouseout="this.style.color='white'">✉ CONTACT ME </a>
                 <p>New content and platforms coming soon for my global audience.</p>
             </div>
         </section>
-    </main>
+  </main>
 
-    <footer>
-        &copy; 2026 GJPAUS™ All Rights Reserved.
-    </footer>
+<footer>
+© 2026 GJPAUS™ All Rights Reserved.
+</footer>
+
+<!-- AI LIVE VIEWERS -->
+
+<div id="liveBox">
+
+  <div class="liveName">@GP9434</div>
+
+  <div class="liveViews">
+      <span id="viewCount">0</span>
+      <span>VIEWS</span>
+  </div>
+
+</div>
+
+<style>
+
+#liveBox{
+
+    position:fixed;
+    top:20px;
+    left:20px;
+
+    z-index:9999;
+
+    background:rgba(0,0,0,.92);
+
+    border:1px solid rgba(255,215,0,.2);
+
+    border-radius:16px;
+
+    padding:14px 18px;
+
+    backdrop-filter:blur(10px);
+
+    box-shadow:
+    0 0 15px rgba(255,215,0,.12);
+
+    font-family:Arial,sans-serif;
+}
+
+.liveName{
+
+    color:#ffd700;
+
+    font-size:18px;
+    font-weight:900;
+
+    letter-spacing:2px;
+
+    margin-bottom:5px;
+}
+
+.liveViews{
+
+    display:flex;
+    align-items:center;
+    gap:8px;
+
+    color:white;
+}
+
+#viewCount{
+
+    font-size:28px;
+    font-weight:900;
+}
+
+.liveViews span:last-child{
+
+    color:#ffd700;
+
+    font-size:12px;
+
+    letter-spacing:3px;
+}
+
+</style>
+
+<script>
+
+let views = 0;
+
+setInterval(()=>{
+
+    views++;
+
+    const counter =
+    document.getElementById("viewCount");
+
+    counter.textContent = views;
+
+    counter.style.transform =
+    "scale(1.15)";
+
+    setTimeout(()=>{
+
+        counter.style.transform =
+        "scale(1)";
+
+    },120);
+
+},3000);
+
+</script>
+
 </body>
 </html>
