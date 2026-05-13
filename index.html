@@ -216,8 +216,10 @@ async function updateCounter() {
     const counter = document.getElementById('counter');
 
   
-      counter.innerHTML = views.toLocaleString() + ' VIEWS';
-
+counter.innerHTML =
+'<span style="color:white;">' +
+views.toLocaleString() +
+' VIEWS</span>';
       counter.style.display = 'block';
 
     
