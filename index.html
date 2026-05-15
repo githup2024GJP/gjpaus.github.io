@@ -238,8 +238,70 @@ filter: drop-shadow(0 0 28px rgba(212, 175, 55, 0.45));
     
     <header>
         <div class="logo-handle">
-<a href="https://www.youtube.com/@gp9434" target="_blank" style="color: gold !important; text-decoration: none !important;">
-                @gp9434
+<br><br>             
+<!-- CLICKABLE GLOW SIGNATURE -->
+<a href="https://www.youtube.com/@gp9434" target="_blank" class="gjp-logo">
+@gp9434
+</a>
+
+<style>
+.gjp-logo{
+    position:absolute;
+    top:48px;
+    left:20px;
+    z-index:10;
+
+    font-family:'Brush Script MT',cursive;
+    font-size:42px;
+    font-weight:bold;
+    letter-spacing:1px;
+    text-decoration:none;
+
+    background:linear-gradient(
+        to bottom,
+        #fff6c7 0%,
+        #ffd86b 35%,
+        #ffb300 70%,
+        #ffea9a 100%
+    );
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+
+    text-shadow:
+        0 0 6px rgba(255,200,80,.9),
+        0 0 12px rgba(255,180,0,.7),
+        0 0 25px rgba(255,140,0,.45);
+
+    transform:rotate(-4deg);
+}
+
+/* GOLD UNDERLINE */
+.gjp-logo::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-4px;
+    width:100%;
+    height:3px;
+
+    background:linear-gradient(
+        to right,
+        transparent,
+        #ffcc66,
+        #ff9900,
+        transparent
+    );
+
+    border-radius:50%;
+    transform:skewX(-25deg);
+
+    box-shadow:
+        0 0 8px #ffcc66,
+        0 0 16px #ff9900;
+}
+</style>
+    
             <br>
             </a>
             <div id="counter" style="color:white; font-size:12px; letter-spacing:2px; margin-top:2px; display:none;"></div>
