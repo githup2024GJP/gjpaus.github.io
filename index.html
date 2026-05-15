@@ -238,9 +238,14 @@ filter: drop-shadow(0 0 28px rgba(212, 175, 55, 0.45));
     
     <header>
         <div class="logo-handle">
-
-
- {
+<a href="https://www.youtube.com/@gp9434" target="_blank" style="color: gold !important; text-decoration: none !important;">
+                @gp9434
+            <br>
+            </a>
+            <div id="counter" style="color:white; font-size:12px; letter-spacing:2px; margin-top:2px; display:none;"></div>
+            <script>
+                async function updateCounter() {
+                    try {
                         const response = await fetch('https://api.counterapi.dev/v1/gjpauscom/homepage/up');
                         const data = await response.json();
                         const views = data.count || data.data?.up_count;
@@ -276,12 +281,18 @@ Strong mind. Strong energy. Strong life.
 </strong>          
  </p> 
 
-   
-<a href="https://youtube.com/@gp9434" target="_blank" style="background:#ff4e20;color:#fff;padding:4px 8px;border-radius:2px;text-decoration:none;display:inline-block;font:bold 12px Arial,sans-serif;white-space:nowrap;">@GP9434</a><br><i class="fa-brands fa-youtube" style="color:red;font-size:24px;"></i>
+
+        
+<div class="cta-buttons" style="margin-top:25px;"> 
+    
+<a href="https://www.youtube.com/@gp9434" target="_blank" style="background:gold;padding:12px 20px;border-radius:12px;display:inline-block;text-decoration:none;">
+<i class="fa-brands fa-youtube" style="color:red;font-size:24px;"></i>
 </a>   
     <a href="#" class="btn btn-outline">MY MESSAGE</a>
         </div>
 
+
+        
         <section class="features">
             <div class="card">
                 <h3>MY MESSAGE</h3>
@@ -291,41 +302,50 @@ Strong mind. Strong energy. Strong life.
             <div class="card">
 <h3 style="text-align:center; color:#d4af37; letter-spacing:2px;">FOLLOW MY JOURNEY</h3>                         
               
-<div style="background: #0d0d0d; border: 1px solid rgba(212, 175, 55, 0.14); padding: 40px; border-radius: 12px; font-family: 'Montserrat', sans-serif; max-width: 550px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); margin: 20px auto; text-align: left;">
-
+              <div style="background: #0d0d0d; border: 1px solid rgba(212, 175, 55, 0.14); padding: 40px; border-radius: 12px; font-family: 'Montserrat', sans-serif; max-width: 550px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); margin: 20px auto; text-align: left;">
+    
           
     <!-- ส่วนนาฬิกาแสดงเวลาจริง -->
-<div style="margin-bottom: 20px; font-variant-numeric: tabular-nums; font-feature-settings: 'tnum'; text-transform: uppercase;">
-    <!-- ปรับลดขนาดเวลาจาก 38px เหลือ 32px -->
-    <div id="display-clock" style="font-family: 'Cinzel', serif; font-size: 32px; color: #d4af37; font-weight: 700; margin-bottom: 10px; letter-spacing: 1px;"></div>
-    <!-- ปรับเพิ่มขนาดวันที่จาก 13px ขึ้นเป็น 15px -->
-    <div id="display-date" style="font-size: 15px; color: #c8c8c8; letter-spacing: 1.5px; font-weight: 500;"></div>
-</div>               
+    <div style="margin-bottom: 20px;">
+        <div id="display-clock" style="font-family: 'Cinzel', serif; font-size: 38px; color: #d4af37; letter-spacing: 2px; font-weight: 700; margin-bottom: 8px;">04 : 38 : 00 AM</div>
+        <div id="display-date" style="font-size: 13px; color: #c8c8c8; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 500;">15 MAY 2026 &nbsp;|&nbsp; FRIDAY</div>
+    </div>
 
-<script>
-function updateClock() {
-    const now = new Date();
-    let h = now.getHours(), m = String(now.getMinutes()).padStart(2, '0'), s = String(now.getSeconds()).padStart(2, '0');
-    const ampm = h >= 12 ? 'PM' : 'AM';
-    document.getElementById("display-clock").innerHTML = `${h % 12 || 12} : ${m} : ${s} ${ampm}`;
-
-    const months = ["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"];
-    const days = ["SUNDAY","MONDAY","TUESDAY","WEDNESDAY","THURSDAY","FRIDAY","SATURDAY"];
-    document.getElementById("display-date").innerHTML = `${now.getDate()} ${months[now.getMonth()]} ${now.getFullYear()} &nbsp;|&nbsp; ${days[now.getDay()]}`;
-}
-setInterval(updateClock, 1000); updateClock();
-</script>
-
+    <!-- แถวตัวเลขศูนย์ Matrix เรืองแสงจางๆ -->
        
     <div class="link">Behind The Story.</div>
- <br>
+<br>
 <div class="link">
-    <span style="color:#e5c158; font-size:1.4em;">11  29  56 </span>
+    <span style="color:#e5c158; font-size:1.4em;">00 00 00</span>
 </div> 
-
+                            
+             <!-- สคริปต์รันระบบเวลาให้ตรงตามเครื่องแบบอัตโนมัติ -->
+    <script>
+        function startDigitalClock() {
+            const engine = new Date();
+            let hours = engine.getHours();
+            const minutes = String(engine.getMinutes()).padStart(2, '0');
+            const seconds = String(engine.getSeconds()).padStart(2, '0');
+            const ampm = hours >= 12 ? 'PM' : 'AM';
             
-                     
+            hours = hours % 12;
+            hours = hours ? hours : 12; 
+            const hourStr = String(hours).padStart(2, '0');
+
+            document.getElementById('display-clock').textContent = `${hourStr} : ${minutes} : ${seconds} ${ampm}`;
+            
+            const options = { day: 'numeric', month: 'long', year: 'numeric', weekday: 'long' };
+            const formatted = engine.toLocaleDateString('en-GB', options).toUpperCase();
+            const parts = formatted.split(', ');
+            if(parts.length > 1) {
+                document.getElementById('display-date').innerHTML = `${parts[1]} &nbsp;|&nbsp; ${parts[0]}`;
+            }
+        }
+        startDigitalClock();
+        setInterval(startDigitalClock, 1000);
+    </script>
 </div>
+
                 
 <div class="flag-row">
                     <div class="flag-item">
@@ -364,6 +384,39 @@ setInterval(updateClock, 1000); updateClock();
             </div>
         
      </section>
+
+<script>
+function updateClock() {
+    const now = new Date();
+
+    let hours = now.getHours();
+    let minutes = String(now.getMinutes()).padStart(2, '0');
+    let seconds = String(now.getSeconds()).padStart(2, '0');
+
+    let ampm = hours >= 12 ? 'PM' : 'AM';
+    hours = hours % 12;
+    hours = hours ? hours : 12;
+
+    document.getElementById("display-clock").innerHTML =
+        `${hours} : ${minutes} : ${seconds} ${ampm}`;
+
+    const months = ["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"];
+    const days = ["SUNDAY","MONDAY","TUESDAY","WEDNESDAY","THURSDAY","FRIDAY","SATURDAY"];
+
+    const day = now.getDate();
+    const month = months[now.getMonth()];
+    const year = now.getFullYear();
+    const weekday = days[now.getDay()];
+
+    document.getElementById("display-date").innerHTML =
+        `${day} ${month} ${year} &nbsp;|&nbsp; ${weekday}`;
+}
+
+updateClock();
+setInterval(updateClock, 1000);
+</script>
+
+      
 
     
     
