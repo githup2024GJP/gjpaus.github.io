@@ -253,17 +253,16 @@ filter: drop-shadow(0 0 28px rgba(212, 175, 55, 0.45));
 }
 
 .gold-signature{
-    font-family: 'Brush Script MT', cursive;
-    font-size: 90px;
-    color: #ffd36b;
+font-family:'Segoe Script',cursive;
+    font-size:52px;    
+    color: color:#f6d37a;;
     position: relative;
     display: inline-block;
 
-    text-shadow:
-        0 0 5px #ffcc66,
-        0 0 10px #ffb347,
-        0 0 20px #ff9900,
-        0 0 40px #ff8800;
+  text-shadow:
+    0 0 3px #ffcc66,
+    0 0 8px #ffb347,
+    0 0 14px #ff9900;
 
     animation: glow 2s ease-in-out infinite alternate;
     cursor:pointer;
@@ -272,21 +271,21 @@ filter: drop-shadow(0 0 28px rgba(212, 175, 55, 0.45));
 .gold-signature::after{
     content:'';
     position:absolute;
-    left:40px;
+    left:55px;
     bottom:-8px;
-    width:85%;
-    height:4px;
+    width:78%;
+    height:2px;
 
     background: linear-gradient(
         90deg,
         transparent,
-        #ffd36b,
+        color:#f6d37a;,
         #ffae00,
         #fff4b0
     );
 
     border-radius:50%;
-    transform: rotate(-4deg);
+    transform: rotate(-3deg);
 
     box-shadow:
         0 0 10px #ffb347,
@@ -296,16 +295,17 @@ filter: drop-shadow(0 0 28px rgba(212, 175, 55, 0.45));
 .gold-signature::before{
     content:'✦';
     position:absolute;
-    right:-28px;
-    top:5px;
+
+    right:-24px;
+    bottom:-8px;
 
     color:#fff2a8;
-    font-size:28px;
+    font-size:20px;
 
     text-shadow:
-        0 0 8px #fff2a8,
-        0 0 18px #ffcc33,
-        0 0 30px #ff9900;
+        0 0 6px #fff2a8,
+        0 0 12px #ffcc33,
+        0 0 20px #ff9900;
 }
 
 @keyframes glow{
