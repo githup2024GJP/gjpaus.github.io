@@ -374,8 +374,43 @@
                 </div>
             </div>
         
-        
-        </section>
+     </section>
+
+<script>
+function updateClock() {
+    const now = new Date();
+
+    let hours = now.getHours();
+    let minutes = String(now.getMinutes()).padStart(2, '0');
+    let seconds = String(now.getSeconds()).padStart(2, '0');
+
+    let ampm = hours >= 12 ? 'PM' : 'AM';
+    hours = hours % 12;
+    hours = hours ? hours : 12;
+
+    document.getElementById("display-clock").innerHTML =
+        `${hours} : ${minutes} : ${seconds} ${ampm}`;
+
+    const months = ["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"];
+    const days = ["SUNDAY","MONDAY","TUESDAY","WEDNESDAY","THURSDAY","FRIDAY","SATURDAY"];
+
+    const day = now.getDate();
+    const month = months[now.getMonth()];
+    const year = now.getFullYear();
+    const weekday = days[now.getDay()];
+
+    document.getElementById("display-date").innerHTML =
+        `${day} ${month} ${year} &nbsp;|&nbsp; ${weekday}`;
+}
+
+updateClock();
+setInterval(updateClock, 1000);
+</script>
+
+      
+    
+    
+    
     </main>
 
     <footer>
