@@ -238,13 +238,9 @@ filter: drop-shadow(0 0 28px rgba(212, 175, 55, 0.45));
     
     <header>
         <div class="logo-handle">
-<!-- กล่องควบคุมระยะห่างด้านบน -->
-<div class="cta-buttons" style="margin-top: 25px;"> 
-    
-    <!-- ปุ่มลิงก์ YouTube ที่รองรับหน้าจอมือถือ ไม่ล้นขอบกล่อง -->
-    <a href="https://youtube.com" target="_blank" style="background:#ff4e20; color:#fff; padding:3px 6px; text-decoration:none; display:inline-block; font:12px Arial,sans-serif; white-space:nowrap; max-width:100%; box-sizing:border-box; overflow:hidden; text-overflow:ellipsis;">@GP9434</a>
 
-</div> <!-- อย่าลืมแท็กปิดตัวนี้เด็ดขาดครับ -->                    try {
+
+ {
                         const response = await fetch('https://api.counterapi.dev/v1/gjpauscom/homepage/up');
                         const data = await response.json();
                         const views = data.count || data.data?.up_count;
