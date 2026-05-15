@@ -238,71 +238,90 @@ filter: drop-shadow(0 0 28px rgba(212, 175, 55, 0.45));
     
     <header>
         <div class="logo-handle">
+
+            
 <br><br>             
 <!-- CLICKABLE GLOW SIGNATURE -->
-<a href="https://www.youtube.com/@gp9434" target="_blank" class="gjp-logo">
-@gp9434
+
+<a href="https://www.youtube.com/@gp9434" target="_blank" class="signature-link">
+    <div class="gold-signature">@gp9434</div>
 </a>
 
 <style>
-.gjp-logo{
-    position:absolute;
-    top:48px;
-    left:20px;
-    z-index:10;
-
-    font-family:'Brush Script MT',cursive;
-    font-size:42px;
-    font-weight:bold;
-    letter-spacing:1px;
+.signature-link{
     text-decoration:none;
-
-    background:linear-gradient(
-        to bottom,
-        #fff6c7 0%,
-        #ffd86b 35%,
-        #ffb300 70%,
-        #ffea9a 100%
-    );
-
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-
-    text-shadow:
-        0 0 6px rgba(255,200,80,.9),
-        0 0 12px rgba(255,180,0,.7),
-        0 0 25px rgba(255,140,0,.45);
-
-    transform:rotate(-4deg);
 }
 
-/* GOLD UNDERLINE */
-.gjp-logo::after{
-    content:"";
-    position:absolute;
-    left:0;
-    bottom:-4px;
-    width:100%;
-    height:3px;
+.gold-signature{
+    font-family: 'Brush Script MT', cursive;
+    font-size: 90px;
+    color: #ffd36b;
+    position: relative;
+    display: inline-block;
 
-    background:linear-gradient(
-        to right,
+    text-shadow:
+        0 0 5px #ffcc66,
+        0 0 10px #ffb347,
+        0 0 20px #ff9900,
+        0 0 40px #ff8800;
+
+    animation: glow 2s ease-in-out infinite alternate;
+    cursor:pointer;
+}
+
+.gold-signature::after{
+    content:'';
+    position:absolute;
+    left:40px;
+    bottom:-8px;
+    width:85%;
+    height:4px;
+
+    background: linear-gradient(
+        90deg,
         transparent,
-        #ffcc66,
-        #ff9900,
-        transparent
+        #ffd36b,
+        #ffae00,
+        #fff4b0
     );
 
     border-radius:50%;
-    transform:skewX(-25deg);
+    transform: rotate(-4deg);
 
     box-shadow:
-        0 0 8px #ffcc66,
-        0 0 16px #ff9900;
+        0 0 10px #ffb347,
+        0 0 20px #ff9900;
+}
+
+.gold-signature::before{
+    content:'✦';
+    position:absolute;
+    right:-28px;
+    top:5px;
+
+    color:#fff2a8;
+    font-size:28px;
+
+    text-shadow:
+        0 0 8px #fff2a8,
+        0 0 18px #ffcc33,
+        0 0 30px #ff9900;
+}
+
+@keyframes glow{
+    from{
+        filter: brightness(1);
+    }
+    to{
+        filter: brightness(1.25);
+    }
 }
 </style>
+            
+
+            
     
-            <br>
+            <br><br>
             </a>
             <div id="counter" style="color:white; font-size:12px; letter-spacing:2px; margin-top:2px; display:none;"></div>
             <script>
