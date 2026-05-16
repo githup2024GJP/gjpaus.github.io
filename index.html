@@ -377,9 +377,9 @@ www.gjpaus.com
                     </div>
 
                     <div id="display-date"
-                         style="font-size:16px;color:#c8c8c8;text-transform:uppercase;font-weight:500;">
-                        16 MAY 2026 &nbsp;|&nbsp; FRIDAY
-                    </div>
+style="font-size:16px;color:#c8c8c8;text-transform:uppercase;font-weight:500;">
+</div>
+                        
                 </div>
 
                 <div class="link">Behind The Story.</div>
@@ -393,35 +393,22 @@ www.gjpaus.com
                     
                 </div>
 
-                <script>
-                    function startDigitalClock() {
-                        const engine = new Date();
-                        let hours = engine.getHours();
-                        const minutes = String(engine.getMinutes()).padStart(2, '0');
-                        const seconds = String(engine.getSeconds()).padStart(2, '0');
-                        const ampm = hours >= 12 ? 'PM' : 'AM';
+              <script>
+function updateDate(){
+const now=new Date();
 
-                        hours = hours % 12;
-                        hours = hours ? hours : 12;
-                        const hourStr = String(hours).padStart(2, '0');
-
-                        document.getElementById('display-clock').textContent =
-                            `${hourStr} : ${minutes} : ${seconds} ${ampm}`;
-
-                        const options = {day: 'numeric', month: 'long', year: 'numeric', weekday: 'long'};
-                        const formatted = engine.toLocaleDateString('en-GB', options).toUpperCase();
-                        const parts = formatted.split(', ');
-                        if (parts.length > 1) {
-                            document.getElementById('display-date').innerHTML =
-                                `${parts[1]} &nbsp;|&nbsp; ${parts[0]}`;
-                        }
-                    }
-
-                    document.addEventListener("DOMContentLoaded", () => {
-    startDigitalClock();
-    setInterval(startDigitalClock, 1000);
+document.getElementById("display-date").innerHTML=
+now.toLocaleDateString('en-AU',{
+weekday:'long',
+year:'numeric',
+month:'long',
+day:'numeric'
 });
-                </script>
+}
+
+updateDate();
+setInterval(updateDate,1000);
+</script>
 
             </div>
 
