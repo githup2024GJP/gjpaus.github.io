@@ -364,6 +364,7 @@ www.gjpaus.com
 <p style="text-align:center;">Life experiences and wisdom. Book coming soon.</p>
         </div>
 
+        
         <div id="journey" class="card">
 
             <h3 style="text-align:center; color:#d4af37;">FOLLOW MY JOURNEY</h3>
@@ -389,25 +390,23 @@ style="font-size:16px;color:#c8c8c8;text-transform:uppercase;font-weight:500;">
                     
                     <span style="color:#e5c158; font-size:1.4em;"> 000000 </span>
 
-
                     
                 </div>
 
-              <script>
-function updateDate(){
+<script>
+function updateClock(){
 const now=new Date();
 
-document.getElementById("display-date").innerHTML=
-now.toLocaleDateString('en-AU',{
-weekday:'long',
-year:'numeric',
-month:'long',
-day:'numeric'
+document.getElementById("display-clock").innerHTML=
+now.toLocaleTimeString('en-AU',{
+hour:'2-digit',
+minute:'2-digit',
+second:'2-digit'
 });
 }
 
-updateDate();
-setInterval(updateDate,1000);
+updateClock();
+setInterval(updateClock,1000);
 </script>
 
             </div>
