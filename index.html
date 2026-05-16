@@ -458,9 +458,11 @@ STRONG MIND. STRONG ENERGY. STRONG LIFE.
                                 `${parts[1]} &nbsp;|&nbsp; ${parts[0]}`;
                         }
                     }
-
-                    startDigitalClock();
-                    setInterval(startDigitalClock, 1000);
+                      document.addEventListener("DOMContentLoaded", () => {
+                      startDigitalClock();
+                      setInterval(startDigitalClock, 1000);
+});
+               
                 </script>
 
             </div>
