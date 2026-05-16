@@ -418,8 +418,7 @@ STRONG MIND. STRONG ENERGY. STRONG LIFE.
             <div style="background:#0d0d0d;border:1px solid rgba(212,175,55,0.14);padding:26px 20px;border-radius:12px;font-family:'Montserrat',sans-serif;max-width:550px;box-shadow:0 10px 30px rgba(0,0,0,0.5);margin:16px auto 8px;text-align:left;">
 
                 <div style="margin-bottom:14px;">
-                    <div id="display-clock"
-                         style="font-family:'Cinzel',serif;font-size:26px;color:#d4af37;font-weight:700;margin-bottom:4px;">
+        <div id="display-clock"style="font-family:'Cinzel',serif;font-size:26px;text-align:center;color:#d4af37;font-weight:700;margin-bottom:4px;">
                         04 : 38 : 00 AM
                     </div>
                    
@@ -427,44 +426,53 @@ STRONG MIND. STRONG ENERGY. STRONG LIFE.
     Behind The Story.
 </div>
 <br>
+<!-- NUMBERS -->
 <div class="link" style="text-align:center;">
     <span style="color:#e5c158;font-size:1.2em;">32 37 15</span>
 </div>
-
+<!-- DATE -->
 <div id="display-date"
      style="font-size:15px;color:#d0d0d0;text-transform:uppercase;font-weight:600;text-align:center;margin-top:8px;">
 </div>
-               
-                <script>
-                    function startDigitalClock() {
-                        const engine = new Date();
-                        let hours = engine.getHours();
-                        const minutes = String(engine.getMinutes()).padStart(2, '0');
-                        const seconds = String(engine.getSeconds()).padStart(2, '0');
-                        const ampm = hours >= 12 ? 'PM' : 'AM';
 
-                        hours = hours % 12;
-                        hours = hours ? hours : 12;
-                        const hourStr = String(hours).padStart(2, '0');
+<script>
+    function startDigitalClock() {
+        const engine = new Date();
 
-                        document.getElementById('display-clock').textContent =
-                            `${hourStr} : ${minutes} : ${seconds} ${ampm}`;
+        // TIME
+        let hours = engine.getHours();
+        const minutes = String(engine.getMinutes()).padStart(2, '0');
+        const seconds = String(engine.getSeconds()).padStart(2, '0');
+        const ampm = hours >= 12 ? 'PM' : 'AM';
 
-                        const options = {day: 'numeric', month: 'long', year: 'numeric', weekday: 'long'};
-                        const formatted = engine.toLocaleDateString('en-GB', options).toUpperCase();
-                        const parts = formatted.split(', ');
-                        if (parts.length > 1) {
-                            document.getElementById('display-date').innerHTML =
-                                `${parts[1]} &nbsp;|&nbsp; ${parts[0]}`;
-                        }
-                    }
-                      document.addEventListener("DOMContentLoaded", () => {
-                      startDigitalClock();
-                      setInterval(startDigitalClock, 1000);
-});
-               
-                </script>
+        hours = hours % 12;
+        hours = hours ? hours : 12;
+        const hourStr = String(hours).padStart(2, '0');
 
+        document.getElementById('display-clock').textContent =
+            `${hourStr} : ${minutes} : ${seconds} ${ampm}`;
+
+        // DATE
+        const options = { day: 'numeric', month: 'long', year: 'numeric', weekday: 'long' };
+        const formatted = engine.toLocaleDateString('en-GB', options).toUpperCase();
+        const parts = formatted.split(', ');
+
+        if (parts.length > 1) {
+            document.getElementById('display-date').innerHTML =
+                `${parts[1]} | ${parts[0]}`;
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        setTimeout(() => {
+            startDigitalClock();
+            setInterval(startDigitalClock, 1000);
+        }, 200);
+    });
+</script>
+
+
+                    
             </div>
 
             <div class="flag-row">
@@ -506,7 +514,7 @@ STRONG MIND. STRONG ENERGY. STRONG LIFE.
 </main>
 
 <footer>
-    &copy; 2026 GJPAUS™ . All Rights Reserved . @gp9434
+    &copy; 2026 GJPAUS™ . All Rights Reserved . @GP9434
 </footer>
 
 </body>
