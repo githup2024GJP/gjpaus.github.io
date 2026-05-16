@@ -1,29 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) --><p class="description" style="line-height:1.9;">
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-55KSYPYWYL"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-55KSYPYWYL');
-    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GJPAUS™ - Pause. Protect Your Power.</title>   
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">      
-    <!-- Premium Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="gstatic.com" crossorigin>
-    <link href="googleapis.com" rel="stylesheet">
-    
+    <title>GJPAUS™ - Pause. Protect Your Power.</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
     <style>
         :root {
             --gold: #d4af37;
             --black: #0a0a0a;
             --light-gold: #fff7c2;
-        }  
+        }
+
         body, html {
             margin: 0;
             padding: 0;
@@ -33,6 +23,7 @@
             overflow-x: hidden;
             scroll-behavior: smooth;
         }
+
         .bg-overlay {
             position: fixed;
             top: 0;
@@ -42,6 +33,7 @@
             background: radial-gradient(circle at 50% 50%, #1a1a1a 0%, #000000 100%);
             z-index: -1;
         }
+
         header {
             display: flex;
             justify-content: space-between;
@@ -50,50 +42,56 @@
             text-transform: uppercase;
             font-size: 13px;
         }
+
         .logo-handle {
             color: var(--gold);
             font-weight: 600;
             display: flex;
             flex-direction: column;
         }
+
         nav a {
             color: white;
             text-decoration: none;
             margin: 0 15px;
             transition: 0.3s;
         }
+
         nav a:hover { color: var(--gold); }
+
         .hero {
             text-align: center;
             padding: 100px 20px 80px;
             max-width: 1280px;
             margin: 0 auto;
         }
+
         h1 {
             font-family: 'Cinzel', serif;
             font-size: clamp(3.2rem, 10vw, 6.4rem);
             margin: 10px 0;
-           
             background: linear-gradient(to bottom, #fff7c2 0%, #f4d96b 35%, #d4af37 60%, #8a6d19 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-             filter: drop-shadow(0 0 28px rgba(212, 175, 55, 0.45));        
+            filter: drop-shadow(0 0 28px rgba(212, 175, 55, 0.45));
         }
+
         .tagline {
             font-size: clamp(15px, 2vw, 22px);
-            
             color: #d4af37;
-            margin-bottom: 48px;            
+            margin-bottom: 48px;
             text-transform: uppercase;
             font-weight: 400;
             font-family: Georgia, serif;
             text-shadow: 0 0 6px rgba(212,175,55,0.35);
         }
+
         .description {
             color: #cccccc;
             line-height: 2;
             margin-bottom: 40px;
         }
+
         .cta-buttons {
             display: flex;
             justify-content: center;
@@ -101,6 +99,7 @@
             margin: 30px 0 80px;
             flex-wrap: wrap;
         }
+
         .btn {
             padding: 16px 38px;
             text-decoration: none;
@@ -109,16 +108,16 @@
             transition: 0.4s ease;
             font-size: 15px;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
             display: inline-flex;
             align-items: center;
             gap: 12px;
         }
+
         .btn-gold { background: var(--gold); color: black; border: 1px solid var(--gold); }
         .btn-gold:hover { background: #b8962e; border-color: #b8962e; }
         .btn-outline { border: 1px solid white; color: white; }
         .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
-        
+
         .features {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -128,6 +127,7 @@
             max-width: 1080px;
             margin: 0 auto;
         }
+
         .card {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(212, 175, 55, 0.14);
@@ -139,21 +139,24 @@
             transition: 0.4s ease;
             text-align: left;
         }
+
         .card:hover {
             border-color: rgba(212,175,55,0.75);
             background: rgba(255, 255, 255, 0.06);
         }
+
         .card h3 {
             color: var(--gold);
-            letter-spacing: 2px;
             margin-top: 0;
             margin-bottom: 15px;
         }
+
         .card p {
             color: #cccccc;
             line-height: 1.6;
             margin-bottom: 20px;
         }
+
         .flag-row {
             display: flex;
             justify-content: center;
@@ -162,10 +165,12 @@
             margin-top: auto;
             padding-top: 15px;
         }
+
         .flag-item {
             width: 80px;
             text-align: center;
         }
+
         .flag-frame {
             width: 100%;
             height: auto;
@@ -175,22 +180,25 @@
             box-shadow: 0 6px 18px rgba(0,0,0,0.55);
             transition: 0.4s ease;
         }
+
         .flag-frame img {
             width: 100%;
             display: block;
             object-fit: cover;
         }
+
         .flag-item:hover .flag-frame {
             border-color: rgba(212,175,55,0.8);
             transform: translateY(-5px);
         }
+
         .flag-label {
             font-size: 12px;
             color: #888;
             margin-top: 10px;
-            letter-spacing: 1.5px;
             text-transform: uppercase;
         }
+
         footer {
             text-align: center;
             padding: 70px 0 90px;
@@ -198,61 +206,66 @@
             color: rgba(212, 175, 55, 0.5);
             border-top: 1px solid rgba(255, 255, 255, 0.05);
             text-transform: uppercase;
-            letter-spacing: 1px;
         }
+
         @media (max-width: 900px) {
             .features {
                 grid-template-columns: 1fr;
                 max-width: 550px;
             }
         }
+
         @media (max-width: 768px) {
             header {
                 flex-direction: column;
                 padding: 20px;
                 gap: 20px;
             }
+
             nav {
                 display: flex;
                 flex-wrap: wrap;
                 justify-content: center;
                 gap: 15px;
             }
-            nav a {
-                margin: 0 5px;
-            }
+
+            nav a { margin: 0 5px; }
+
             .logo-handle {
                 width: 100%;
                 text-align: center;
                 margin-bottom: 10px;
             }
-            .cta-buttons {
-                gap: 20px;
-            }
+
+            .cta-buttons { gap: 20px; }
         }
     </style>
 </head>
+
 <body>
-    <div class="bg-overlay"></div>
-    
-    <header>
 
-        <div class="logo-handle" style="display:inline-block;">
+<div class="bg-overlay"></div>
 
-    <div class="cta-buttons" style="margin-top:5px;"> 
-<a href="https://youtube.com/@gp9434" target="_blank" style="background:#ff4e20;color:#fff;padding:20px 18px;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;font:bold 30px Arial,sans-serif;">@GP9434</a>    
+<header>
+    <div class="logo-handle" style="display:inline-block;">
+        <div class="cta-buttons" style="margin-top:5px;">
+            <a href="https://youtube.com/@gp9434" target="_blank"
+               style="background:#ff4e20;color:#fff;padding:20px 18px;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;font:bold 30px Arial,sans-serif;">
+                @GP9434
+            </a>
 
-    <div id="counter" style="color:#00ffcc;font:700 28px 'Lucida Console',monospace; margin-top:10px;text-shadow:0 0 10px #00ffcc;display:none;"></div>
-            
+            <div id="counter"
+                 style="color:#00ffcc;font:700 28px 'Lucida Console',monospace;margin-top:10px;text-shadow:0 0 10px #00ffcc;display:none;">
+            </div>
 
-<script>
+            <script>
                 async function updateCounter() {
                     try {
                         const response = await fetch('https://api.counterapi.dev/v1/gjpauscom/homepage/up');
                         const data = await response.json();
                         const views = data.count || data.data?.up_count;
                         const counter = document.getElementById('counter');
-                        if(views) {
+                        if (views) {
                             counter.innerHTML = views.toLocaleString() + ' VIEWS';
                             counter.style.display = 'block';
                         }
@@ -263,171 +276,146 @@
                 updateCounter();
             </script>
         </div>
+
         <nav>
             <a href="index.html">Home</a>
             <a href="#">My Message</a>
             <a href="#">Journey</a>
-            <a href="mailto:contact@gjpaus.com" style="text-decoration: none; color: white; border: none; background: none;" onmouseover="this.style.color='gold'" onmouseout="this.style.color='white'">CONTACT</a>              
+            <a href="mailto:contact@gjpaus.com"
+               style="text-decoration: none; color: white; border: none; background: none;"
+               onmouseover="this.style.color='gold'"
+               onmouseout="this.style.color='white'">
+                CONTACT
+            </a>
         </nav>
-    </header>
+</header>
 
-    <main class="hero">
-        <h1>GJPAUS</h1>
-        <p class="tagline">PAUSE. PROTECT YOUR POWER.</p>
-        <div style="width:140px;height:2px;margin:0 auto 35px;background:linear-gradient(to right, transparent, #d4af37, #fff7c2, #d4af37, transparent);box-shadow:0 0 15px #d4af37;border-radius:10px;"></div>
-        
-<p class="description" style="line-height:1.9;"> 
-    Motivational content to help you pause, reset, and protect your inner power. <br> 
-<strong style="font-size:.82em;white-space:nowrap;display:block;text-align:center;">
-STRONG MIND. STRONG ENERGY. STRONG LIFE.
-</strong>
- 
- </p> 
+<main class="hero">
 
+    <h1>GJPAUS</h1>
 
-        
-<div class="cta-buttons" style="margin-top:25px;"> 
-    
-<a href="https://www.youtube.com/@gp9434" target="_blank" style="background:gold;padding:12px 20px;border-radius:12px;display:inline-block;text-decoration:none;">
-<i class="fa-brands fa-youtube" style="color:red;font-size:24px;"></i>
-</a>   
-    <a href="#" class="btn btn-outline">MY MESSAGE</a>
+    <p class="tagline">PAUSE. PROTECT YOUR POWER.</p>
+
+    <div style="width:140px;height:2px;margin:0 auto 35px;background:linear-gradient(to right, transparent, #d4af37, #fff7c2, #d4af37, transparent);box-shadow:0 0 15px #d4af37;border-radius:10px;"></div>
+
+    <p class="description" style="line-height:1.9;">
+        Motivational content to help you pause, reset, and protect your inner power. <br>
+        <strong style="font-size:.82em;white-space:nowrap;display:block;text-align:center;">
+            STRONG MIND. STRONG ENERGY. STRONG LIFE.
+        </strong>
+    </p>
+
+    <div class="cta-buttons" style="margin-top:25px;">
+        <a href="https://www.youtube.com/@gp9434" target="_blank"
+           style="background:gold;padding:12px 20px;border-radius:12px;display:inline-block;text-decoration:none;">
+            <i class="fa-brands fa-youtube" style="color:red;font-size:24px;"></i>
+        </a>
+
+        <a href="#" class="btn btn-outline">MY MESSAGE</a>
+    </div>
+
+    <section class="features">
+
+        <div class="card">
+            <h3>MY MESSAGE</h3>
+            <p>Life experiences and wisdom. Book coming soon.</p>
         </div>
 
+        <div class="card">
 
-        
-        <section class="features">
-            <div class="card">
-                <h3>MY MESSAGE</h3>
-                <p>Life experiences and wisdom. Book coming soon.</p>
-            </div>
-            
-            <div class="card">
-<h3 style="text-align:center; color:#d4af37; letter-spacing:2px;">FOLLOW MY JOURNEY</h3>                         
-              
-              <div style="background: #0d0d0d; border: 1px solid rgba(212, 175, 55, 0.14); padding: 40px; border-radius: 12px; font-family: 'Montserrat', sans-serif; max-width: 550px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); margin: 20px auto; text-align: left;">
-    
-          
-    <!-- ส่วนนาฬิกาแสดงเวลาจริง -->
-    <div style="margin-bottom: 20px;">
-        <div id="display-clock" style="font-family: 'Cinzel', serif; font-size: 38px; color: #d4af37; font-weight: 700; margin-bottom: 8px;">04 : 38 : 00 AM</div>
+            <h3 style="text-align:center; color:#d4af37;">FOLLOW MY JOURNEY</h3>
 
-        <div id="display-date" style="font-size: 13px; color: #c8c8c8;  text-transform: uppercase; font-weight: 500;">15 MAY 2026 &nbsp;|&nbsp; FRIDAY</div>
-    </div>
+            <div style="background:#0d0d0d;border:1px solid rgba(212,175,55,0.14);padding:40px;border-radius:12px;font-family:'Montserrat',sans-serif;max-width:550px;box-shadow:0 10px 30px rgba(0,0,0,0.5);margin:20px auto;text-align:left;">
 
-    <!-- แถวตัวเลขศูนย์ Matrix เรืองแสงจางๆ -->
-       
-    <div class="link">Behind The Story.</div>
-<br>
-<div class="link">
-    <span style="color:#e5c158; font-size:1.4em;"> 32 <b>37,<b></b> 15 </span>
-</div> 
-                            
-             <!-- สคริปต์รันระบบเวลาให้ตรงตามเครื่องแบบอัตโนมัติ -->
-    <script>
-        function startDigitalClock() {
-            const engine = new Date();
-            let hours = engine.getHours();
-            const minutes = String(engine.getMinutes()).padStart(2, '0');
-            const seconds = String(engine.getSeconds()).padStart(2, '0');
-            const ampm = hours >= 12 ? 'PM' : 'AM';
-            
-            hours = hours % 12;
-            hours = hours ? hours : 12; 
-            const hourStr = String(hours).padStart(2, '0');
-
-            document.getElementById('display-clock').textContent = `${hourStr} : ${minutes} : ${seconds} ${ampm}`;
-            
-            const options = { day: 'numeric', month: 'long', year: 'numeric', weekday: 'long' };
-            const formatted = engine.toLocaleDateString('en-GB', options).toUpperCase();
-            const parts = formatted.split(', ');
-            if(parts.length > 1) {
-                document.getElementById('display-date').innerHTML = `${parts[1]} &nbsp;|&nbsp; ${parts[0]}`;
-            }
-        }
-        startDigitalClock();
-        setInterval(startDigitalClock, 1000);
-    </script>
-</div>
-
-                
-<div class="flag-row">
-                    <div class="flag-item">
-                        <div class="flag-frame">
-                            <img src="https://flagcdn.com/w160/vn.png" alt="Vietnam Flag">
-                        </div>
-                        <div class="flag-label">Vietnam</div>
+                <div style="margin-bottom:20px;">
+                    <div id="display-clock"
+                         style="font-family:'Cinzel',serif;font-size:38px;color:#d4af37;font-weight:700;margin-bottom:8px;">
+                        04 : 38 : 00 AM
                     </div>
-                    <div class="flag-item">
-                        <div class="flag-frame">
-                            <img src="https://flagcdn.com/w160/la.png" alt="Laos Flag">
-                        </div>
-                        <div class="flag-label">Laos</div>
+
+                    <div id="display-date"
+                         style="font-size:13px;color:#c8c8c8;text-transform:uppercase;font-weight:500;">
+                        15 MAY 2026 &nbsp;|&nbsp; FRIDAY
                     </div>
-                    <div class="flag-item">
-                         <div class="flag-frame">
-        
-    </div>
-     <div class="flag-frame">
-
-        <!-- ธงมาเลเซีย -->
-        <div style="position:relative; width:90px; height:60px; background:repeating-linear-gradient(#c00, #c00 4.2px, #fff 4.2px, #fff 8.4px); border:1px solid #ccc;">
-            
-            <div style="position:absolute; width:50%; height:50%; background:#006; display:flex; align-items:center; justify-content:center;">
-                
-                <div style="width:16px; height:16px; background:#fc0; border-radius:50%;"></div>
-
-            </div>
-        </div>
-
-    </div>
-
-    <div class="flag-label">Malaysia</div>
-
                 </div>
+
+                <div class="link">Behind The Story.</div>
+                <br>
+                <div class="link">
+                    <span style="color:#e5c158; font-size:1.4em;"> 32 <b>37,<b></b> 15 </span>
+                </div>
+
+                <script>
+                    function startDigitalClock() {
+                        const engine = new Date();
+                        let hours = engine.getHours();
+                        const minutes = String(engine.getMinutes()).padStart(2, '0');
+                        const seconds = String(engine.getSeconds()).padStart(2, '0');
+                        const ampm = hours >= 12 ? 'PM' : 'AM';
+
+                        hours = hours % 12;
+                        hours = hours ? hours : 12;
+                        const hourStr = String(hours).padStart(2, '0');
+
+                        document.getElementById('display-clock').textContent =
+                            `${hourStr} : ${minutes} : ${seconds} ${ampm}`;
+
+                        const options = {day: 'numeric', month: 'long', year: 'numeric', weekday: 'long'};
+                        const formatted = engine.toLocaleDateString('en-GB', options).toUpperCase();
+                        const parts = formatted.split(', ');
+                        if (parts.length > 1) {
+                            document.getElementById('display-date').innerHTML =
+                                `${parts[1]} &nbsp;|&nbsp; ${parts[0]}`;
+                        }
+                    }
+
+                    startDigitalClock();
+                    setInterval(startDigitalClock, 1000);
+                </script>
+
             </div>
-        
-     </section>
 
-<script>
-function updateClock() {
-    const now = new Date();
+            <div class="flag-row">
 
-    let hours = now.getHours();
-    let minutes = String(now.getMinutes()).padStart(2, '0');
-    let seconds = String(now.getSeconds()).padStart(2, '0');
+                <div class="flag-item">
+                    <div class="flag-frame">
+                        <img src="https://flagcdn.com/w160/vn.png" alt="Vietnam Flag">
+                    </div>
+                    <div class="flag-label">Vietnam</div>
+                </div>
 
-    let ampm = hours >= 12 ? 'PM' : 'AM';
-    hours = hours % 12;
-    hours = hours ? hours : 12;
+                <div class="flag-item">
+                    <div class="flag-frame">
+                        <img src="https://flagcdn.com/w160/la.png" alt="Laos Flag">
+                    </div>
+                    <div class="flag-label">Laos</div>
+                </div>
 
-    document.getElementById("display-clock").innerHTML =
-        `${hours} : ${minutes} : ${seconds} ${ampm}`;
+                <div class="flag-item">
+                    <div class="flag-frame"></div>
 
-    const months = ["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"];
-    const days = ["SUNDAY","MONDAY","TUESDAY","WEDNESDAY","THURSDAY","FRIDAY","SATURDAY"];
+                    <div class="flag-frame">
+                        <div style="position:relative;width:90px;height:60px;background:repeating-linear-gradient(#c00,#c00 4.2px,#fff 4.2px,#fff 8.4px);border:1px solid #ccc;">
+                            <div style="position:absolute;width:50%;height:50%;background:#006;display:flex;align-items:center;justify-content:center;">
+                                <div style="width:16px;height:16px;background:#fc0;border-radius:50%;"></div>
+                            </div>
+                        </div>
+                    </div>
 
-    const day = now.getDate();
-    const month = months[now.getMonth()];
-    const year = now.getFullYear();
-    const weekday = days[now.getDay()];
+                    <div class="flag-label">Malaysia</div>
+                </div>
 
-    document.getElementById("display-date").innerHTML =
-        `${day} ${month} ${year} &nbsp;|&nbsp; ${weekday}`;
-}
+            </div>
 
-updateClock();
-setInterval(updateClock, 1000);
-</script>
+        </div>
 
-    
-    
-    </main>
+    </section>
 
+</main>
 
-<footer style="letter-spacing:2px;">
-    &copy; 2026 GJPAUS™ . All Rights Reserved . @gp9434
+<footer>
+    &copy; 2026 GJPAUS™ . All Rights Reserved . @GP9434
 </footer>
-    
- </body>
+
+</body>
 </html>
