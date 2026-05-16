@@ -390,9 +390,9 @@
 
     <p class="description">
         Motivational content to help you pause, reset, and protect your inner power. <br>
-<strong style="font-size:.96em;font-weight:800;color:#ffffff;display:block;text-align:center;white-space:nowrap;">
-STRONG MIND. STRONG ENERGY. STRONG LIFE.
-</strong>
+        <strong style="font-size:.78em;white-space:nowrap;display:block;text-align:center;">
+            STRONG MIND. STRONG ENERGY. STRONG LIFE.
+        </strong>
     </p>
 
     <div class="cta-buttons" style="margin-top:18px;">
@@ -401,17 +401,17 @@ STRONG MIND. STRONG ENERGY. STRONG LIFE.
             <i class="fa-brands fa-youtube" style="color:red;font-size:22px;"></i>
         </a>
 
-        <a href="#" class="btn btn-outline">MY MESSAGE</a>
+<a href="journey.html" class="btn btn-outline">SECRET</a>    
+        
     </div>
 
-    <section class="features">
-
-       <div class="card">
-    <h3 style="text-align:center;">MY BOOKS</h3>
-    <p style="text-align:center;">
-        Life experiences, wisdom, and untold stories.
-    </p>
-</div>
+<section id="journey" class="features">
+    
+        <div class="card">
+            <h3 style="text-align:center; color:#d4af37;">MY BOOK</h3>    
+            
+            <p>Life experiences and wisdom. Book coming soon.</p>
+        </div>
 
         <div class="card">
 
@@ -420,61 +420,51 @@ STRONG MIND. STRONG ENERGY. STRONG LIFE.
             <div style="background:#0d0d0d;border:1px solid rgba(212,175,55,0.14);padding:26px 20px;border-radius:12px;font-family:'Montserrat',sans-serif;max-width:550px;box-shadow:0 10px 30px rgba(0,0,0,0.5);margin:16px auto 8px;text-align:left;">
 
                 <div style="margin-bottom:14px;">
-        <div id="display-clock"style="font-family:'Cinzel',serif;font-size:26px;text-align:center;color:#d4af37;font-weight:700;margin-bottom:4px;">
+                    <div id="display-clock"
+                         style="font-family:'Cinzel',serif;font-size:26px;color:#d4af37;font-weight:700;margin-bottom:4px;">
                         04 : 38 : 00 AM
                     </div>
-                   
-<div class="link" style="font-size:13px;margin-top:6px;text-align:center;">
-    Behind The Story.
-</div>
-<br>
-<!-- NUMBERS -->
-<div class="link" style="text-align:center;">
-    <span style="color:#e5c158;font-size:1.2em;">32 37 15</span>
-</div>
-<!-- DATE -->
-<div id="display-date"
-     style="font-size:15px;color:#d0d0d0;text-transform:uppercase;font-weight:600;text-align:center;margin-top:8px;">
-</div>
 
-<script>
-    function startDigitalClock() {
-        const engine = new Date();
+                    <div id="display-date"
+                         style="font-size:11px;color:#c8c8c8;text-transform:uppercase;font-weight:500;">
+                        15 MAY 2026 &nbsp;|&nbsp; FRIDAY
+                    </div>
+                </div>
 
-        // TIME
-        let hours = engine.getHours();
-        const minutes = String(engine.getMinutes()).padStart(2, '0');
-        const seconds = String(engine.getSeconds()).padStart(2, '0');
-        const ampm = hours >= 12 ? 'PM' : 'AM';
+                <div class="link" style="font-size:13px;margin-top:6px;">Behind The Story.</div>
+                <br>
+                <div class="link">
+                    <span style="color:#e5c158; font-size:1.2em;"> 32 <b>37,<b></b> 15 </span>
+                </div>
 
-        hours = hours % 12;
-        hours = hours ? hours : 12;
-        const hourStr = String(hours).padStart(2, '0');
+                <script>
+                    function startDigitalClock() {
+                        const engine = new Date();
+                        let hours = engine.getHours();
+                        const minutes = String(engine.getMinutes()).padStart(2, '0');
+                        const seconds = String(engine.getSeconds()).padStart(2, '0');
+                        const ampm = hours >= 12 ? 'PM' : 'AM';
 
-        document.getElementById('display-clock').textContent =
-            `${hourStr} : ${minutes} : ${seconds} ${ampm}`;
+                        hours = hours % 12;
+                        hours = hours ? hours : 12;
+                        const hourStr = String(hours).padStart(2, '0');
 
-        // DATE
-        const options = { day: 'numeric', month: 'long', year: 'numeric', weekday: 'long' };
-        const formatted = engine.toLocaleDateString('en-GB', options).toUpperCase();
-        const parts = formatted.split(', ');
+                        document.getElementById('display-clock').textContent =
+                            `${hourStr} : ${minutes} : ${seconds} ${ampm}`;
 
-        if (parts.length > 1) {
-            document.getElementById('display-date').innerHTML =
-                `${parts[1]} | ${parts[0]}`;
-        }
-    }
+                        const options = {day: 'numeric', month: 'long', year: 'numeric', weekday: 'long'};
+                        const formatted = engine.toLocaleDateString('en-GB', options).toUpperCase();
+                        const parts = formatted.split(', ');
+                        if (parts.length > 1) {
+                            document.getElementById('display-date').innerHTML =
+                                `${parts[1]} &nbsp;|&nbsp; ${parts[0]}`;
+                        }
+                    }
 
-    document.addEventListener("DOMContentLoaded", () => {
-        setTimeout(() => {
-            startDigitalClock();
-            setInterval(startDigitalClock, 1000);
-        }, 200);
-    });
-</script>
+                    startDigitalClock();
+                    setInterval(startDigitalClock, 1000);
+                </script>
 
-
-                    
             </div>
 
             <div class="flag-row">
