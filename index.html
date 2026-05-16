@@ -8,327 +8,54 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <style>
-        :root {
-            --gold: #d4af37;
-            --black: #0a0a0a;
-            --light-gold: #fff7c2;
-        }
+        :root { --gold:#d4af37; --black:#0a0a0a; --light-gold:#fff7c2; }
+        body,html { margin:0; padding:0; background:var(--black); color:white; font-family:'Montserrat',sans-serif; overflow-x:hidden; scroll-behavior:smooth; }
+        .bg-overlay { position:fixed; top:0; left:0; width:100%; height:100%; background:radial-gradient(circle,#1a1a1a,#000); z-index:-1; }
 
-        body, html {
-            margin: 0;
-            padding: 0;
-            background-color: var(--black);
-            color: white;
-            font-family: 'Montserrat', sans-serif;
-            overflow-x: hidden;
-            scroll-behavior: smooth;
-        }
+        header { display:flex; justify-content:space-between; align-items:center; padding:28px 40px; text-transform:uppercase; font-size:13px; }
+        .logo-handle { color:var(--gold); font-weight:600; display:flex; flex-direction:column; }
 
-        .bg-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 50% 50%, #1a1a1a 0%, #000000 100%);
-            z-index: -1;
-        }
+        nav a { color:white; text-decoration:none; margin:0 15px; transition:.3s; }
+        nav a:hover { color:var(--gold); }
 
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 28px 40px;
-            text-transform: uppercase;
-            font-size: 13px;
-        }
-
-        .logo-handle {
-            color: var(--gold);
-            font-weight: 600;
-            display: flex;
-            flex-direction: column;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0 15px;
-            transition: 0.3s;
-        }
-
-        nav a:hover { color: var(--gold); }
-
-        .hero {
-            text-align: center;
-            padding: 80px 20px 70px;
-            max-width: 1280px;
-            margin: 0 auto;
-        }
+        .hero { text-align:center; padding:80px 20px 70px; max-width:1280px; margin:0 auto; }
 
         h1 {
-            font-family: 'Cinzel', serif;
-            font-size: clamp(2.8rem, 8vw, 6.4rem);
-            margin: 6px 0 10px;
-            background: linear-gradient(to bottom, #fff7c2 0%, #f4d96b 35%, #d4af37 60%, #8a6d19 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 0 24px rgba(212, 175, 55, 0.45));
+            font-family:'Cinzel',serif;
+            font-size:clamp(2.8rem,8vw,6.4rem);
+            margin:6px 0 10px;
+            background:linear-gradient(to bottom,#fff7c2,#f4d96b,#d4af37,#8a6d19);
+            -webkit-background-clip:text;
+            -webkit-text-fill-color:transparent;
+            filter:drop-shadow(0 0 24px rgba(212,175,55,.45));
         }
 
-        .tagline {
-            font-size: clamp(13px, 1.8vw, 20px);
-            color: #d4af37;
-            margin-bottom: 30px;
-            text-transform: uppercase;
-            font-weight: 400;
-            font-family: Georgia, serif;
-            text-shadow: 0 0 6px rgba(212,175,55,0.35);
-        }
+        .tagline { font-size:clamp(13px,1.8vw,20px); color:#d4af37; margin-bottom:30px; text-transform:uppercase; font-weight:400; font-family:Georgia,serif; text-shadow:0 0 6px rgba(212,175,55,.35); }
 
-        .description {
-            color: #cccccc;
-            line-height: 1.8;
-            margin-bottom: 28px;
-            max-width: 620px;
-            margin-left: auto;
-            margin-right: auto;
-        }
+        .description { color:#ccc; line-height:1.8; margin-bottom:28px; max-width:620px; margin-left:auto; margin-right:auto; }
 
-        .cta-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 28px;
-            margin: 22px 0 60px;
-            flex-wrap: wrap;
-        }
+        .cta-buttons { display:flex; justify-content:center; gap:28px; margin:22px 0 60px; flex-wrap:wrap; }
 
-        .btn {
-            padding: 14px 30px;
-            text-decoration: none;
-            font-weight: 600;
-            border-radius: 8px;
-            transition: 0.4s ease;
-            font-size: 14px;
-            text-transform: uppercase;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-        }
+        .btn { padding:14px 30px; text-decoration:none; font-weight:600; border-radius:8px; transition:.4s; font-size:14px; text-transform:uppercase; display:inline-flex; align-items:center; gap:10px; }
+        .btn-gold { background:var(--gold); color:black; border:1px solid var(--gold); }
+        .btn-outline { border:1px solid white; color:white; }
+        .btn-outline:hover { border-color:var(--gold); color:var(--gold); }
 
-        .btn-gold { background: var(--gold); color: black; border: 1px solid var(--gold); }
-        .btn-gold:hover { background: #b8962e; border-color: #b8962e; }
-        .btn-outline { border: 1px solid white; color: white; }
-        .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+        .features { display:grid; grid-template-columns:repeat(2,1fr); gap:40px; align-items:stretch; padding-bottom:80px; max-width:1080px; margin:0 auto; }
 
-        .features {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 40px;
-            align-items: stretch;
-            padding-bottom: 80px;
-            max-width: 1080px;
-            margin: 0 auto;
-        }
+        .card { background:rgba(255,255,255,.03); border:1px solid rgba(212,175,55,.14); padding:36px; border-radius:14px; display:flex; flex-direction:column; justify-content:space-between; transition:.4s; text-align:left; }
+        .card:hover { border-color:rgba(212,175,55,.75); background:rgba(255,255,255,.06); }
+        .card h3 { color:var(--gold); margin:0 0 12px; font-size:16px; }
+        .card p { color:#ccc; line-height:1.6; margin-bottom:16px; font-size:14px; }
 
-        .card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(212, 175, 55, 0.14);
-            padding: 36px;
-            border-radius: 14px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            transition: 0.4s ease;
-            text-align: left;
-        }
+        .flag-row { display:flex; justify-content:center; gap:18px; flex-wrap:wrap; margin-top:10px; padding-top:10px; }
+        .flag-item { width:70px; text-align:center; }
+        .flag-frame { width:100%; border-radius:4px; overflow:hidden; border:1px solid rgba(255,255,255,.1); box-shadow:0 5px 14px rgba(0,0,0,.55); transition:.4s; }
+        .flag-frame img { width:100%; display:block; object-fit:cover; }
+        .flag-item:hover .flag-frame { border-color:rgba(212,175,55,.8); transform:translateY(-4px); }
+        .flag-label { font-size:11px; color:#888; margin-top:8px; text-transform:uppercase; }
 
-        .card:hover {
-            border-color: rgba(212,175,55,0.75);
-            background: rgba(255, 255, 255, 0.06);
-        }
-
-        .card h3 {
-            color: var(--gold);
-            margin-top: 0;
-            margin-bottom: 12px;
-            font-size: 16px;
-        }
-
-        .card p {
-            color: #cccccc;
-            line-height: 1.6;
-            margin-bottom: 16px;
-            font-size: 14px;
-        }
-
-        .flag-row {
-            display: flex;
-            justify-content: center;
-            gap: 18px;
-            flex-wrap: wrap;
-            margin-top: 10px;
-            padding-top: 10px;
-        }
-
-        .flag-item {
-            width: 70px;
-            text-align: center;
-        }
-
-        .flag-frame {
-            width: 100%;
-            height: auto;
-            border-radius: 4px;
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 5px 14px rgba(0,0,0,0.55);
-            transition: 0.4s ease;
-        }
-
-        .flag-frame img {
-            width: 100%;
-            display: block;
-            object-fit: cover;
-        }
-
-        .flag-item:hover .flag-frame {
-            border-color: rgba(212,175,55,0.8);
-            transform: translateY(-4px);
-        }
-
-        .flag-label {
-            font-size: 11px;
-            color: #888;
-            margin-top: 8px;
-            text-transform: uppercase;
-        }
-
-        footer {
-            text-align: center;
-            padding: 40px 0 55px;
-            font-size: 11px;
-            color: rgba(212, 175, 55, 0.5);
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            text-transform: uppercase;
-        }
-
-        /* ===== MOBILE ULTRA-COMPACT LUXURY ===== */
-        @media (max-width: 768px) {
-
-            header {
-                flex-direction: column;
-                padding: 16px 18px 10px;
-                gap: 10px;
-                font-size: 11px;
-            }
-
-            .logo-handle {
-                width: 100%;
-                text-align: center;
-                align-items: center;
-            }
-
-            .cta-buttons {
-                gap: 16px;
-                margin: 18px 0 40px;
-            }
-
-            .hero {
-                padding: 60px 16px 55px;
-            }
-
-            h1 {
-                font-size: 2.4rem;
-                margin-top: 4px;
-                margin-bottom: 6px;
-            }
-
-            .tagline {
-                font-size: 12px;
-                margin-bottom: 20px;
-            }
-
-            .description {
-                font-size: 13px;
-                line-height: 1.7;
-                margin-bottom: 22px;
-            }
-
-            .btn {
-                padding: 11px 22px;
-                font-size: 12px;
-            }
-
-            .features {
-                grid-template-columns: 1fr;
-                max-width: 100%;
-                padding: 10px 16px 55px;
-                gap: 24px;
-            }
-
-            .card {
-                padding: 22px 18px;
-                border-radius: 12px;
-            }
-
-            .card h3 {
-                font-size: 14px;
-            }
-
-            .card p {
-                font-size: 13px;
-            }
-
-            .flag-row {
-                gap: 14px;
-                padding-top: 6px;
-            }
-
-            .flag-item {
-                width: 64px;
-            }
-
-            footer {
-                padding: 26px 0 32px;
-                font-size: 10px;
-            }
-
-            nav {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 10px;
-            }
-
-            nav a {
-                margin: 0 4px;
-                font-size: 11px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 2.1rem;
-            }
-
-            .tagline {
-                font-size: 11px;
-            }
-
-            .description {
-                font-size: 12px;
-            }
-
-            .btn {
-                padding: 10px 18px;
-                font-size: 11px;
-            }
-
-            .card {
-                padding: 18px 14px;
-            }
-        }
+        footer { text-align:center; padding:40px 0 55px; font-size:11px; color:rgba(212,175,55,.5); border-top:1px solid rgba(255,255,255,.05); text-transform:uppercase; }
     </style>
 </head>
 
@@ -337,10 +64,10 @@
 <div class="bg-overlay"></div>
 
 <header>
-    <div class="logo-handle" style="display:inline-block;">
+    <div class="logo-handle">
         <div class="cta-buttons" style="margin-top:5px;">
             <a href="https://youtube.com/@gp9434" target="_blank"
-               style="background:#ff4e20;color:#fff;padding:16px 16px;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;font:bold 22px Arial,sans-serif;border-radius:10px;">
+               style="background:#ff4e20;color:#fff;padding:16px 16px;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;font:bold 22px Arial;border-radius:10px;">
                 @GP9434
             </a>
 
@@ -359,9 +86,7 @@
                             counter.innerHTML = views.toLocaleString() + ' VIEWS';
                             counter.style.display = 'block';
                         }
-                    } catch (error) {
-                        console.log(error);
-                    }
+                    } catch (error) { console.log(error); }
                 }
                 updateCounter();
             </script>
@@ -372,7 +97,7 @@
             <a href="#">My Message</a>
             <a href="#">Journey</a>
             <a href="mailto:contact@gjpaus.com"
-               style="text-decoration: none; color: white; border: none; background: none;"
+               style="text-decoration:none;color:white;"
                onmouseover="this.style.color='gold'"
                onmouseout="this.style.color='white'">
                 CONTACT
@@ -386,14 +111,14 @@
 
     <p class="tagline">PAUSE. PROTECT YOUR POWER.</p>
 
-    <div style="width:120px;height:2px;margin:0 auto 26px;background:linear-gradient(to right, transparent, #d4af37, #fff7c2, #d4af37, transparent);box-shadow:0 0 12px #d4af37;border-radius:10px;"></div>
+    <div style="width:120px;height:2px;margin:0 auto 26px;background:linear-gradient(to right,transparent,#d4af37,#fff7c2,#d4af37,transparent);box-shadow:0 0 12px #d4af37;border-radius:10px;"></div>
 
     <p class="description">
-    Motivational content to help you pause, reset, and protect your inner power. <br>
-    <strong style="font-size:.92em;color:#f5f5f5;font-weight:800;white-space:nowrap;display:block;text-align:center;">
-        STRONG MIND. STRONG ENERGY. STRONG LIFE.
-    </strong>
-</p>
+        Motivational content to help you pause, reset, and protect your inner power. <br>
+        <strong style="font-size:.92em;color:#f5f5f5;font-weight:800;white-space:nowrap;display:block;text-align:center;">
+            STRONG MIND. STRONG ENERGY. STRONG LIFE.
+        </strong>
+    </p>
 
     <div class="cta-buttons" style="margin-top:18px;">
         <a href="https://www.youtube.com/@gp9434" target="_blank"
@@ -401,113 +126,111 @@
             <i class="fa-brands fa-youtube" style="color:red;font-size:22px;"></i>
         </a>
 
-<a href="javascript:void(0)" onclick="document.getElementById('journey').scrollIntoView({behavior:'smooth'});" class="btn btn-outline">SECRET</a>        
+        <a href="javascript:void(0)" onclick="document.getElementById('journey').scrollIntoView({behavior:'smooth'});" class="btn btn-outline">SECRET</a>
     </div>
 
-<section id="journey" class="features" style="padding-top:120px;">        
+<section id="journey" class="features" style="padding-top:120px;">
+
     <div class="card">
-            <h3 style="text-align:center; color:#d4af37;">MY BOOK</h3>    
-            
-            <p>Life experiences and wisdom. Book coming soon.</p>
-        </div>
+        <h3 style="text-align:center;color:#d4af37;">MY BOOK</h3>
+        <p>Life experiences and wisdom. Book coming soon.</p>
+    </div>
 
-        <div class="card">
+    <div class="card">
 
-            <h3 style="text-align:center; color:#d4af37;">FOLLOW MY JOURNEY</h3>
+        <h3 style="text-align:center;color:#d4af37;">FOLLOW MY JOURNEY</h3>
 
-            <div style="background:#0d0d0d;border:1px solid rgba(212,175,55,0.14);padding:26px 20px;border-radius:12px;font-family:'Montserrat',sans-serif;max-width:550px;box-shadow:0 10px 30px rgba(0,0,0,0.5);margin:16px auto 8px;text-align:left;">
+        <div style="background:#0d0d0d;border:1px solid rgba(212,175,55,0.14);padding:26px 20px;border-radius:12px;font-family:'Montserrat',sans-serif;max-width:550px;box-shadow:0 10px 30px rgba(0,0,0,0.5);margin:16px auto 8px;text-align:left;">
 
-                <div style="margin-bottom:14px;">
-                    <div id="display-clock"
-                         style="font-family:'Cinzel',serif;font-size:26px;color:#d4af37;font-weight:700;margin-bottom:4px;">
-                        04 : 38 : 00 AM
-                    </div>
-
-                    <div id="display-date"
-                         style="font-size:11px;color:#c8c8c8;text-transform:uppercase;font-weight:500;">
-                        15 MAY 2026 &nbsp;|&nbsp; FRIDAY
-                    </div>
+            <div style="margin-bottom:14px;">
+                <div id="display-clock"
+                     style="font-family:'Cinzel',serif;font-size:26px;color:#d4af37;font-weight:700;margin-bottom:4px;">
+                    04 : 38 : 00 AM
                 </div>
 
-                <div class="link" style="font-size:13px;margin-top:6px;">Behind The Story.</div>
-                <br>
-                <div class="link">
-                    <span style="color:#e5c158; font-size:1.2em;"> 32 <b>38,<b></b> 16 </span>
+                <div id="display-date"
+                     style="font-size:11px;color:#c8c8c8;text-transform:uppercase;font-weight:500;">
+                    15 MAY 2026 &nbsp;|&nbsp; FRIDAY
                 </div>
-
-                <script>
-                    function startDigitalClock() {
-                        const engine = new Date();
-                        let hours = engine.getHours();
-                        const minutes = String(engine.getMinutes()).padStart(2, '0');
-                        const seconds = String(engine.getSeconds()).padStart(2, '0');
-                        const ampm = hours >= 12 ? 'PM' : 'AM';
-
-                        hours = hours % 12;
-                        hours = hours ? hours : 12;
-                        const hourStr = String(hours).padStart(2, '0');
-
-                        document.getElementById('display-clock').textContent =
-                            `${hourStr} : ${minutes} : ${seconds} ${ampm}`;
-
-                        const options = {day: 'numeric', month: 'long', year: 'numeric', weekday: 'long'};
-                        const formatted = engine.toLocaleDateString('en-GB', options).toUpperCase();
-                        const parts = formatted.split(', ');
-                        if (parts.length > 1) {
-                            document.getElementById('display-date').innerHTML =
-                                `${parts[1]} &nbsp;|&nbsp; ${parts[0]}`;
-                        }
-                    }
-
-                    document.addEventListener("DOMContentLoaded", () => {
-                    startDigitalClock();
-                    setInterval(startDigitalClock, 1000);
-                    });
-                </script>
-
             </div>
 
-            <div class="flag-row">
+            <div class="link" style="font-size:13px;margin-top:6px;">Behind The Story.</div>
+            <br>
+            <div class="link">
+                <span style="color:#e5c158;font-size:1.2em;">32 <b>38</b> 16</span>
+            </div>
 
-                <div class="flag-item">
-                    <div class="flag-frame">
-                        <img src="https://flagcdn.com/w160/vn.png" alt="Vietnam Flag">
-                    </div>
-                    <div class="flag-label">Vietnam</div>
+        </div>
+
+        <div class="flag-row">
+            <div class="flag-item">
+                <div class="flag-frame">
+                    <img src="https://flagcdn.com/w160/vn.png">
                 </div>
+                <div class="flag-label">Vietnam</div>
+            </div>
 
-                <div class="flag-item">
-                    <div class="flag-frame">
-                        <img src="https://flagcdn.com/w160/la.png" alt="Laos Flag">
-                    </div>
-                    <div class="flag-label">Laos</div>
+            <div class="flag-item">
+                <div class="flag-frame">
+                    <img src="https://flagcdn.com/w160/la.png">
                 </div>
+                <div class="flag-label">Laos</div>
+            </div>
 
-                <div class="flag-item">
-                    <div class="flag-frame"></div>
-
-                    <div class="flag-frame">
-                        <div style="position:relative;width:90px;height:60px;background:repeating-linear-gradient(#c00,#c00 4.2px,#fff 4.2px,#fff 8.4px);border:1px solid #ccc;">
-                            <div style="position:absolute;width:50%;height:50%;background:#006;display:flex;align-items:center;justify-content:center;">
-                                <div style="width:16px;height:16px;background:#fc0;border-radius:50%;"></div>
-                            </div>
+            <div class="flag-item">
+                <div class="flag-frame">
+                    <div style="position:relative;width:90px;height:60px;background:repeating-linear-gradient(#c00,#c00 4.2px,#fff 4.2px,#fff 8.4px);border:1px solid #ccc;">
+                        <div style="position:absolute;width:50%;height:50%;background:#006;display:flex;align-items:center;justify-content:center;">
+                            <div style="width:16px;height:16px;background:#fc0;border-radius:50%;"></div>
                         </div>
                     </div>
-
-                    <div class="flag-label">Malaysia</div>
                 </div>
-
+                <div class="flag-label">Malaysia</div>
             </div>
-
         </div>
 
-    </section>
+    </div>
+
+</section>
 
 </main>
 
 <footer>
     &copy; 2026 GJPAUS™ . All Rights Reserved . @GP9434
 </footer>
+
+<!-- ⭐ FIXED CLOCK SCRIPT (correct placement) -->
+<script>
+    function startDigitalClock() {
+        const engine = new Date();
+
+        let hours = engine.getHours();
+        const minutes = String(engine.getMinutes()).padStart(2,'0');
+        const seconds = String(engine.getSeconds()).padStart(2,'0');
+        const ampm = hours >= 12 ? 'PM' : 'AM';
+
+        hours = hours % 12;
+        hours = hours ? hours : 12;
+        const hourStr = String(hours).padStart(2,'0');
+
+        document.getElementById('display-clock').textContent =
+            `${hourStr} : ${minutes} : ${seconds} ${ampm}`;
+
+        const options = { day:'numeric', month:'long', year:'numeric', weekday:'long' };
+        const formatted = engine.toLocaleDateString('en-GB', options).toUpperCase();
+        const parts = formatted.split(', ');
+
+        if (parts.length > 1) {
+            document.getElementById('display-date').innerHTML =
+                `${parts[1]} &nbsp;|&nbsp; ${parts[0]}`;
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        startDigitalClock();
+        setInterval(startDigitalClock, 1000);
+    });
+</script>
 
 </body>
 </html>
