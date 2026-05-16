@@ -365,50 +365,27 @@ www.gjpaus.com
         </div>
 
         
-        <div id="journey" class="card">
-
-            <h3 style="text-align:center; color:#d4af37;">FOLLOW MY JOURNEY</h3>
-
-            <div style="background:#0d0d0d;border:1px solid rgba(212,175,55,0.14);padding:40px;border-radius:12px;font-family:'Montserrat',sans-serif;max-width:550px;box-shadow:0 10px 30px rgba(0,0,0,0.5);margin:20px auto;text-align:left;">
-
-                <div style="margin-bottom:20px;">
-                <div id="display-clock"
-     style="font-family:'Cinzel',serif;font-size:30px;color:#d4af37;font-weight:700;margin-bottom:">
-                        04 : 38 : 00 AM
-                    </div>
-
-                    <div id="display-date"
-style="font-size:16px;color:#c8c8c8;text-transform:uppercase;font-weight:500;">
+<div style="background:#0d0d0d; padding:20px; font-family:sans-serif; color:#c8c8c8; max-width:350px; margin:auto;">
+    <div id="t" style="font-size:30px; color:#d4af37; font-weight:700; margin-bottom:15px;"></div>
+    <div id="d" style="font-size:16px; text-transform:uppercase; margin-bottom:15px;"></div>
+    <div>Behind The Story.</div>
 </div>
-                        
-                </div>
-
-                <div class="link">Behind The Story.</div>
-                <br>
-                <div class="link">
-
-                    
-                    <span style="color:#e5c158; font-size:1.4em;"> 000000 </span>
-
-                    
-                </div>
 
 <script>
-function updateClock(){
-const now=new Date();
-
-document.getElementById("display-clock").innerHTML=
-now.toLocaleTimeString('en-AU',{
-hour:'2-digit',
-minute:'2-digit',
-second:'2-digit'
-});
+const f = () => {
+    const n = new Date();
+    document.getElementById('t').innerHTML = n.toLocaleTimeString('en-AU', {hour12:true});
+    document.getElementById('d').innerHTML = n.toLocaleDateString('en-AU', {weekday:'short', day:'numeric', month:'short', year:'numeric'});
 }
-
-updateClock();
-setInterval(updateClock,1000);
+f(); setInterval(f, 1000);
 </script>
 
+
+
+        
+
+        
+                
             </div>
 
             <div class="flag-row">
