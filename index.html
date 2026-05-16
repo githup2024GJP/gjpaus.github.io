@@ -367,8 +367,10 @@
                         }
                     }
 
-                    startDigitalClock();
-                    setInterval(startDigitalClock, 1000);
+                    document.addEventListener("DOMContentLoaded", () => {
+    startDigitalClock();
+    setInterval(startDigitalClock, 1000);
+});
                 </script>
 
             </div>
