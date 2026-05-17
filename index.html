@@ -1,445 +1,668 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GJPAUS™ - Pause. Protect Your Power.</title>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        :root {
-            --gold: #d4af37;
-            --black: #0a0a0a;
-            --light-gold: #fff7c2;
-        }
+<title>GJPAUS™ — Pause. Protect Your Power.</title>
 
-        body, html {
-            margin: 0;
-            padding: 0;
-            background-color: var(--black);
-            color: white;
-            font-family: 'Montserrat', sans-serif;
-            overflow-x: hidden;
-            scroll-behavior: smooth;
-        }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-        .bg-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 50% 50%, #1a1a1a 0%, #000000 100%);
-            z-index: -1;
-        }
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 36px 56px;
-            text-transform: uppercase;
-            font-size: 13px;
-        }
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-        .logo-handle {
-            color: var(--gold);
-            font-weight: 600;
-            display: flex;
-            flex-direction: column;
-        }
+<style>
 
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0 15px;
-            transition: 0.3s;
-        }
+:root{
+--gold:#d4af37;
+--light-gold:#fff7c2;
+--dark:#050505;
+--text:#d6d6d6;
+}
 
-        nav a:hover { color: var(--gold); }
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
 
-        .hero {
-            text-align: center;
-            padding: 100px 20px 80px;
-            max-width: 1280px;
-            margin: 0 auto;
-        }
+html{
+scroll-behavior:smooth;
+}
 
-        h1 {
-            font-family: 'Cinzel', serif;
-            font-size: clamp(3.2rem, 10vw, 6.4rem);
-            margin: 10px 0;
-            background: linear-gradient(to bottom, #fff7c2 0%, #f4d96b 35%, #d4af37 60%, #8a6d19 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 0 28px rgba(212, 175, 55, 0.45));
-        }
+body{
+background:#050505;
+color:#fff;
+font-family:'Montserrat',sans-serif;
+overflow-x:hidden;
+}
 
-        .tagline {
-            font-size: clamp(15px, 2vw, 22px);
-            color: #d4af37;
-            margin-bottom: 48px;
-            text-transform: uppercase;
-            font-weight: 400;
-            font-family: Georgia, serif;
-            text-shadow: 0 0 6px rgba(212,175,55,0.35);
-        }
 
-        .description {
-            color: #cccccc;
-            line-height: 2;
-            margin-bottom: 40px;
-        }
 
-        .cta-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            margin: 30px 0 80px;
-            flex-wrap: wrap;
-        }
+/* BACKGROUND */
 
-        .btn {
-            padding: 16px 38px;
-            text-decoration: none;
-            font-weight: 600;
-            border-radius: 8px;
-            transition: 0.4s ease;
-            font-size: 15px;
-            text-transform: uppercase;
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-        }
+.bg-overlay{
+position:fixed;
+inset:0;
+background:
+radial-gradient(circle at center,
+#1a1a1a 0%,
+#050505 75%);
+z-index:-1;
+}
 
-        .btn-gold { background: var(--gold); color: black; border: 1px solid var(--gold); }
-        .btn-gold:hover { background: #b8962e; border-color: #b8962e; }
-        .btn-outline { border: 1px solid white; color: white; }
-        .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
 
-        .features {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 50px;
-            align-items: stretch;
-            padding-bottom: 100px;
-            max-width: 1080px;
-            margin: 0 auto;
-        }
 
-        .card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(212, 175, 55, 0.14);
-            padding: 48px;
-            border-radius: 14px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            transition: 0.4s ease;
-            text-align: left;
-        }
+/* TOP */
 
-        .card:hover {
-            border-color: rgba(212,175,55,0.75);
-            background: rgba(255, 255, 255, 0.06);
-        }
+.top-bar{
+padding:28px 20px 12px;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+text-align:center;
+}
 
-        .card h3 {
-            color: var(--gold);
-            margin-top: 0;
-            margin-bottom: 15px;
-        }
+.signature{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+padding:10px 18px;
+border-radius:999px;
+text-decoration:none;
+font:600 14px 'Montserrat',sans-serif;
+letter-spacing:2px;
+background:#ff4e20;
+color:#fff;
+transition:.35s ease;
+white-space:nowrap;
+}
 
-        .card p {
-            color: #cccccc;
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
+.signature:hover{
+background:#ff4e20;
+box-shadow:0 0 18px rgba(255,78,32,.28);
+}
 
-        .flag-row {
-            display: flex;
-            justify-content: center;
-            gap: 24px;
-            flex-wrap: wrap;
-            margin-top: auto;
-            padding-top: 15px;
-        }
+#counter{
+margin-top:12px;
+font-size:12px;
+letter-spacing:2px;
+color:rgba(212,175,55,.62);
+white-space:nowrap;
+font-variant-numeric:tabular-nums;
+}
 
-        .flag-item {
-            width: 80px;
-            text-align: center;
-        }
 
-        .flag-frame {
-            width: 100%;
-            height: auto;
-            border-radius: 4px;
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 6px 18px rgba(0,0,0,0.55);
-            transition: 0.4s ease;
-        }
 
-        .flag-frame img {
-            width: 100%;
-            display: block;
-            object-fit: cover;
-        }
+/* HERO */
 
-        .flag-item:hover .flag-frame {
-            border-color: rgba(212,175,55,0.8);
-            transform: translateY(-5px);
-        }
+.hero{
+max-width:1200px;
+margin:auto;
+padding:80px 20px 70px;
+text-align:center;
+}
 
-        .flag-label {
-            font-size: 12px;
-            color: #888;
-            margin-top: 10px;
-            text-transform: uppercase;
-        }
+h1{
+font-family:'Cinzel',serif;
+font-size:clamp(3.6rem,10vw,7rem);
+letter-spacing:4px;
+margin-bottom:16px;
 
-        footer {
-            text-align: center;
-            padding: 70px 0 90px;
-            font-size: 13px;
-            color: rgba(212, 175, 55, 0.5);
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            text-transform: uppercase;
-        }
+background:
+linear-gradient(to bottom,
+var(--light-gold) 0%,
+#f4d96b 35%,
+var(--gold) 60%,
+#8a6d19 100%);
 
-        @media (max-width: 900px) {
-            .features {
-                grid-template-columns: 1fr;
-                max-width: 550px;
-            }
-        }
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 
-        @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                padding: 20px;
-                gap: 20px;
-            }
+filter:drop-shadow(0 0 24px rgba(212,175,55,.28));
+}
 
-            nav {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 15px;
-            }
+.tagline{
+font-size:clamp(14px,2vw,24px);
+letter-spacing:6px;
+text-transform:uppercase;
+color:var(--gold);
+margin-bottom:24px;
+}
 
-            nav a { margin: 0 5px; }
+.sub-message{
+font-size:13px;
+letter-spacing:4px;
+text-transform:uppercase;
+color:#8a8a8a;
+margin-bottom:44px;
+line-height:2;
+}
 
-            .logo-handle {
-                width: 100%;
-                text-align: center;
-                margin-bottom: 10px;
-            }
 
-            .cta-buttons { gap: 20px; }
-        }
-    </style>
+
+/* BUTTONS */
+
+.cta-buttons{
+display:flex;
+justify-content:center;
+align-items:center;
+gap:18px;
+flex-wrap:wrap;
+}
+
+.btn-outline{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+padding:12px 22px;
+border:1px solid rgba(255,255,255,.18);
+border-radius:999px;
+text-decoration:none;
+font-size:13px;
+letter-spacing:2px;
+color:white;
+transition:.35s;
+white-space:nowrap;
+}
+
+.btn-outline:hover{
+border-color:var(--gold);
+color:var(--gold);
+}
+
+
+
+/* MAIN */
+
+.features{
+max-width:1050px;
+margin:auto;
+padding:0 20px 80px;
+display:grid;
+gap:26px;
+}
+
+.card{
+background:rgba(255,255,255,.02);
+border:1px solid rgba(212,175,55,.10);
+border-radius:18px;
+padding:46px 34px;
+text-align:center;
+}
+
+.section-title{
+font-family:'Cinzel',serif;
+font-size:clamp(24px,4vw,34px);
+letter-spacing:4px;
+color:var(--gold);
+margin-bottom:26px;
+text-transform:uppercase;
+}
+
+.section-text{
+color:var(--text);
+line-height:2;
+font-size:15px;
+font-weight:300;
+}
+
+
+
+/* FLAGS */
+
+.flag-row{
+display:flex;
+justify-content:center;
+align-items:center;
+gap:16px;
+flex-wrap:nowrap;
+overflow-x:auto;
+overflow-y:hidden;
+white-space:nowrap;
+padding:0 12px;
+scrollbar-width:none;
+margin-top:14px;
+opacity:.88;
+}
+
+.flag-row::-webkit-scrollbar{
+display:none;
+}
+
+.flag-item{
+flex:0 0 auto;
+width:44px;
+}
+
+.flag-frame{
+width:100%;
+border-radius:4px;
+overflow:hidden;
+border:1px solid rgba(255,255,255,.08);
+box-shadow:0 4px 12px rgba(0,0,0,.38);
+}
+
+.flag-frame img{
+width:100%;
+display:block;
+object-fit:cover;
+}
+
+
+
+/* DIGITAL CLOCK */
+
+.datetime-wrap{
+width:100%;
+display:flex;
+justify-content:center;
+align-items:center;
+gap:12px;
+flex-wrap:nowrap;
+margin:30px auto;
+padding:0 12px;
+white-space:nowrap;
+overflow:hidden;
+}
+
+.time-box{
+display:flex;
+align-items:center;
+justify-content:center;
+padding:8px 14px;
+border:1px solid rgba(212,175,55,.14);
+border-radius:10px;
+background:rgba(255,255,255,.02);
+box-shadow:0 0 18px rgba(0,0,0,.22);
+flex-shrink:0;
+}
+
+#live-time{
+font-family:'Lucida Console',monospace;
+font-size:clamp(10px,2.5vw,17px);
+letter-spacing:1.5px;
+color:#d4af37;
+text-shadow:0 0 8px rgba(212,175,55,.28);
+font-variant-numeric:tabular-nums;
+}
+
+#live-date{
+font-size:clamp(10px,2.2vw,14px);
+letter-spacing:1.5px;
+color:rgba(212,175,55,.58);
+text-transform:uppercase;
+overflow:hidden;
+text-overflow:ellipsis;
+}
+
+
+
+/* FOOTER */
+
+footer{
+text-align:center;
+padding:70px 20px;
+font-size:12px;
+letter-spacing:2px;
+text-transform:uppercase;
+color:rgba(212,175,55,.52);
+line-height:2;
+}
+
+
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.hero{
+padding-top:60px;
+}
+
+.card{
+padding:36px 24px;
+}
+
+.sub-message{
+letter-spacing:2px;
+}
+
+}
+
+</style>
+
 </head>
 
 <body>
 
 <div class="bg-overlay"></div>
 
-<header>
-    <div class="logo-handle" style="display:inline-block;">
-        <div class="cta-buttons" style="margin-top:5px;">
-           
- <a href="https://youtube.com/@gp9434" target="_blank"
-style="background:#ff4e20;color:#fff;font:600 20px Arial;text-decoration:none;display:inline-block;padding:1px 1px;">
-@GP9434
-</a>
-            <div id="counter"
-                 style="color:#00ffcc;font:700 28px 'Lucida Console',monospace;margin-top:10px;text-shadow:0 0 10px #00ffcc;display:none;">
-            </div>
 
-            <script>
-                async function updateCounter() {
-                    try {
-                        const response = await fetch('https://api.counterapi.dev/v1/gjpauscom/homepage/up');
-                        const data = await response.json();
-                        const views = data.count || data.data?.up_count;
-                        const counter = document.getElementById('counter');
-                        if (views) {
-                            counter.innerHTML = views.toLocaleString() + ' VIEWS';
-                            counter.style.display = 'block';
-                        }
-                    } catch (error) {
-                        console.log(error);
-                    }
-                }
-                updateCounter();
-            </script>
-        </div>
 
-        <nav>
-            <a href="index.html">Home</a>
-<a href="#mybook">My Message</a>
-               <a href="#journey">Journey</a>
-               <a href="mailto:contact@gjpaus.com"
-               style="text-decoration: none; color: white; border: none; background: none;"
-               onmouseover="this.style.color='gold'"
-               onmouseout="this.style.color='white'">
-                CONTACT
-            </a>
-        </nav>
-</header>
+<!-- TOP -->
 
-<main class="hero">
+<div class="top-bar">
 
-    <h1>GJPAUS</h1>
+<a href="https://youtube.com/@gp9434"
+target="_blank"
+class="signature">
 
-    <p class="tagline">PAUSE. PROTECT YOUR POWER.</p>
+<i class="fab fa-youtube"></i>&nbsp; @GP9434
 
-    <div style="width:140px;height:2px;margin:0 auto 35px;background:linear-gradient(to right, transparent, #d4af37, #fff7c2, #d4af37, transparent);box-shadow:0 0 15px #d4af37;border-radius:10px;"></div>
-
-    <p class="description" style="line-height:1.9;">
-        Motivational content to help you pause, reset, and protect your inner power. <br>
-        <strong style="font-size:.82em;white-space:nowrap; color:#f5f5f5; display:block;text-align:center;"> STRONG MIND. STRONG ENERGY. STRONG LIFE. </strong>
-    </p>
-
-    
-    <div class="cta-buttons" style="margin-top:25px;">
-
-        
-      <a href="https://www.youtube.com/@gp9434" target="_blank"
-style="background:gold;padding:14px 28px;border-radius:18px;display:inline-block;box-shadow:0 0 10px rgba(255,215,0,.28);">
-<i class="fa-brands fa-youtube" style="color:red;font-size:40px;text-shadow:0 0 4px rgba(255,255,255,.45);"></i>
 </a>
 
-        
-    </div>
+<div id="counter">
 
-    <section class="features">
+000,000 VIEWS
 
-        <div id="mybook" class="card">
+</div>
 
-    <h3 style="text-align:center; color:#d4af37;">MY BOOK</h3>
+</div>
 
-            <div class="card" style="text-align:center;">
 
-<h1 style="color:#d4af37;font-family:'Cinzel',serif;">
-THE HUMAN BEHIND THE PRIZE
+
+<!-- HERO -->
+
+<section class="hero">
+
+<h1>
+
+GJPAUS
+
 </h1>
 
-<h2 style="color:#c8c8c8;font-weight:400;">
-Life Experiences Wisdom
+<div class="tagline">
+
+PAUSE. PROTECT YOUR POWER.
+
+</div>
+
+<div class="sub-message">
+
+STRONG MIND · STRONG ENERGY · STRONG LIFE
+
+</div>
+
+<div class="cta-buttons">
+
+<a href="https://youtube.com/@gp9434"
+target="_blank"
+class="signature">
+
+<i class="fab fa-youtube"></i>&nbsp; @GP9434
+
+</a>
+
+<a href="#book"
+class="btn-outline">
+
+THE HUMAN BEHIND THE PRIZE
+
+</a>
+
+</div>
+
+</section>
+
+
+
+<!-- MAIN -->
+
+<main class="features">
+
+
+
+<!-- JOURNEY -->
+
+<div class="card">
+
+<h2 class="section-title">
+
+THE JOURNEY
+
 </h2>
 
-<p><strong>By GJPAUS</strong></p>
+<p class="section-text">
 
-<p><em>
-Behind every number is a story. Behind every PRIZE is a person.
-</em></p>
+A journey through discipline,
+self-respect,
+clarity,
+and personal power.
 
-<ul style="text-align:left;max-width:650px;margin:auto;line-height:1.8;color:#c8c8c8;">
-  <li>Life lessons. Sacrifices. Purpose.</li>
-  <li>Real stories.Real lessons. Not just words, but life.</li>
-  <li>Every scar has a meaning.</li>
-  <li>Inspiration for everyone. Because it's never too late.</li>
-  <li>More than a book. It's a message. It's a movement.</li>
-</ul>
+<br><br>
 
-<p style="margin-top:22px;">
-<strong>
-From Pain To Purpose, From Lessons To Legacy
-</strong>
+Built slowly.
+Built honestly.
+Built to last.
+
 </p>
 
-<p>
-Learn more at 
-<a href="https://www.gjpaus.com" style="color:#d4af37;">
-www.gjpaus.com
+</div>
+
+
+
+<!-- BOOK -->
+
+<div class="card" id="book">
+
+<h2 class="section-title">
+
+THE HUMAN BEHIND THE PRIZE
+
+</h2>
+
+<p class="section-text">
+
+Behind every number is a story.
+Behind every prize is a human being.
+
+<br><br>
+
+Every scar carries wisdom.
+Every experience leaves a legacy.
+
+<br><br>
+
+From Pain to Purpose.
+From Lessons to Legacy.
+
+</p>
+
+</div>
+
+
+
+<!-- STORY -->
+
+<div class="card">
+
+<h2 class="section-title">
+
+BEHIND THE STORY
+
+</h2>
+
+
+
+<!-- CLOCK -->
+
+<div class="datetime-wrap">
+
+<div class="time-box">
+
+<span id="live-time"></span>
+
+</div>
+
+<div id="live-date"></div>
+
+</div>
+
+
+
+<!-- FLAGS -->
+
+<div class="flag-row">
+
+<div class="flag-item">
+<div class="flag-frame">
+<img src="https://flagcdn.com/w80/au.png" alt="">
+</div>
+</div>
+
+<div class="flag-item">
+<div class="flag-frame">
+<img src="https://flagcdn.com/w80/th.png" alt="">
+</div>
+</div>
+
+<div class="flag-item">
+<div class="flag-frame">
+<img src="https://flagcdn.com/w80/us.png" alt="">
+</div>
+</div>
+
+<div class="flag-item">
+<div class="flag-frame">
+<img src="https://flagcdn.com/w80/vn.png" alt="">
+</div>
+</div>
+
+<div class="flag-item">
+<div class="flag-frame">
+<img src="https://flagcdn.com/w80/la.png" alt="">
+</div>
+</div>
+
+<div class="flag-item">
+<div class="flag-frame">
+<img src="https://flagcdn.com/w80/my.png" alt="">
+</div>
+</div>
+
+</div>
+
+
+
+<div class="cta-buttons" style="margin-top:34px;">
+
+<a href="https://youtube.com/@gp9434"
+target="_blank"
+class="signature">
+
+<i class="fab fa-youtube"></i>&nbsp; @GP9434
+
 </a>
-</p>
 
 </div>
-            
-<p style="text-align:center;">Life experiences and wisdom. Book coming soon.</p>
-        </div>
-
-
-
-        
-        
-<div style="background:#0d0d0d; padding:28px; font-family:sans-serif; color:#c8c8c8; max-width:350px; margin:auto;">
-    <div id="t" style="font-size:35px; color:#d4af37; font-weight:700; margin-bottom:15px;"></div>
-    <div id="d" style="font-size:16px; text-transform:uppercase; margin-bottom:15px;"></div>
-    <div class="link">Behind The Story.</div>
-
-<div style="height:12px;"></div>
-
-<div class="link" style="text-align:center; display:flex; flex-direction:column; align-items:center;">
-    <span style="color:#e5c158; font-size:2em;">000000</span>
-    
-    <!-- แถวที่ 1 (3 ประเทศ) -->
-    <div style="display:flex; justify-content:center; gap:14px; margin-top:16px; flex-wrap:wrap;">
-
-        <div class="flag-item">
-            <img src="https://flagcdn.com/w160/au.png" style="width:52px; aspect-ratio:3/2; object-fit:cover; display:block;">
-        </div>
-
-        <div class="flag-item">
-            <img src="https://flagcdn.com/w160/th.png" style="width:52px; aspect-ratio:3/2; object-fit:cover; display:block;">
-        </div>
-
-        <div class="flag-item">
-            <img src="https://flagcdn.com/w160/us.png" style="width:52px; aspect-ratio:3/2; object-fit:cover; display:block;">
-        </div>
-
-    </div>
-
-    <!-- แถวที่ 2 (3 ประเทศ) -->
-    <div style="display:flex; justify-content:center; gap:14px; margin-top:12px; flex-wrap:wrap;">
-
-        <div class="flag-item">
-            <img src="https://flagcdn.com/w160/vn.png" style="width:52px; aspect-ratio:3/2; object-fit:cover; display:block;">
-        </div>
-
-        <div class="flag-item">
-            <img src="https://flagcdn.com/w160/la.png" style="width:52px; aspect-ratio:3/2; object-fit:cover; display:block;">
-        </div>
-
-        <div class="flag-item">
-            <img src="https://flagcdn.com/w160/my.png" style="width:52px; aspect-ratio:3/2; object-fit:cover; display:block;">
-        </div>
-
-    </div>
-    
-</div>
-    
-
-    </div>
 
 </div>
-    
-</div>
-
-        
-<script>
-const f = () => {
-    const n = new Date();
-    document.getElementById('t').innerHTML = n.toLocaleTimeString('en-AU', {hour12:true});
-    document.getElementById('d').innerHTML = n.toLocaleDateString('en-AU', {weekday:'short', day:'numeric', month:'short', year:'numeric'});
-}
-f(); setInterval(f, 1000);
-</script>
-
- </div>
-
-        
-    </section>
 
 </main>
 
+
+
+<!-- FOOTER -->
+
 <footer>
-    &copy; 2026 GJPAUS™-All Rights Reserved - @GP9434
+
+<div>
+
+Sydney, Australia · GJPAUS™
+
+</div>
+
+<div style="opacity:.55;">
+
+© 2026 GJPAUS™ · ALL RIGHTS RESERVED
+
+</div>
+
 </footer>
+
+
+
+<!-- COUNTER -->
+
+<script>
+
+async function updateCounter(){
+
+try{
+
+const response =
+await fetch('https://api.counterapi.dev/v1/gjpauscom/homepage/up');
+
+const data =
+await response.json();
+
+const views =
+data.count || data.data?.up_count;
+
+if(views){
+
+document.getElementById('counter').innerHTML =
+views.toLocaleString() + ' VIEWS';
+
+}
+
+}catch(error){
+
+console.log(error);
+
+}
+
+}
+
+updateCounter();
+
+</script>
+
+
+
+<!-- CLOCK -->
+
+<script>
+
+function updateDateTime(){
+
+const now = new Date();
+
+const time =
+now.toLocaleTimeString('en-AU',{
+hour:'2-digit',
+minute:'2-digit',
+second:'2-digit'
+});
+
+const date =
+now.toLocaleDateString('en-AU',{
+weekday:'long',
+day:'numeric',
+month:'long',
+year:'numeric'
+}).replace(',','');
+
+document.getElementById('live-time').innerHTML =
+time;
+
+document.getElementById('live-date').innerHTML =
+date;
+
+}
+
+updateDateTime();
+
+setInterval(updateDateTime,1000);
+
+</script>
 
 </body>
 </html>
