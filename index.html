@@ -566,9 +566,28 @@ BEHIND THE STORY
 
 </div>
 
-<div id="counter" style="margin-top:10px; color:#d4af37; font-size:14px; opacity:0.85;">
-  Loading...
-</div>
+  <div id="counter" style="display:none;"></div>
+
+<script>
+fetch('https://api.counterapi.dev/v2/gjpaus/homepage/up')
+  .then(res => res.json())
+  .then(data => {
+
+    const views = data.count;
+
+    const counter = document.getElementById('counter');
+
+    counter.innerText = views.toLocaleString();
+
+    counter.style.display = 'block';
+
+  })
+  .catch(() => {
+
+    document.getElementById('counter').style.display = 'none';
+
+  });
+</script>
 
 
 
