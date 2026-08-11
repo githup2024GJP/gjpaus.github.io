@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css" />
 
     <style>
-        /* ซ่อนตัว Google Translate Original ไว้เบื้องหลังทั้งหมด ไม่ให้โผล่สีขาวหรือลอยมาบดบัง */
+        /* ซ่อนตัว Google Translate Original ไว้เบื้องหลังทั้งหมด */
         #google_translate_element, 
         .goog-te-banner-frame, 
         .skiptranslate,
@@ -259,7 +259,7 @@
             color:var(--gold);
         }
 
-        /* CUSTOM TRANSLATE DROPDOWN CONTAINER (ชิดขวาบน เด่นชัด) */
+        /* CUSTOM TRANSLATE DROPDOWN CONTAINER */
         .custom-translate-wrapper {
             position: absolute;
             top: 20px;
@@ -297,7 +297,7 @@
             border: 2px solid #FFD700 !important;
             border-radius: 999px !important;
             min-height: 42px !important;
-            padding: 4px 16px 4px 38px !important; /* เว้นระยะด้านซ้ายให้หลบไอคอนโลก */
+            padding: 4px 16px 4px 38px !important;
             display: flex !important;
             align-items: center !important;
             color: #ffffff !important;
@@ -326,6 +326,7 @@
             color: #ffffff !important;
             margin-top: 6px !important;
             box-shadow: 0 8px 20px rgba(0,0,0,0.9), 0 0 10px rgba(255,215,0,0.3) !important;
+            max-height: 300px !important;
         }
         .choices__input {
             background-color: #1c1c1c !important;
@@ -483,35 +484,150 @@
 
 <body>
 
-    <!-- CUSTOM TRANSLATE SELECTOR (ชิดขวาบน พร้อมไอคอนโลกสีฟ้า) -->
+    <!-- CUSTOM TRANSLATE SELECTOR (ชิดขวาบน พร้อมไอคอนโลกสีฟ้า + 133 ภาษา) -->
     <div class="custom-translate-wrapper">
         <div class="custom-translate-box">
             <i class="fas fa-globe globe-icon"></i>
             <select id="language-picker">
                 <option value="">SELECT LANGUAGE</option>
-                <option value="en">English</option>
+                <option value="af">Afrikaans</option>
                 <option value="sq">Albanian (Shqip)</option>
+                <option value="am">Amharic (አማርኛ)</option>
                 <option value="ar">Arabic (العربية)</option>
-                <option value="zh-CN">Chinese (Simplified)</option>
-                <option value="zh-TW">Chinese (Traditional)</option>
+                <option value="hy">Armenian (Հայերեն)</option>
+                <option value="as">Assamese (অসমীয়া)</option>
+                <option value="ay">Aymara</option>
+                <option value="az">Azerbaijani (Azərbaycan)</option>
+                <option value="bm">Bambara</option>
+                <option value="eu">Basque (Euskara)</option>
+                <option value="be">Belarusian (พัลงารสกายา)</option>
+                <option value="bn">Bengali (ภาษาบังกลา)</option>
+                <option value="bho">Bhojpuri</option>
+                <option value="bs">Bosnian (Bosanski)</option>
+                <option value="bg">Bulgarian (Български)</option>
+                <option value="ca">Catalan (Català)</option>
+                <option value="ceb">Cebuano</option>
+                <option value="ny">Chichewa</option>
+                <option value="zh-CN">Chinese Simplified (简体中文)</option>
+                <option value="zh-TW">Chinese Traditional (繁體中文)</option>
+                <option value="co">Corsican</option>
+                <option value="hr">Croatian (Hrvatski)</option>
+                <option value="cs">Czech (Čeština)</option>
+                <option value="da">Danish (Dansk)</option>
+                <option value="dv">Divehi</option>
+                <option value="doi">Dogri</option>
+                <option value="nl">Dutch (Nederlands)</option>
+                <option value="en">English</option>
+                <option value="eo">Esperanto</option>
+                <option value="et">Estonian (Eesti)</option>
+                <option value="ee">Ewe</option>
+                <option value="tl">Filipino (Tagalog)</option>
+                <option value="fi">Finnish (Suomi)</option>
                 <option value="fr">French (Français)</option>
+                <option value="fy">Frisian</option>
+                <option value="gl">Galician (Galego)</option>
+                <option value="ka">Georgian (ქართული)</option>
                 <option value="de">German (Deutsch)</option>
+                <option value="el">Greek (Ελληνικά)</option>
+                <option value="gn">Guarani</option>
+                <option value="gu">Gujarati (ગુજરાતી)</option>
+                <option value="ht">Haitian Creole</option>
+                <option value="ha">Hausa</option>
+                <option value="haw">Hawaiian</option>
+                <option value="iw">Hebrew (עברית)</option>
                 <option value="hi">Hindi (हिन्दी)</option>
+                <option value="hmn">Hmong</option>
+                <option value="hu">Hungarian (Magyar)</option>
+                <option value="is">Icelandic (Íslenska)</option>
+                <option value="ig">Igbo</option>
+                <option value="ilo">Ilocano</option>
                 <option value="id">Indonesian (Bahasa Indonesia)</option>
+                <option value="ga">Irish (Gaeilge)</option>
                 <option value="it">Italian (Italiano)</option>
                 <option value="ja">Japanese (日本語)</option>
+                <option value="jw">Javanese</option>
+                <option value="kn">Kannada (ภาษากันนาดา)</option>
+                <option value="kk">Kazakh (Қาซาค)</option>
+                <option value="km">Khmer (ภาษาเขมร)</option>
+                <option value="rw">Kinyarwanda</option>
+                <option value="gom">Konkani</option>
                 <option value="ko">Korean (한국어)</option>
-                <option value="lo">Lao (ลาว)</option>
+                <option value="kri">Krio</option>
+                <option value="ku">Kurdish (Kurmancî)</option>
+                <option value="ckb">Kurdish (Sorani)</option>
+                <option value="ky">Kyrgyz (Кыргызча)</option>
+                <option value="lo">Lao (ภาษาลาว)</option>
+                <option value="la">Latin</option>
+                <option value="lv">Latvian (Latviešu)</option>
+                <option value="ln">Lingala</option>
+                <option value="lt">Lithuanian (Lietuvių)</option>
+                <option value="lg">Luganda</option>
+                <option value="lb">Luxembourgish</option>
+                <option value="mk">Macedonian (Македонски)</option>
+                <option value="mai">Maithili</option>
+                <option value="mg">Malagasy</option>
                 <option value="ms">Malay (Bahasa Melayu)</option>
+                <option value="ml">Malayalam (ภาษามลายาลัม)</option>
+                <option value="mt">Maltese</option>
+                <option value="mi">Maori</option>
+                <option value="mr">Marathi (ภาษาดาราที)</option>
+                <option value="mni-Mtei">Meiteilon (Manipuri)</option>
+                <option value="lus">Mizo</option>
+                <option value="mn">Mongolian (Монгол)</option>
+                <option value="my">Myanmar (Burmese)</option>
+                <option value="ne">Nepali (नेपाली)</option>
+                <option value="no">Norwegian (Norsk)</option>
+                <option value="or">Odia (Oriya)</option>
+                <option value="om">Oromo</option>
+                <option value="ps">Pashto (ปาซโต)</option>
+                <option value="fa">Persian (فارسی)</option>
+                <option value="pl">Polish (Polski)</option>
+                <option value="pt">Portuguese (Português)</option>
+                <option value="pa">Punjabi (ปัญจาบ)</option>
+                <option value="qu">Quechua</option>
+                <option value="ro">Romanian (Română)</option>
                 <option value="ru">Russian (Русский)</option>
+                <option value="sm">Samoan</option>
+                <option value="sa">Sanskrit</option>
+                <option value="gd">Scots Gaelic</option>
+                <option value="nso">Sepedi</option>
+                <option value="sr">Serbian (Српски)</option>
+                <option value="st">Sesotho</option>
+                <option value="sn">Shona</option>
+                <option value="sd">Sindhi</option>
+                <option value="si">Sinhala (ภาษาสิงหล)</option>
+                <option value="sk">Slovak (Slovenčina)</option>
+                <option value="sl">Slovenian (Slovenščina)</option>
+                <option value="so">Somali</option>
                 <option value="es">Spanish (Español)</option>
+                <option value="su">Sundanese</option>
+                <option value="sw">Swahili (Kiswahili)</option>
+                <option value="sv">Swedish (Svenska)</option>
+                <option value="tg">Tajik (ภาษาทาจิก)</option>
+                <option value="ta">Tamil (ภาษาทมิฬ)</option>
+                <option value="tt">Tatar</option>
+                <option value="te">Telugu (ภาษาเตลูกู)</option>
                 <option value="th">Thai (ไทย)</option>
+                <option value="ti">Tigrinya</option>
+                <option value="ts">Tsonga</option>
+                <option value="tr">Turkish (Türkçe)</option>
+                <option value="tk">Turkmen</option>
+                <option value="ak">Twi</option>
+                <option value="uk">Ukrainian (Українська)</option>
+                <option value="ur">Urdu (اردو)</option>
+                <option value="ug">Uyghur</option>
+                <option value="uz">Uzbek (O'zbek)</option>
                 <option value="vi">Vietnamese (Tiếng Việt)</option>
+                <option value="cy">Welsh (Cymraeg)</option>
+                <option value="xh">Xhosa</option>
+                <option value="yi">Yiddish</option>
+                <option value="yo">Yoruba</option>
+                <option value="zu">Zulu</option>
             </select>
         </div>
     </div>
 
-    <!-- GOOGLE TRANSLATE (ถูกซ่อนไว้เบื้องหลัง ป้องกันการเกิดแทบขาวลอย) -->
+    <!-- GOOGLE TRANSLATE (ถูกซ่อนไว้เบื้องหลัง) -->
     <div id="google_translate_element"></div>
 
     <div class="bg-overlay"></div>
@@ -798,7 +914,7 @@
             const element = document.getElementById('language-picker');
             const choices = new Choices(element, {
                 searchEnabled: true,
-                searchPlaceholderValue: 'Search...',
+                searchPlaceholderValue: 'Search language...',
                 itemSelectText: '',
                 shouldSort: false
             });
