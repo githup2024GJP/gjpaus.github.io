@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -270,10 +271,24 @@
         }
 
         .custom-translate-box {
-            width: 210px;
+            position: relative;
+            width: 220px;
         }
 
-        /* Custom Styling สำหรับ Choices.js เพิ่มความสว่าง ตัวหนา ชัดเจน */
+        /* ไอคอนโลกสีฟ้าสดใส */
+        .globe-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1001;
+            color: #00d2ff !important;
+            font-size: 16px;
+            filter: drop-shadow(0 0 6px rgba(0, 210, 255, 0.8));
+            pointer-events: none;
+        }
+
+        /* Custom Styling สำหรับ Choices.js */
         .choices {
             margin-bottom: 0 !important;
         }
@@ -282,7 +297,7 @@
             border: 2px solid #FFD700 !important;
             border-radius: 999px !important;
             min-height: 42px !important;
-            padding: 4px 16px !important;
+            padding: 4px 16px 4px 38px !important; /* เว้นระยะด้านซ้ายให้หลบไอคอนโลก */
             display: flex !important;
             align-items: center !important;
             color: #ffffff !important;
@@ -290,7 +305,7 @@
         }
         .choices__list--single {
             padding: 0 !important;
-            font-size: 13px !important;
+            font-size: 12px !important;
             font-weight: 700 !important;
             letter-spacing: 1.5px !important;
             text-transform: uppercase !important;
@@ -456,7 +471,9 @@
         @media(max-width:768px){
             .hero{ padding-top:75px; }
             .custom-translate-wrapper { top: 12px; right: 12px; }
-            .custom-translate-box { width: 165px; }
+            .custom-translate-box { width: 175px; }
+            .globe-icon { font-size: 14px; left: 12px; }
+            .choices__inner { padding-left: 32px !important; }
             .card{ padding:36px 24px; }
             .sub-message{ letter-spacing:1px; }
             .features{ grid-template-columns:1fr; justify-items:center; }
@@ -466,11 +483,12 @@
 
 <body>
 
-    <!-- CUSTOM TRANSLATE SELECTOR (ชิดขวาบน เด่นชัด) -->
+    <!-- CUSTOM TRANSLATE SELECTOR (ชิดขวาบน พร้อมไอคอนโลกสีฟ้า) -->
     <div class="custom-translate-wrapper">
         <div class="custom-translate-box">
+            <i class="fas fa-globe globe-icon"></i>
             <select id="language-picker">
-                <option value="">🌐 select language</option>
+                <option value="">SELECT LANGUAGE</option>
                 <option value="en">English</option>
                 <option value="sq">Albanian (Shqip)</option>
                 <option value="ar">Arabic (العربية)</option>
