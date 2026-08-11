@@ -275,13 +275,32 @@
             align-items: center;
         }
 
-        .custom-translate-box {
-            position: relative;
-            width: 220px;
-            height: 42px; /* ล็อกความสูงคงที่ไว้ ไม่ให้ขยับเวลาโหลด */
+       /* 1. ล็อกขนาดกล่องภายนอกให้แน่นหนา ไม่ขยับเด็ดขาด */
+.custom-translate-box {
+    position: relative;
+    width: 210px !important;
+    height: 42px !important;
+    min-width: 210px !important;
+    min-height: 42px !important;
     display: flex;
     align-items: center;
-        }
+    justify-content: center;
+}
+
+/* 2. ซ่อน Choices.js ไว้ก่อนจนกว่าจะโหลดเสร็จ เพื่อป้องกันตัวหนังสือเด้ง */
+.custom-translate-box .choices {
+    width: 100% !important;
+    margin-bottom: 0 !important;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+}
+
+/* 3. เมื่อ Choices.js พร้อมทำงาน ให้ค่อยๆ แสดงผลแบบนุ่มนวล */
+.custom-translate-box .choices.is-open,
+.custom-translate-box .choices.is-focused,
+.custom-translate-box .choices[data-type*="select-one"] {
+    opacity: 1;
+}
 
         /* ไอคอนโลกสีฟ้าสดใส */
         .globe-icon {
@@ -508,8 +527,8 @@
                 <option value="az">Azerbaijani (Azərbaycan)</option>
                 <option value="bm">Bambara</option>
                 <option value="eu">Basque (Euskara)</option>
-                <option value="be">Belarusian (พัลงารสกายา)</option>
-                <option value="bn">Bengali (ภาษาบังกลา)</option>
+                <option value="be">Belarusian </option>
+                <option value="bn">Bengali </option>
                 <option value="bho">Bhojpuri</option>
                 <option value="bs">Bosnian (Bosanski)</option>
                 <option value="bg">Bulgarian (Български)</option>
@@ -554,9 +573,9 @@
                 <option value="it">Italian (Italiano)</option>
                 <option value="ja">Japanese (日本語)</option>
                 <option value="jw">Javanese</option>
-                <option value="kn">Kannada (ภาษากันนาดา)</option>
-                <option value="kk">Kazakh (Қาซาค)</option>
-                <option value="km">Khmer (ภาษาเขมร)</option>
+                <option value="kn">Kannada </option>
+                <option value="kk">Kazakh Қ</option>
+                <option value="km">Khmer </option>
                 <option value="rw">Kinyarwanda</option>
                 <option value="gom">Konkani</option>
                 <option value="ko">Korean (한국어)</option>
@@ -575,10 +594,10 @@
                 <option value="mai">Maithili</option>
                 <option value="mg">Malagasy</option>
                 <option value="ms">Malay (Bahasa Melayu)</option>
-                <option value="ml">Malayalam (ภาษามลายาลัม)</option>
+                <option value="ml">Malayalam </option>
                 <option value="mt">Maltese</option>
                 <option value="mi">Maori</option>
-                <option value="mr">Marathi (ภาษาดาราที)</option>
+                <option value="mr">Marathi </option>
                 <option value="mni-Mtei">Meiteilon (Manipuri)</option>
                 <option value="lus">Mizo</option>
                 <option value="mn">Mongolian (Монгол)</option>
@@ -587,11 +606,11 @@
                 <option value="no">Norwegian (Norsk)</option>
                 <option value="or">Odia (Oriya)</option>
                 <option value="om">Oromo</option>
-                <option value="ps">Pashto (ปาซโต)</option>
+                <option value="ps">Pashto </option>
                 <option value="fa">Persian (فارسی)</option>
                 <option value="pl">Polish (Polski)</option>
                 <option value="pt">Portuguese (Português)</option>
-                <option value="pa">Punjabi (ปัญจาบ)</option>
+                <option value="pa">Punjabi </option>
                 <option value="qu">Quechua</option>
                 <option value="ro">Romanian (Română)</option>
                 <option value="ru">Russian (Русский)</option>
@@ -603,7 +622,7 @@
                 <option value="st">Sesotho</option>
                 <option value="sn">Shona</option>
                 <option value="sd">Sindhi</option>
-                <option value="si">Sinhala (ภาษาสิงหล)</option>
+                <option value="si">Sinhala </option>
                 <option value="sk">Slovak (Slovenčina)</option>
                 <option value="sl">Slovenian (Slovenščina)</option>
                 <option value="so">Somali</option>
@@ -611,11 +630,11 @@
                 <option value="su">Sundanese</option>
                 <option value="sw">Swahili (Kiswahili)</option>
                 <option value="sv">Swedish (Svenska)</option>
-                <option value="tg">Tajik (ภาษาทาจิก)</option>
-                <option value="ta">Tamil (ภาษาทมิฬ)</option>
+                <option value="tg">Tajik </option>
+                <option value="ta">Tamil </option>
                 <option value="tt">Tatar</option>
-                <option value="te">Telugu (ภาษาเตลูกู)</option>
-                <option value="th">Thai (ไทย)</option>
+                <option value="te">Telugu </option>
+                <option value="th">Thai </option>
                 <option value="ti">Tigrinya</option>
                 <option value="ts">Tsonga</option>
                 <option value="tr">Turkish (Türkçe)</option>
