@@ -186,6 +186,7 @@
             color:#fff;
             font-family:'Montserrat',sans-serif;
             overflow-x:hidden;
+            top: 0 !important;
         }
 
         /* BACKGROUND */
@@ -430,8 +431,56 @@
             line-height:2;
         }
 
-        /* MOBILE */
+        /* GOOGLE TRANSLATE STYLES (TOP RIGHT FIXED) */
+        #google_translate_element {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 9999;
+        }
+
+        .goog-te-gadget {
+            font-family: 'Montserrat', sans-serif !important;
+            color: transparent !important;
+            font-size: 0px !important;
+        }
+
+        .goog-te-gadget select {
+            background-color: rgba(20, 20, 20, 0.85) !important;
+            backdrop-filter: blur(8px);
+            color: #ffffff !important;
+            border: 1px solid #d4af37 !important;
+            padding: 6px 14px !important;
+            border-radius: 20px !important;
+            font-family: 'Montserrat', sans-serif !important;
+            font-size: 12px !important;
+            outline: none;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+            transition: all 0.3s ease;
+        }
+
+        .goog-te-gadget select:hover {
+            border-color: #ffffff !important;
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
+        }
+
+        .goog-logo-link, 
+        .goog-te-gadget span,
+        .goog-te-banner-frame {
+            display: none !important;
+        }
+
+        /* MOBILE FIX FOR TOP RIGHT BUTTON */
         @media(max-width:768px){
+            #google_translate_element {
+                top: 12px;
+                right: 12px;
+            }
+            .goog-te-gadget select {
+                padding: 4px 10px !important;
+                font-size: 11px !important;
+            }
             .hero{
                 padding-top:60px;
             }
@@ -451,6 +500,9 @@
 
 <body>
 
+    <!-- TRANSLATE BUTTON (TOP RIGHT) -->
+    <div id="google_translate_element"></div>
+
     <div class="bg-overlay"></div>
 
     <!-- HERO -->
@@ -462,7 +514,7 @@
         STRONG MIND · STRONG ENERGY · STRONG LIFE
     </div>
 
-    <div class="cta-buttons" style="margin-bottom: 50px;">
+    <div class="cta-buttons" style="margin-bottom: 20px;">
         <a href="https://youtube.com/@gp9434" target="_blank" class="signature">
             <i class="fab fa-youtube"></i>&nbsp; @GP9434
         </a>
@@ -719,19 +771,17 @@
         updateDateTime();
         setInterval(updateDateTime,1000);
     </script>
-<!-- GOOGLE TRANSLATE SCRIPT -->
+
+    <!-- GOOGLE TRANSLATE SCRIPT -->
     <script type="text/javascript">
         function googleTranslateElementInit() {
             new google.translate.TranslateElement({
                 pageLanguage: 'en',
-                includedLanguages: 'en,th,zh-CN,ja,ko,es,fr,de,vi,lo,ms',
                 autoDisplay: false
             }, 'google_translate_element');
         }
     </script>
     <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
-</body>
-</html>
 </body>
 </html>
