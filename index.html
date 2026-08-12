@@ -10,6 +10,53 @@
     <!-- Choices.js สำหรับช่องเลือกภาษาแบบพิมพ์ค้นหาได้ ไม่ตีกับ Google Translate -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css" />
     <style>
+
+        <style>
+  /* 1. ล็อกขนาดปุ่มสีดำที่เห็นบนหน้าจอ */
+  .choices {
+    min-width: 200px !important;
+    min-height: 40px !important;
+  }
+
+  /* 2. ซ่อนช่องเลือกดั้งเดิม */
+  #language-picker {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  /* 3. ซ่อนระบบ Google Translate เบื้องหลัง */
+  #google_translate_element, 
+  .goog-te-banner-frame, 
+  .skiptranslate,
+  .goog-te-spinner-pos {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+  }
+
+  body {
+    top: 0px !important;
+  }
+</style>
+
+
+        
+        /* ล็อคขนาดปุ่มภาษา ไม่ให้ดิ้นหรือขยับตอนรีเฟรช */
+  .choices, #language-picker {
+    min-width: 200px !important;
+    min-height: 40px !important;
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+  }
+        /* เปลี่ยน .your-button-class เป็นชื่อ class หรือ id จริงของปุ่ม */
+.your-button-class {
+  min-width: 200px !important; /* ล็อกความกว้างขั้นต่ำไม่ให้หด */
+  min-height: 40px !important;  /* ล็อกความสูงขั้นต่ำไม่ให้กระตุก */
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+}
         /* ซ่อนตัว select ดั้งเดิม ไม่ให้เห็นกล่องขาวตอน Refresh */
         #language-picker {
             opacity: 0;
