@@ -6,12 +6,29 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css" />
 
     <style>
+         /* ซ่อนตัว select ดั้งเดิม ไม่ให้เห็นกล่องขาวตอน Refresh */
+#language-picker {
+    opacity: 0;
+    visibility: hidden;
+}
+        /* ซ่อนตัว Google Translate Original ไว้เบื้องหลังทั้งหมด */
+        #google_translate_element, 
+        .goog-te-banner-frame, 
+        .skiptranslate,
+        .goog-te-spinner-pos {
+            display: none !important;
+            opacity: 0 !important;
+            visibility: hidden !important;
+        }
+        body {
+            top: 0px !important;
+        }
+        
         /* The Journey */
         .journey-container {
             background-color: #0d0d0d;
@@ -468,11 +485,15 @@
         </a>
    <div id="google_translate_element" style="margin-top: 15px;"></div>
 </div>
+<button onclick="switchLanguage()" class="btn-outline">
+    <i class="fas fa-globe"></i>&nbsp; <span id="lang-text">TH / EN</span>
+</button>
 
-    <!-- MAIN -->
+    
     <main class="features">
+    <!-- MAIN -->
 
-        <!-- THE JOURNEY -->
+           <!-- THE JOURNEY -->
         <div class="card">
             <h2 class="section-title" style="margin-bottom: 20px;">THE JOURNEY</h2>
             
