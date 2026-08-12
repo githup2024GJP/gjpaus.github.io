@@ -238,7 +238,7 @@
             display:flex;
             justify-content:center;
             align-items:center;
-            gap:15px;
+            gap:18px;
             flex-wrap:wrap;
         }
 
@@ -272,7 +272,6 @@
     justify-content: center; /* จัดกลาง */
     align-items: center;
     flex-shrink: 0; /* ล็อกไว้ไม่ให้หดหรือขยายไปดันปุ่มอื่น */
-    width: 210px !important; /* ล็อกความกว้างคงที่ ไม่ให้ปุ่มอื่นขยับ */
 }
 
        /* 1. ล็อกขนาดกล่องภายนอกให้แน่นหนา ไม่ขยับเด็ดขาด */
@@ -285,7 +284,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
 }
 
 /* 2. ซ่อน Choices.js ไว้ก่อนจนกว่าจะโหลดเสร็จ เพื่อป้องกันตัวหนังสือเด้ง */
@@ -519,13 +517,28 @@
 
     <div class="sub-message">
         STRONG MIND · STRONG ENERGY · STRONG LIFE
-    </div> 
+    </div>
 
-<!-- CTA BUTTONS (รวมกล่องเลือกภาษาไว้ข้างหน้าสุด) -->
+
+    
+
+    <div class="bg-overlay"></div>
+
+        <a href="#book" class="btn-outline">
+            THE HUMAN BEHIND THE PRIZE
+        </a>
+        <a href="https://youtube.com/@gp9434" target="_blank" class="btn-outline" style="background:#ff4e20; border:none;">
+            <i class="fab fa-youtube"></i>&nbsp; @GP9434
+        </a>
+
+
     <div class="cta-buttons">
+
+    <!-- CUSTOM TRANSLATE SELECTOR ( พร้อมไอคอนโลกสีฟ้า + 133 ภาษา) -->
+    <div class="custom-translate-wrapper">
         <div class="custom-translate-box">
             <i class="fas fa-globe globe-icon"></i>
-            <select id="language-picker" class="notranslate" translate="no">
+<select id="language-picker" class="notranslate" translate="no">                
                 <option value="">SELECT LANGUAGE</option>
                 <option value="af">Afrikaans</option>
                 <option value="sq">Albanian (Shqip)</option>
@@ -537,8 +550,8 @@
                 <option value="az">Azerbaijani (Azərbaycan)</option>
                 <option value="bm">Bambara</option>
                 <option value="eu">Basque (Euskara)</option>
-                <option value="be">Belarusian</option>
-                <option value="bn">Bengali</option>
+                <option value="be">Belarusian </option>
+                <option value="bn">Bengali </option>
                 <option value="bho">Bhojpuri</option>
                 <option value="bs">Bosnian (Bosanski)</option>
                 <option value="bg">Bulgarian (Български)</option>
@@ -583,9 +596,9 @@
                 <option value="it">Italian (Italiano)</option>
                 <option value="ja">Japanese (日本語)</option>
                 <option value="jw">Javanese</option>
-                <option value="kn">Kannada</option>
-                <option value="kk">Kazakh</option>
-                <option value="km">Khmer</option>
+                <option value="kn">Kannada </option>
+                <option value="kk">Kazakh Қ</option>
+                <option value="km">Khmer </option>
                 <option value="rw">Kinyarwanda</option>
                 <option value="gom">Konkani</option>
                 <option value="ko">Korean (한국어)</option>
@@ -604,10 +617,10 @@
                 <option value="mai">Maithili</option>
                 <option value="mg">Malagasy</option>
                 <option value="ms">Malay (Bahasa Melayu)</option>
-                <option value="ml">Malayalam</option>
+                <option value="ml">Malayalam </option>
                 <option value="mt">Maltese</option>
                 <option value="mi">Maori</option>
-                <option value="mr">Marathi</option>
+                <option value="mr">Marathi </option>
                 <option value="mni-Mtei">Meiteilon (Manipuri)</option>
                 <option value="lus">Mizo</option>
                 <option value="mn">Mongolian (Монгол)</option>
@@ -616,11 +629,11 @@
                 <option value="no">Norwegian (Norsk)</option>
                 <option value="or">Odia (Oriya)</option>
                 <option value="om">Oromo</option>
-                <option value="ps">Pashto</option>
+                <option value="ps">Pashto </option>
                 <option value="fa">Persian (فارسی)</option>
                 <option value="pl">Polish (Polski)</option>
                 <option value="pt">Portuguese (Português)</option>
-                <option value="pa">Punjabi</option>
+                <option value="pa">Punjabi </option>
                 <option value="qu">Quechua</option>
                 <option value="ro">Romanian (Română)</option>
                 <option value="ru">Russian (Русский)</option>
@@ -632,7 +645,7 @@
                 <option value="st">Sesotho</option>
                 <option value="sn">Shona</option>
                 <option value="sd">Sindhi</option>
-                <option value="si">Sinhala</option>
+                <option value="si">Sinhala </option>
                 <option value="sk">Slovak (Slovenčina)</option>
                 <option value="sl">Slovenian (Slovenščina)</option>
                 <option value="so">Somali</option>
@@ -640,11 +653,11 @@
                 <option value="su">Sundanese</option>
                 <option value="sw">Swahili (Kiswahili)</option>
                 <option value="sv">Swedish (Svenska)</option>
-                <option value="tg">Tajik</option>
-                <option value="ta">Tamil</option>
+                <option value="tg">Tajik </option>
+                <option value="ta">Tamil </option>
                 <option value="tt">Tatar</option>
-                <option value="te">Telugu</option>
-                <option value="th">ไทย</option>
+                <option value="te">Telugu </option>
+                <option value="th">ไทย </option>
                 <option value="ti">Tigrinya</option>
                 <option value="ts">Tsonga</option>
                 <option value="tr">Turkish (Türkçe)</option>
@@ -662,69 +675,78 @@
                 <option value="zu">Zulu</option>
             </select>
         </div>
-        <a href="https://youtube.com/@gp9434" target="_blank" class="btn-outline" style="background:#ff4e20; border:none;">
-            <i class="fab fa-youtube"></i>&nbsp; @GP9434
-        </a>
-        <a href="#book" class="btn-outline">
-            THE HUMAN BEHIND THE PRIZE
-        </a>
     </div>
 
+    <!-- GOOGLE TRANSLATE (ถูกซ่อนไว้เบื้องหลัง) -->
+    <div id="google_translate_element"></div>
+    
+    </div>
+
+
+
+
+
+    
     <!-- MAIN -->
-    <main class="features">
+    <main class="features" style="margin-top: 40px;">
+
         <!-- THE JOURNEY -->
         <div class="card">
             <h2 class="section-title" style="margin-bottom: 20px;">THE JOURNEY</h2>
+            
             <p style="color: #ffffff; font-size: 16px; font-weight: 500; line-height: 1.8; letter-spacing: 1px; margin-bottom: 12px;">
                 A journey through discipline clarity self-respect and personal power.
             </p>
+            
             <p style="color: #8a8a8a; font-size: 14px; font-weight: 400; line-height: 1.8; letter-spacing: 1px; text-transform: uppercase;">
                 Built slowly. Built honestly. Built to last.
             </p>
 
-            <div class="philosophy-section" style="margin-top: 30px;">
+            <div class="philosophy-section">
                 <div style="background-color: #FFD700; color: #000000; font-weight: bold; padding: 5px 15px; display: inline-block; margin: 0 auto 25px auto; font-size: 0.9rem; letter-spacing: 1px;">
                     2015 – 2026
                 </div>
-                <div style="background-color: rgba(255, 255, 255, 0.02); border-left: 4px solid #FFD700; padding: 25px 20px; margin: 0 auto 35px auto; text-align: left; max-width: 850px;">
-                    <p style="color: #FFFFFF; font-size: 1.15rem; font-weight: 500; line-height: 1.5; letter-spacing: 0.5px; margin: 0;">
+
+                <div style="background-color: rgba(255, 255, 255, 0.02); border-left: 4px solid #FFD700; padding: 25px 30px; margin: 0 auto 35px auto; text-align: left; max-width: 850px;">
+                    <p style="color: #FFFFFF; font-size: 1.25rem; font-weight: 500; line-height: 1.5; letter-spacing: 0.5px; margin: 0;">
                         “The heart may burn. The mind may grow numb.<br>
                         But memory and conscience <span style="color: #FFD700;">never forget what is right.</span>”
                     </p>
                 </div>
             </div>
-            
-            <hr style="border: 0; height: 1px; background: linear-gradient(to right, transparent, #d4af37, transparent); margin: 35px 0;">
 
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 30px; text-align: left; margin-bottom: 35px;">
-                <div>
-                    <h3 style="color: #d4af37; font-size: 1.3rem; border-bottom: 1px solid #222; padding-bottom: 8px; margin-bottom: 14px; letter-spacing: 1px;">The Purpose</h3>
-                    <p style="font-size: 1rem; color: #cccccc; line-height: 1.5;">Every service exists to help people recover, move forward, and to return to life with dignity.</p>
+            <hr class="gold-divider">
+
+            <div class="mission-grid">
+                <div class="mission-box">
+                    <h3>The Purpose</h3>
+                    <p class="en-desc">Every service exists to help people recover, move forward, and to return to life with dignity.</p>
                 </div>
-                <div>
-                    <h3 style="color: #d4af37; font-size: 1.3rem; border-bottom: 1px solid #222; padding-bottom: 8px; margin-bottom: 14px; letter-spacing: 1px;">Accountability</h3>
-                    <p style="font-size: 1rem; color: #cccccc; line-height: 1.5;">Every responsibility requires accountability. Every decision has the power to change a life.</p>
+
+                <div class="mission-box">
+                    <h3>Accountability</h3>
+                    <p class="en-desc">Every responsibility requires accountability. Every decision has the power to change a life.</p>
                 </div>
             </div>
 
-            <div style="background-color: #141414; padding: 25px 20px; border-radius: 4px; text-align: center; margin-bottom: 35px;">
-                <p style="font-size: 1rem; color: #cccccc; line-height: 1.6;">When a system fulfils its purpose, people are given the opportunity to begin again. <br>
+            <div class="system-statement">
+                <p class="en-system">When a system fulfils its purpose, people are given the opportunity to begin again. <br>
                 When a system fails its purpose, it must be reviewed. Improved. Held accountable.</p>
             </div>
 
-            <hr style="border: 0; height: 1px; background: linear-gradient(to right, transparent, #d4af37, transparent); margin: 35px 0;">
+            <hr class="gold-divider">
 
             <div class="manifesto-footer">
-                <div style="display: flex; justify-content: center; gap: 30px; text-align: center; flex-wrap: wrap; margin-bottom: 40px; color: #777; font-weight: bold; font-size: 0.85rem; letter-spacing: 2px;">
-                    <div>
-                        <span>DO WHAT IS RIGHT.</span><br><br>
-                        <span>PROTECT INTEGRITY.</span>
-                    </div>
-                    <div>
-                        <span>TAKE RESPONSIBILITY.</span><br><br>
-                        <span>RESPECT HUMAN DIGNITY.</span>
-                    </div>
-                </div>
+        <div class="action-words" style="display: flex; justify-content: center; gap: 40px; text-align: center;">
+            <div>
+                <span>DO WHAT IS RIGHT.</span><br><br>
+                <span>PROTECT INTEGRITY.</span>
+            </div>
+            <div>
+                <span>TAKE RESPONSIBILITY.</span><br><br>
+                <span>RESPECT HUMAN DIGNITY.</span>
+            </div>
+        </div>
                <h2 class="final-impact" style="font-weight: 300; font-size: 0.95rem; line-height: 1.9; letter-spacing: 1px; text-transform: uppercase;">
     “EVERY ACTION LEAVES AN IMPACT.<br>
     EVERY DECISION SHAPES SOMEONE’S FUTURE.<br>
