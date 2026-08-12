@@ -1,4 +1,3 @@
-<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,31 +7,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
-    <!-- Choices.js สำหรับช่องเลือกภาษาแบบพิมพ์ค้นหาได้ ไม่ตีกับ Google Translate -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css" />
 
     <style>
-        /* ซ่อนตัว select ดั้งเดิม ไม่ให้เห็นกล่องขาวตอน Refresh */
-#language-picker {
-    opacity: 0;
-    visibility: hidden;
-}
-        /* ซ่อนตัว Google Translate Original ไว้เบื้องหลังทั้งหมด */
-        #google_translate_element, 
-        .goog-te-banner-frame, 
-        .skiptranslate,
-        .goog-te-spinner-pos {
-            display: none !important;
-            opacity: 0 !important;
-            visibility: hidden !important;
-        }
-        body {
-            top: 0px !important;
-        }
-
         /* The Journey */
         .journey-container {
             background-color: #0d0d0d;
@@ -44,7 +23,7 @@
             text-align: center;
         }
         .journey-title {
-            color: #d4af37;
+            color: #d4af37; /* Match your gold logo */
             font-size: 3rem;
             letter-spacing: 4px;
             margin-bottom: 8px;
@@ -204,7 +183,6 @@
             color:#fff;
             font-family:'Montserrat',sans-serif;
             overflow-x:hidden;
-            position: relative;
         }
 
         /* BACKGROUND */
@@ -215,12 +193,70 @@
             z-index:-1;
         }
 
+        /* TOP */
+        .top-bar{
+            padding:28px 20px 12px;
+            display:flex;
+            flex-direction:column;
+            align-items:center;
+            justify-content:center;
+            text-align:center;
+        }
+
+        .signature{
+            display:inline-flex;
+            align-items:center;
+            justify-content:center;
+            padding:10px 18px;
+            border-radius:999px;
+            text-decoration:none;
+            font:600 14px 'Montserrat',sans-serif;
+            letter-spacing:2px;
+            background:#ff4e20;
+            color:#fff;
+            transition:.35s ease;
+            white-space:nowrap;
+        }
+
+        .signature:hover{
+            background:#ff4e20;
+            box-shadow:0 0 18px rgba(255,78,32,.28);
+        }
+
+        #counter{
+            margin-top:12px;
+            font-size:12px;
+            letter-spacing:2px;
+            color:rgba(212,175,55,.62);
+            white-space:nowrap;
+            font-variant-numeric:tabular-nums;
+        }
+
         /* HERO */
         .hero{
             max-width:1200px;
             margin:auto;
             padding:80px 20px 70px;
             text-align:center;
+        }
+
+        h1{
+            font-family:'Cinzel',serif;
+            font-size:clamp(3.6rem,10vw,7rem);
+            letter-spacing:4px;
+            margin-bottom:16px;
+            background: linear-gradient(to bottom, var(--light-gold) 0%, #f4d96b 35%, var(--gold) 60%, #8a6d19 100%);
+            -webkit-background-clip:text;
+            -webkit-text-fill-color:transparent;
+            filter:drop-shadow(0 0 24px rgba(212,175,55,.28));
+        }
+
+        .tagline{
+            font-size:clamp(14px,2vw,24px);
+            letter-spacing:6px;
+            text-transform:uppercase;
+            color:var(--gold);
+            margin-bottom:24px;
         }
 
         .sub-message{
@@ -262,117 +298,6 @@
             color:var(--gold);
         }
 
-        /* CUSTOM TRANSLATE DROPDOWN CONTAINER */
-        .custom-translate-wrapper {
-    position: relative;
-    top: auto;
-    right: auto;
-    z-index: 1000;
-    display: flex;
-    justify-content: center; /* จัดกลาง */
-    align-items: center;
-    flex-shrink: 0; /* ล็อกไว้ไม่ให้หดหรือขยายไปดันปุ่มอื่น */
-}
-
-       /* 1. ล็อกขนาดกล่องภายนอกให้แน่นหนา ไม่ขยับเด็ดขาด */
-.custom-translate-box {
-    position: relative;
-    width: 210px !important;
-    height: 42px !important;
-    min-width: 210px !important;
-    min-height: 42px !important;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* 2. ซ่อน Choices.js ไว้ก่อนจนกว่าจะโหลดเสร็จ เพื่อป้องกันตัวหนังสือเด้ง */
-.custom-translate-box .choices {
-    width: 100% !important;
-    margin-bottom: 0 !important;
-    opacity: 0;
-    transition: opacity 0.2s ease-in-out;
-}
-
-/* 3. เมื่อ Choices.js พร้อมทำงาน ให้ค่อยๆ แสดงผลแบบนุ่มนวล */
-.custom-translate-box .choices.is-open,
-.custom-translate-box .choices.is-focused,
-.custom-translate-box .choices[data-type*="select-one"] {
-    opacity: 1;
-}
-
-        /* ไอคอนโลกสีฟ้าสดใส */
-        .globe-icon {
-            position: absolute;
-            left: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 1001;
-            color: #00d2ff !important;
-            font-size: 16px;
-            filter: drop-shadow(0 0 6px rgba(0, 210, 255, 0.8));
-            pointer-events: none;
-        }
-
-        /* Custom Styling สำหรับ Choices.js */
-        .choices {
-            margin-bottom: 0 !important;
-        }
-        .choices__inner {
-            background-color: #111111 !important;
-            border: 2px solid #FFD700 !important;
-            border-radius: 999px !important;
-            min-height: 42px !important;
-            padding: 4px 16px 4px 38px !important;
-            display: flex !important;
-            align-items: center !important;
-            color: #ffffff !important;
-            box-shadow: 0 0 12px rgba(255, 215, 0, 0.4), inset 0 0 6px rgba(255, 215, 0, 0.2) !important;
-        }
-        .choices__list--single {
-            padding: 0 !important;
-            font-size: 12px !important;
-            font-weight: 700 !important;
-            letter-spacing: 1.5px !important;
-            text-transform: uppercase !important;
-            color: #FFD700 !important;
-        }
-        .choices[data-type*="select-one"]::after {
-            border-color: #FFD700 transparent transparent transparent !important;
-            border-width: 6px !important;
-            right: 16px !important;
-        }
-        .choices[data-type*="select-one"].is-open::after {
-            border-color: transparent transparent #FFD700 transparent !important;
-        }
-        .choices__list--dropdown {
-            background-color: #111111 !important;
-            border: 2px solid #FFD700 !important;
-            border-radius: 14px !important;
-            color: #ffffff !important;
-            margin-top: 6px !important;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.9), 0 0 10px rgba(255,215,0,0.3) !important;
-            max-height: 300px !important;
-        }
-        .choices__input {
-            background-color: #1c1c1c !important;
-            color: #ffffff !important;
-            font-size: 12px !important;
-            border-bottom: 1px solid #FFD700 !important;
-            margin-bottom: 6px !important;
-            padding: 8px !important;
-        }
-        .choices__list--dropdown .choices__item--selectable.is-highlighted {
-            background-color: #FFD700 !important;
-            color: #000000 !important;
-            font-weight: 700 !important;
-        }
-        .choices__list--dropdown .choices__item {
-            font-size: 12px !important;
-            padding: 10px 15px !important;
-            color: #ffffff !important;
-        }
-
         /* MAIN */
         .features{
             max-width:1050px;
@@ -401,6 +326,13 @@
             color:var(--gold);
             margin-bottom:26px;
             text-transform:uppercase;
+        }
+
+        .section-text{
+            color:var(--text);
+            line-height:2;
+            font-size:15px;
+            font-weight:300;
         }
 
         /* FLAGS */
@@ -495,20 +427,28 @@
             line-height:2;
         }
 
+        /* MOBILE */
         @media(max-width:768px){
-            .hero{ padding-top:75px; }
-            .custom-translate-wrapper { top: 12px; right: 12px; }
-            .custom-translate-box { width: 175px; }
-            .globe-icon { font-size: 14px; left: 12px; }
-            .choices__inner { padding-left: 32px !important; }
-            .card{ padding:36px 24px; }
-            .sub-message{ letter-spacing:1px; }
-            .features{ grid-template-columns:1fr; justify-items:center; }
+            .hero{
+                padding-top:60px;
+            }
+            .card{
+                padding:36px 24px;
+            }
+            .sub-message{
+                letter-spacing:1px;
+            }
+            .features{
+                grid-template-columns:1fr;
+                justify-items:center;
+            }
         }
     </style>
 </head>
 
 <body>
+
+    <div class="bg-overlay"></div>
 
     <!-- HERO -->
     <section class="hero" style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; width: 100%; margin: 0 auto; padding: 40px 20px 10px; background: #000000;">
@@ -519,176 +459,17 @@
         STRONG MIND · STRONG ENERGY · STRONG LIFE
     </div>
 
-
-    
-
-    <div class="bg-overlay"></div>
-
+    <div class="cta-buttons" style="margin-bottom: 50px;">
+        <a href="https://youtube.com/@gp9434" target="_blank" class="signature">
+            <i class="fab fa-youtube"></i>&nbsp; @GP9434
+        </a>
         <a href="#book" class="btn-outline">
             THE HUMAN BEHIND THE PRIZE
         </a>
-        <a href="https://youtube.com/@gp9434" target="_blank" class="btn-outline" style="background:#ff4e20; border:none;">
-            <i class="fab fa-youtube"></i>&nbsp; @GP9434
-        </a>
-
-
-    <div class="cta-buttons">
-
-    <!-- CUSTOM TRANSLATE SELECTOR ( พร้อมไอคอนโลกสีฟ้า + 133 ภาษา) -->
-    <div class="custom-translate-wrapper">
-        <div class="custom-translate-box">
-            <i class="fas fa-globe globe-icon"></i>
-<select id="language-picker" class="notranslate" translate="no">                
-                <option value="">SELECT LANGUAGE</option>
-                <option value="af">Afrikaans</option>
-                <option value="sq">Albanian (Shqip)</option>
-                <option value="am">Amharic (አማርኛ)</option>
-                <option value="ar">Arabic (العربية)</option>
-                <option value="hy">Armenian (Հայերեն)</option>
-                <option value="as">Assamese (অসমীয়া)</option>
-                <option value="ay">Aymara</option>
-                <option value="az">Azerbaijani (Azərbaycan)</option>
-                <option value="bm">Bambara</option>
-                <option value="eu">Basque (Euskara)</option>
-                <option value="be">Belarusian </option>
-                <option value="bn">Bengali </option>
-                <option value="bho">Bhojpuri</option>
-                <option value="bs">Bosnian (Bosanski)</option>
-                <option value="bg">Bulgarian (Български)</option>
-                <option value="ca">Catalan (Català)</option>
-                <option value="ceb">Cebuano</option>
-                <option value="ny">Chichewa</option>
-                <option value="zh-CN">Chinese Simplified (简体中文)</option>
-                <option value="zh-TW">Chinese Traditional (繁體中文)</option>
-                <option value="co">Corsican</option>
-                <option value="hr">Croatian (Hrvatski)</option>
-                <option value="cs">Czech (Čeština)</option>
-                <option value="da">Danish (Dansk)</option>
-                <option value="dv">Divehi</option>
-                <option value="doi">Dogri</option>
-                <option value="nl">Dutch (Nederlands)</option>
-                <option value="en">English</option>
-                <option value="eo">Esperanto</option>
-                <option value="et">Estonian (Eesti)</option>
-                <option value="ee">Ewe</option>
-                <option value="tl">Filipino (Tagalog)</option>
-                <option value="fi">Finnish (Suomi)</option>
-                <option value="fr">French (Français)</option>
-                <option value="fy">Frisian</option>
-                <option value="gl">Galician (Galego)</option>
-                <option value="ka">Georgian (ქართული)</option>
-                <option value="de">German (Deutsch)</option>
-                <option value="el">Greek (Ελληνικά)</option>
-                <option value="gn">Guarani</option>
-                <option value="gu">Gujarati (ગુજરાતી)</option>
-                <option value="ht">Haitian Creole</option>
-                <option value="ha">Hausa</option>
-                <option value="haw">Hawaiian</option>
-                <option value="iw">Hebrew (עברית)</option>
-                <option value="hi">Hindi (हिन्दी)</option>
-                <option value="hmn">Hmong</option>
-                <option value="hu">Hungarian (Magyar)</option>
-                <option value="is">Icelandic (Íslenska)</option>
-                <option value="ig">Igbo</option>
-                <option value="ilo">Ilocano</option>
-                <option value="id">Indonesian (Bahasa Indonesia)</option>
-                <option value="ga">Irish (Gaeilge)</option>
-                <option value="it">Italian (Italiano)</option>
-                <option value="ja">Japanese (日本語)</option>
-                <option value="jw">Javanese</option>
-                <option value="kn">Kannada </option>
-                <option value="kk">Kazakh Қ</option>
-                <option value="km">Khmer </option>
-                <option value="rw">Kinyarwanda</option>
-                <option value="gom">Konkani</option>
-                <option value="ko">Korean (한국어)</option>
-                <option value="kri">Krio</option>
-                <option value="ku">Kurdish (Kurmancî)</option>
-                <option value="ckb">Kurdish (Sorani)</option>
-                <option value="ky">Kyrgyz (Кыргызча)</option>
-                <option value="lo">Lao (ภาษาลาว)</option>
-                <option value="la">Latin</option>
-                <option value="lv">Latvian (Latviešu)</option>
-                <option value="ln">Lingala</option>
-                <option value="lt">Lithuanian (Lietuvių)</option>
-                <option value="lg">Luganda</option>
-                <option value="lb">Luxembourgish</option>
-                <option value="mk">Macedonian (Македонски)</option>
-                <option value="mai">Maithili</option>
-                <option value="mg">Malagasy</option>
-                <option value="ms">Malay (Bahasa Melayu)</option>
-                <option value="ml">Malayalam </option>
-                <option value="mt">Maltese</option>
-                <option value="mi">Maori</option>
-                <option value="mr">Marathi </option>
-                <option value="mni-Mtei">Meiteilon (Manipuri)</option>
-                <option value="lus">Mizo</option>
-                <option value="mn">Mongolian (Монгол)</option>
-                <option value="my">Myanmar (Burmese)</option>
-                <option value="ne">Nepali (नेपाली)</option>
-                <option value="no">Norwegian (Norsk)</option>
-                <option value="or">Odia (Oriya)</option>
-                <option value="om">Oromo</option>
-                <option value="ps">Pashto </option>
-                <option value="fa">Persian (فارسی)</option>
-                <option value="pl">Polish (Polski)</option>
-                <option value="pt">Portuguese (Português)</option>
-                <option value="pa">Punjabi </option>
-                <option value="qu">Quechua</option>
-                <option value="ro">Romanian (Română)</option>
-                <option value="ru">Russian (Русский)</option>
-                <option value="sm">Samoan</option>
-                <option value="sa">Sanskrit</option>
-                <option value="gd">Scots Gaelic</option>
-                <option value="nso">Sepedi</option>
-                <option value="sr">Serbian (Српски)</option>
-                <option value="st">Sesotho</option>
-                <option value="sn">Shona</option>
-                <option value="sd">Sindhi</option>
-                <option value="si">Sinhala </option>
-                <option value="sk">Slovak (Slovenčina)</option>
-                <option value="sl">Slovenian (Slovenščina)</option>
-                <option value="so">Somali</option>
-                <option value="es">Spanish (Español)</option>
-                <option value="su">Sundanese</option>
-                <option value="sw">Swahili (Kiswahili)</option>
-                <option value="sv">Swedish (Svenska)</option>
-                <option value="tg">Tajik </option>
-                <option value="ta">Tamil </option>
-                <option value="tt">Tatar</option>
-                <option value="te">Telugu </option>
-                <option value="th">ไทย </option>
-                <option value="ti">Tigrinya</option>
-                <option value="ts">Tsonga</option>
-                <option value="tr">Turkish (Türkçe)</option>
-                <option value="tk">Turkmen</option>
-                <option value="ak">Twi</option>
-                <option value="uk">Ukrainian (Українська)</option>
-                <option value="ur">Urdu (اردو)</option>
-                <option value="ug">Uyghur</option>
-                <option value="uz">Uzbek (O'zbek)</option>
-                <option value="vi">Vietnamese (Tiếng Việt)</option>
-                <option value="cy">Welsh (Cymraeg)</option>
-                <option value="xh">Xhosa</option>
-                <option value="yi">Yiddish</option>
-                <option value="yo">Yoruba</option>
-                <option value="zu">Zulu</option>
-            </select>
-        </div>
     </div>
 
-    <!-- GOOGLE TRANSLATE (ถูกซ่อนไว้เบื้องหลัง) -->
-    <div id="google_translate_element"></div>
-    
-    </div>
-
-
-
-
-
-    
     <!-- MAIN -->
-    <main class="features" style="margin-top: 40px;">
+    <main class="features">
 
         <!-- THE JOURNEY -->
         <div class="card">
@@ -703,10 +484,12 @@
             </p>
 
             <div class="philosophy-section">
+                <!-- YEAR BADGE -->
                 <div style="background-color: #FFD700; color: #000000; font-weight: bold; padding: 5px 15px; display: inline-block; margin: 0 auto 25px auto; font-size: 0.9rem; letter-spacing: 1px;">
                     2015 – 2026
                 </div>
 
+                <!-- QUOTE BLOCK WITH GOLD LEFT BORDER -->
                 <div style="background-color: rgba(255, 255, 255, 0.02); border-left: 4px solid #FFD700; padding: 25px 30px; margin: 0 auto 35px auto; text-align: left; max-width: 850px;">
                     <p style="color: #FFFFFF; font-size: 1.25rem; font-weight: 500; line-height: 1.5; letter-spacing: 0.5px; margin: 0;">
                         “The heart may burn. The mind may grow numb.<br>
@@ -737,21 +520,16 @@
             <hr class="gold-divider">
 
             <div class="manifesto-footer">
-        <div class="action-words" style="display: flex; justify-content: center; gap: 40px; text-align: center;">
-            <div>
-                <span>DO WHAT IS RIGHT.</span><br><br>
-                <span>PROTECT INTEGRITY.</span>
-            </div>
-            <div>
-                <span>TAKE RESPONSIBILITY.</span><br><br>
-                <span>RESPECT HUMAN DIGNITY.</span>
-            </div>
-        </div>
-               <h2 class="final-impact" style="font-weight: 300; font-size: 0.95rem; line-height: 1.9; letter-spacing: 1px; text-transform: uppercase;">
-    “EVERY ACTION LEAVES AN IMPACT.<br>
-    EVERY DECISION SHAPES SOMEONE’S FUTURE.<br>
-    EVERY INACTION LEAVES A SCAR.”
-</h2>
+                <div class="action-words">
+                    <span>DO WHAT IS RIGHT.</span>
+                    <span>TAKE RESPONSIBILITY.</span>
+                    <span>PROTECT INTEGRITY.</span>
+                    <span>RESPECT HUMAN DIGNITY.</span>
+                </div>
+                <h2 class="final-impact" style="font-weight: 300; font-size: 1.1rem; line-height: 1.8; letter-spacing: 1px; text-transform: uppercase;">
+                    “Every action leaves an impact. <br>
+                    Every decision shapes someone’s future.”
+                </h2>
             </div>
         </div>
 
@@ -780,9 +558,9 @@
                         RECOGNITION &amp; GRATITUDE
                     </div>
                     
-                   <p style="font-size:0.95rem; line-height:1.8; color:#d1d1d1; font-weight:300; margin-bottom:25px; letter-spacing:0.2px; text-transform:none;">
-    &ldquo;Through navigating severe trauma and PTSD, Encountered profound respect, honesty, and kindness. Deeply grateful for the genuine care, compassion, and sincerity shown during the most difficult times, such as :&rdquo;
-      </p>
+                    <p style="font-size:0.95rem; line-height:1.8; color:#d1d1d1; font-weight:300; margin-bottom:25px; letter-spacing:0.5px; text-transform:none;">
+                        &ldquo;Through navigating severe trauma and PTSD, Encountered profound respect, honesty, and kindness. Deeply grateful for the genuine care, compassion, and sincerity shown during the most difficult times, such as :&rdquo;
+                    </p>
                     
                     <ul style="list-style-type: none; padding-left: 0; margin: 20px auto; max-width: 600px; line-height: 1.6; text-align: center;">
                         <li style="color: #d4af37; font-size: 1.1rem; font-weight: 500; margin-bottom: 12px; letter-spacing: 1px;">
@@ -867,7 +645,7 @@
                 </div>
 
                 <div class="cta-buttons" style="margin-top:34px;">
-                    <a href="https://youtube.com/@gp9434" target="_blank" class="btn-outline" style="background:#ff4e20; border:none;">
+                    <a href="https://youtube.com/@gp9434" target="_blank" class="signature">
                         <i class="fab fa-youtube"></i>&nbsp; @GP9434
                     </a>
                 </div>
@@ -893,9 +671,6 @@
             </p>
         </div>
     </footer>
-
-    <!-- JS สำหรับ Choices.js -->
-    <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
 
     <!-- COUNTER SCRIPT -->
     <script>
@@ -941,39 +716,6 @@
         updateDateTime();
         setInterval(updateDateTime,1000);
     </script>
-
-    <!-- GOOGLE TRANSLATE BRIDGE SCRIPT -->
-    <script type="text/javascript">
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement({
-                pageLanguage: 'en',
-                autoDisplay: false
-            }, 'google_translate_element');
-        }
-
-        // เชื่อมโยง Custom Dropdown กับระบบแปลภาษาของ Google
-        document.addEventListener('DOMContentLoaded', function() {
-            const element = document.getElementById('language-picker');
-            const choices = new Choices(element, {
-                searchEnabled: true,
-                searchPlaceholderValue: 'Search language...',
-                itemSelectText: '',
-                shouldSort: false
-            });
-
-            element.addEventListener('change', function(e) {
-                const lang = e.detail.value;
-                if (!lang) return;
-
-                const googleCombo = document.querySelector('.goog-te-combo');
-                if (googleCombo) {
-                    googleCombo.value = lang;
-                    googleCombo.dispatchEvent(new Event('change'));
-                }
-            });
-        });
-    </script>
-    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 </body>
 </html>
