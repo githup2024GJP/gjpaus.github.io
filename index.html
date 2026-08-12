@@ -7,8 +7,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
-    <style>
+    <!-- Choices.js สำหรับช่องเลือกภาษาแบบพิมพ์ค้นหาได้ ไม่ตีกับ Google Translate -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css" />
+ <style>
+        /* ซ่อนตัว select ดั้งเดิม ไม่ให้เห็นกล่องขาวตอน Refresh */
+        #language-picker {
+            opacity: 0;
+            visibility: hidden;
+        }
         /* ซ่อนตัว Google Translate Original ไว้เบื้องหลังทั้งหมด */
         #google_translate_element, 
         .goog-te-banner-frame, 
@@ -21,7 +27,6 @@
         body {
             top: 0px !important;
         }
-
         /* The Journey */
         .journey-container {
             background-color: #0d0d0d;
@@ -251,96 +256,131 @@
             color:var(--gold);
         }
 
-        /* --- CUSTOM DROPDOWN BUTTON --- */
-        .language-dropdown {
+        /* CUSTOM TRANSLATE DROPDOWN CONTAINER */
+        .custom-translate-wrapper {
             position: relative;
-            display: inline-block;
             z-index: 1000;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
         }
 
-        .select-btn {
+        /* 1. ล็อกขนาดกล่องภายนอกให้แน่นหนา ไม่ขยับเด็ดขาด */
+        .custom-translate-box {
+            position: relative;
+            width: 210px !important;
+            height: 42px !important;
+            min-width: 210px !important;
+            min-height: 42px !important;
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            width: 220px;
-            height: 44px;
-            padding: 0 18px;
-            background-color: #1a1a1a;
-            color: #ffffff; 
-            border: 2px solid #ffffff;
-            border-radius: 25px;
-            font-size: 13px;
-            font-weight: bold;
-            letter-spacing: 0.5px;
-            cursor: pointer;
-            outline: none;
-            transition: all 0.3s ease;
-            box-sizing: border-box;
+            justify-content: center;
         }
 
+        /* 2. ซ่อน Choices.js ไว้ก่อนจนกว่าจะโหลดเสร็จ เพื่อป้องกันตัวหนังสือเด้ง */
+        .custom-translate-box .choices {
+            width: 100% !important;
+            margin-bottom: 0 !important;
+            opacity: 0;
+            transition: opacity 0.2s ease-in-out;
+        }
+
+        /* 3. เมื่อ Choices.js พร้อมทำงาน ให้ค่อยๆ แสดงผลแบบนุ่มนวล */
+        .custom-translate-box .choices.is-open,
+        .custom-translate-box .choices.is-focused,
+        .custom-translate-box .choices[data-type*="select-one"] {
+            opacity: 1;
+        }
+
+        /* ไอคอนโลกสีขาว */
         .globe-icon {
-            color: #ffffff;
-            font-size: 16px;
-            transition: color 0.3s ease;
-        }
-
-        .arrow-icon {
-            color: #ffffff;
-            font-size: 12px;
-            transition: color 0.3s ease;
-        }
-
-        .btn-text {
-            flex-grow: 1;
-            text-align: center;
-            text-transform: uppercase;
-        }
-
-        .select-btn:hover, .select-btn:focus {
-            border-color: #ffd700;
-            color: #ffd700;
-            box-shadow: 0 0 12px rgba(255, 215, 0, 0.6);
-        }
-
-        .select-btn:hover .globe-icon, .select-btn:hover .arrow-icon,
-        .select-btn:focus .globe-icon, .select-btn:focus .arrow-icon {
-            color: #ffd700;
-        }
-
-        .dropdown-content {
-            display: none;
             position: absolute;
-            top: 100%;
-            left: 0;
-            width: 100%;
-            margin-top: 8px;
-            background-color: #1a1a1a;
-            border: 1px solid #ffd700;
-            border-radius: 12px;
-            max-height: 250px;
-            overflow-y: auto;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
             z-index: 1001;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.8);
-            text-align: left;
+            color: #ffffff !important;
+            font-size: 15px;
+            pointer-events: none;
+            transition: .35s;
         }
 
-        .language-dropdown:focus-within .dropdown-content,
-        .dropdown-content:hover {
-            display: block;
+        .custom-translate-box:hover .globe-icon {
+            color: var(--gold) !important;
         }
 
-        .dropdown-content a {
-            color: #ffffff;
-            padding: 10px 16px;
-            text-decoration: none;
-            display: block;
-            font-size: 13px;
-            transition: background 0.2s, color 0.2s;
+        /* Custom Styling สำหรับ Choices.js ปรับให้สไตล์เหมือนกล่องแรก */
+        .choices {
+            margin-bottom: 0 !important;
         }
-
-        .dropdown-content a:hover {
-            background-color: #2a2a2a;
-            color: #ffd700;
+        .choices__inner {
+            background-color: transparent !important;
+            border: 1px solid rgba(255,255,255,.18) !important;
+            border-radius: 999px !important;
+            min-height: 42px !important;
+            padding: 4px 16px 4px 38px !important;
+            display: flex !important;
+            align-items: center !important;
+            color: #ffffff !important;
+            box-shadow: none !important;
+            transition: .35s !important;
+        }
+        .choices:hover .choices__inner {
+            border-color: var(--gold) !important;
+        }
+        .choices__list--single {
+            padding: 0 !important;
+            font-size: 13px !important;
+            font-weight: 400 !important;
+            letter-spacing: 2px !important;
+            text-transform: uppercase !important;
+            color: #ffffff !important;
+            transition: .35s;
+        }
+        .choices:hover .choices__list--single {
+            color: var(--gold) !important;
+        }
+        .choices[data-type*="select-one"]::after {
+            border-color: #ffffff transparent transparent transparent !important;
+            border-width: 5px !important;
+            right: 16px !important;
+            transition: .35s;
+        }
+        .choices:hover.choices[data-type*="select-one"]::after {
+            border-color: var(--gold) transparent transparent transparent !important;
+        }
+        .choices[data-type*="select-one"].is-open::after {
+            border-color: transparent transparent #ffffff transparent !important;
+        }
+        .choices:hover.choices[data-type*="select-one"].is-open::after {
+            border-color: transparent transparent var(--gold) transparent !important;
+        }
+        .choices__list--dropdown {
+            background-color: #111111 !important;
+            border: 1px solid rgba(255,255,255,.18) !important;
+            border-radius: 14px !important;
+            color: #ffffff !important;
+            margin-top: 6px !important;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.9) !important;
+            max-height: 300px !important;
+        }
+        .choices__input {
+            background-color: #1c1c1c !important;
+            color: #ffffff !important;
+            font-size: 12px !important;
+            border-bottom: 1px solid rgba(255,255,255,.2) !important;
+            margin-bottom: 6px !important;
+            padding: 8px !important;
+        }
+        .choices__list--dropdown .choices__item--selectable.is-highlighted {
+            background-color: var(--gold) !important;
+            color: #000000 !important;
+            font-weight: 700 !important;
+        }
+        .choices__list--dropdown .choices__item {
+            font-size: 12px !important;
+            padding: 10px 15px !important;
+            color: #ffffff !important;
         }
 
         /* MAIN */
@@ -467,17 +507,19 @@
 
         @media(max-width:768px){
             .hero{ padding-top:75px; }
+            .custom-translate-box { width: 175px !important; }
+            .globe-icon { font-size: 14px; left: 12px; }
+            .choices__inner { padding-left: 32px !important; }
             .card{ padding:36px 24px; }
             .sub-message{ letter-spacing:1px; }
             .features{ grid-template-columns:1fr; justify-items:center; }
-            .select-btn { width: 180px; }
         }
     </style>
 </head>
 
 <body>
 
-    <!-- GOOGLE TRANSLATE -->
+      <!-- GOOGLE TRANSLATE (ถูกซ่อนไว้เบื้องหลัง) -->
     <div id="google_translate_element"></div>
     <div class="bg-overlay"></div>
     
@@ -490,25 +532,156 @@
         STRONG MIND · STRONG ENERGY · STRONG LIFE
     </div>
 
-    <div class="cta-buttons">
+<div class="cta-buttons">
         <a href="#book" class="btn-outline">THE HUMAN BEHIND THE PRIZE</a>
 
         <a href="https://youtube.com/@gp9434" target="_blank" class="btn-outline" style="background:#ff4e20; border:none;">
             <i class="fab fa-youtube"></i>&nbsp; @GP9434
         </a>
         
-        <!-- CUSTOM LANGUAGE DROPDOWN (รองรับ 133 ภาษา) -->
-        <div class="language-dropdown">
-            <button class="select-btn" id="lang-btn">
+    <!-- CUSTOM TRANSLATE SELECTOR -->
+                <div class="custom-translate-wrapper">
+                <div class="custom-translate-box">
                 <i class="fas fa-globe globe-icon"></i>
-                <span class="btn-text">Select Language</span>
-                <i class="fas fa-chevron-down arrow-icon"></i>
-            </button>
-
-            <div class="dropdown-content" id="dropdown-languages">
-                <!-- รายการภาษา 133 ภาษาจะถูกโหลดอัตโนมัติที่นี่ -->
-            </div>
+                <select id="language-picker" class="notranslate" translate="no">
+                    <option value="">Select language</option>
+                    <option value="af">Afrikaans</option>
+                    <option value="sq">Albanian (Shqip)</option>
+                    <option value="am">Amharic (አማርኛ)</option>
+                    <option value="ar">Arabic (العربية)</option>
+                    <option value="hy">Armenian (Հայերեն)</option>
+                    <option value="as">Assamese (অসমীয়া)</option>
+                    <option value="ay">Aymara</option>
+                    <option value="az">Azerbaijani (Azərbaycan)</option>
+                    <option value="bm">Bambara</option>
+                    <option value="eu">Basque (Euskara)</option>
+                    <option value="be">Belarusian</option>
+                    <option value="bn">Bengali</option>
+                    <option value="bho">Bhojpuri</option>
+                    <option value="bs">Bosnian (Bosanski)</option>
+                    <option value="bg">Bulgarian (Български)</option>
+                    <option value="ca">Catalan (Català)</option>
+                    <option value="ceb">Cebuano</option>
+                    <option value="ny">Chichewa</option>
+                    <option value="zh-CN">Chinese Simplified (简体中文)</option>
+                    <option value="zh-TW">Chinese Traditional (繁體中文)</option>
+                    <option value="co">Corsican</option>
+                    <option value="hr">Croatian (Hrvatski)</option>
+                    <option value="cs">Czech (Čeština)</option>
+                    <option value="da">Danish (Dansk)</option>
+                    <option value="dv">Divehi</option>
+                    <option value="doi">Dogri</option>
+                    <option value="nl">Dutch (Nederlands)</option>
+                    <option value="en">English</option>
+                    <option value="eo">Esperanto</option>
+                    <option value="et">Estonian (Eesti)</option>
+                    <option value="ee">Ewe</option>
+                    <option value="tl">Filipino (Tagalog)</option>
+                    <option value="fi">Finnish (Suomi)</option>
+                    <option value="fr">French (Français)</option>
+                    <option value="fy">Frisian</option>
+                    <option value="gl">Galician (Galego)</option>
+                    <option value="ka">Georgian (ქართული)</option>
+                    <option value="de">German (Deutsch)</option>
+                    <option value="el">Greek (Ελληνικά)</option>
+                    <option value="gn">Guarani</option>
+                    <option value="gu">Gujarati (ગુજરાતી)</option>
+                    <option value="ht">Haitian Creole</option>
+                    <option value="ha">Hausa</option>
+                    <option value="haw">Hawaiian</option>
+                    <option value="iw">Hebrew (עברית)</option>
+                    <option value="hi">Hindi (हिन्दी)</option>
+                    <option value="hmn">Hmong</option>
+                    <option value="hu">Hungarian (Magyar)</option>
+                    <option value="is">Icelandic (Íslenska)</option>
+                    <option value="ig">Igbo</option>
+                    <option value="ilo">Ilocano</option>
+                    <option value="id">Indonesian (Bahasa Indonesia)</option>
+                    <option value="ga">Irish (Gaeilge)</option>
+                    <option value="it">Italian (Italiano)</option>
+                    <option value="ja">Japanese (日本語)</option>
+                    <option value="jw">Javanese</option>
+                    <option value="kn">Kannada</option>
+                    <option value="kk">Kazakh Қ</option>
+                    <option value="km">Khmer</option>
+                    <option value="rw">Kinyarwanda</option>
+                    <option value="gom">Konkani</option>
+                    <option value="ko">Korean (한국어)</option>
+                    <option value="kri">Krio</option>
+                    <option value="ku">Kurdish (Kurmancî)</option>
+                    <option value="ckb">Kurdish (Sorani)</option>
+                    <option value="ky">Kyrgyz (Кыргызча)</option>
+                    <option value="lo">Lao (ภาษาลาว)</option>
+                    <option value="la">Latin</option>
+                    <option value="lv">Latvian (Latviešu)</option>
+                    <option value="ln">Lingala</option>
+                    <option value="lt">Lithuanian (Lietuvių)</option>
+                    <option value="lg">Luganda</option>
+                    <option value="lb">Luxembourgish</option>
+                    <option value="mk">Macedonian (Македонски)</option>
+                    <option value="mai">Maithili</option>
+                    <option value="mg">Malagasy</option>
+                    <option value="ms">Malay (Bahasa Melayu)</option>
+                    <option value="ml">Malayalam</option>
+                    <option value="mt">Maltese</option>
+                    <option value="mi">Maori</option>
+                    <option value="mr">Marathi</option>
+                    <option value="mni-Mtei">Meiteilon (Manipuri)</option>
+                    <option value="lus">Mizo</option>
+                    <option value="mn">Mongolian (Монгол)</option>
+                    <option value="my">Myanmar (Burmese)</option>
+                    <option value="ne">Nepali (नेपाली)</option>
+                    <option value="no">Norwegian (Norsk)</option>
+                    <option value="or">Odia (Oriya)</option>
+                    <option value="om">Oromo</option>
+                    <option value="ps">Pashto</option>
+                    <option value="fa">Persian (فارسی)</option>
+                    <option value="pl">Polish (Polski)</option>
+                    <option value="pt">Portuguese (Português)</option>
+                    <option value="pa">Punjabi</option>
+                    <option value="qu">Quechua</option>
+                    <option value="ro">Romanian (Română)</option>
+                    <option value="ru">Russian (Русский)</option>
+                    <option value="sm">Samoan</option>
+                    <option value="sa">Sanskrit</option>
+                    <option value="gd">Scots Gaelic</option>
+                    <option value="nso">Sepedi</option>
+                    <option value="sr">Serbian (Српски)</option>
+                    <option value="st">Sesotho</option>
+                    <option value="sn">Shona</option>
+                    <option value="sd">Sindhi</option>
+                    <option value="si">Sinhala</option>
+                    <option value="sk">Slovak (Slovenčina)</option>
+                    <option value="sl">Slovenian (Slovenščina)</option>
+                    <option value="so">Somali</option>
+                    <option value="es">Spanish (Español)</option>
+                    <option value="su">Sundanese</option>
+                    <option value="sw">Swahili (Kiswahili)</option>
+                    <option value="sv">Swedish (Svenska)</option>
+                    <option value="tg">Tajik</option>
+                    <option value="ta">Tamil</option>
+                    <option value="tt">Tatar</option>
+                    <option value="te">Telugu</option>
+                    <option value="th">ไทย</option>
+                    <option value="ti">Tigrinya</option>
+                    <option value="ts">Tsonga</option>
+                    <option value="tr">Turkish (Türkçe)</option>
+                    <option value="tk">Turkmen</option>
+                    <option value="ak">Twi</option>
+                    <option value="uk">Ukrainian (Українська)</option>
+                    <option value="ur">Urdu (اردو)</option>
+                    <option value="ug">Uyghur</option>
+                    <option value="uz">Uzbek (O'zbek)</option>
+                    <option value="vi">Vietnamese (Tiếng Việt)</option>
+                    <option value="cy">Welsh (Cymraeg)</option>
+                    <option value="xh">Xhosa</option>
+                    <option value="yi">Yiddish</option>
+                    <option value="yo">Yoruba</option>
+                    <option value="zu">Zulu</option>
+    
+            </select>
         </div>
+    </div>
     </div>
 
     <!-- MAIN -->
@@ -645,57 +818,10 @@
         </div>
     </footer>
 
-    <!-- JS SCRIPTS -->
+  <!-- JS SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
     <script type="text/javascript">
-        // รายชื่อ 133 ภาษา
-        const languages133 = [
-            { code: 'th', name: 'Thai (ไทย)' }, { code: 'en', name: 'English' }, { code: 'af', name: 'Afrikaans' },
-            { code: 'sq', name: 'Albanian' }, { code: 'am', name: 'Amharic' }, { code: 'ar', name: 'Arabic' },
-            { code: 'hy', name: 'Armenian' }, { code: 'as', name: 'Assamese' }, { code: 'ay', name: 'Aymara' },
-            { code: 'az', name: 'Azerbaijani' }, { code: 'bm', name: 'Bambara' }, { code: 'eu', name: 'Basque' },
-            { code: 'be', name: 'Belarusian' }, { code: 'bn', name: 'Bengali' }, { code: 'bho', name: 'Bhojpuri' },
-            { code: 'bs', name: 'Bosnian' }, { code: 'bg', name: 'Bulgarian' }, { code: 'ca', name: 'Catalan' },
-            { code: 'ceb', name: 'Cebuano' }, { code: 'ny', name: 'Chichewa' }, { code: 'zh-CN', name: 'Chinese (Simplified)' },
-            { code: 'zh-TW', name: 'Chinese (Traditional)' }, { code: 'co', name: 'Corsican' }, { code: 'hr', name: 'Croatian' },
-            { code: 'cs', name: 'Czech' }, { code: 'da', name: 'Danish' }, { code: 'dv', name: 'Dhivehi' },
-            { code: 'doi', name: 'Dogri' }, { code: 'nl', name: 'Dutch' }, { code: 'eo', name: 'Esperanto' },
-            { code: 'et', name: 'Estonian' }, { code: 'ee', name: 'Ewe' }, { code: 'tl', name: 'Filipino' },
-            { code: 'fi', name: 'Finnish' }, { code: 'fr', name: 'French' }, { code: 'fy', name: 'Frisian' },
-            { code: 'gl', name: 'Galician' }, { code: 'ka', name: 'Georgian' }, { code: 'de', name: 'German' },
-            { code: 'el', name: 'Greek' }, { code: 'gn', name: 'Guarani' }, { code: 'gu', name: 'Gujarati' },
-            { code: 'ht', name: 'Haitian Creole' }, { code: 'ha', name: 'Hausa' }, { code: 'haw', name: 'Hawaiian' },
-            { code: 'iw', name: 'Hebrew' }, { code: 'hi', name: 'Hindi' }, { code: 'hmn', name: 'Hmong' },
-            { code: 'hu', name: 'Hungarian' }, { code: 'is', name: 'Icelandic' }, { code: 'ig', name: 'Igbo' },
-            { code: 'ilo', name: 'Ilocano' }, { code: 'id', name: 'Indonesian' }, { code: 'ga', name: 'Irish' },
-            { code: 'it', name: 'Italian' }, { code: 'ja', name: 'Japanese (日本語)' }, { code: 'jw', name: 'Javanese' },
-            { code: 'kn', name: 'Kannada' }, { code: 'kk', name: 'Kazakh' }, { code: 'km', name: 'Khmer' },
-            { code: 'rw', name: 'Kinyarwanda' }, { code: 'gom', name: 'Konkani' }, { code: 'ko', name: 'Korean (한국어)' },
-            { code: 'kri', name: 'Krio' }, { code: 'ku', name: 'Kurdish' }, { code: 'ckb', name: 'Kurdish (Sorani)' },
-            { code: 'ky', name: 'Kyrgyz' }, { code: 'lo', name: 'Lao' }, { code: 'la', name: 'Latin' },
-            { code: 'lv', name: 'Latvian' }, { code: 'ln', name: 'Lingala' }, { code: 'lt', name: 'Lithuanian' },
-            { code: 'lg', name: 'Luganda' }, { code: 'lb', name: 'Luxembourgish' }, { code: 'mk', name: 'Macedonian' },
-            { code: 'mai', name: 'Maithili' }, { code: 'mg', name: 'Malagasy' }, { code: 'ms', name: 'Malay' },
-            { code: 'ml', name: 'Malayalam' }, { code: 'mt', name: 'Maltese' }, { code: 'mi', name: 'Maori' },
-            { code: 'mr', name: 'Marathi' }, { code: 'mni-Mtei', name: 'Meiteilon' }, { code: 'lus', name: 'Mizo' },
-            { code: 'mn', name: 'Mongolian' }, { code: 'my', name: 'Myanmar (Burmese)' }, { code: 'ne', name: 'Nepali' },
-            { code: 'no', name: 'Norwegian' }, { code: 'or', name: 'Odia' }, { code: 'om', name: 'Oromo' },
-            { code: 'ps', name: 'Pashto' }, { code: 'fa', name: 'Persian' }, { code: 'pl', name: 'Polish' },
-            { code: 'pt', name: 'Portuguese' }, { code: 'pa', name: 'Punjabi' }, { code: 'qu', name: 'Quechua' },
-            { code: 'ro', name: 'Romanian' }, { code: 'ru', name: 'Russian' }, { code: 'sm', name: 'Samoan' },
-            { code: 'sa', name: 'Sanskrit' }, { code: 'gd', name: 'Scots Gaelic' }, { code: 'nso', name: 'Sepedi' },
-            { code: 'sr', name: 'Serbian' }, { code: 'st', name: 'Sesotho' }, { code: 'sn', name: 'Shona' },
-            { code: 'sd', name: 'Sindhi' }, { code: 'si', name: 'Sinhala' }, { code: 'sk', name: 'Slovak' },
-            { code: 'sl', name: 'Slovenian' }, { code: 'so', name: 'Somali' }, { code: 'es', name: 'Spanish' },
-            { code: 'su', name: 'Sundanese' }, { code: 'sw', name: 'Swahili' }, { code: 'sv', name: 'Swedish' },
-            { code: 'tg', name: 'Tajik' }, { code: 'ta', name: 'Tamil' }, { code: 'tt', name: 'Tatar' },
-            { code: 'te', name: 'Telugu' }, { code: 'ti', name: 'Tigrinya' }, { code: 'ts', name: 'Tsonga' },
-            { code: 'tr', name: 'Turkish' }, { code: 'tk', name: 'Turkmen' }, { code: 'ak', name: 'Twi' },
-            { code: 'uk', name: 'Ukrainian' }, { code: 'ur', name: 'Urdu' }, { code: 'ug', name: 'Uyghur' },
-            { code: 'uz', name: 'Uzbek' }, { code: 'vi', name: 'Vietnamese' }, { code: 'cy', name: 'Welsh' },
-            { code: 'xh', name: 'Xhosa' }, { code: 'yi', name: 'Yiddish' }, { code: 'yo', name: 'Yoruba' },
-            { code: 'zu', name: 'Zulu' }
-        ];
-
+        // Google Translate Engine
         function googleTranslateElementInit() {
             new google.translate.TranslateElement({
                 pageLanguage: 'en',
@@ -703,32 +829,31 @@
             }, 'google_translate_element');
         }
 
+        // Event listener เพื่อเชื่อม Choices.js กับ Google Translate
         document.addEventListener('DOMContentLoaded', function() {
-            const dropdown = document.getElementById('dropdown-languages');
-            const btnText = document.querySelector('.btn-text');
-
-            // โหลด 133 ภาษาลงเมนู
-            languages133.forEach(lang => {
-                const a = document.createElement('a');
-                a.href = '#';
-                a.setAttribute('data-lang', lang.code);
-                a.textContent = lang.name;
-                
-                a.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    btnText.textContent = lang.name.split(' ')[0];
-
-                    const googleSelect = document.querySelector('.goog-te-combo');
-                    if (googleSelect) {
-                        googleSelect.value = lang.code;
-                        googleSelect.dispatchEvent(new Event('change'));
-                    }
-                });
-
-                dropdown.appendChild(a);
+            const selectEl = document.getElementById('language-picker');
+            
+            // Initialize Choices.js
+            const choices = new Choices(selectEl, {
+                searchEnabled: true,
+                searchPlaceholderValue: 'Search language...',
+                itemSelectText: '',
+                shouldSort: false
             });
 
-            // Live Digital Clock
+            // เมื่อมีการกดเลือกภาษา ให้ส่งค่าไปยัง Google Translate
+            selectEl.addEventListener('change', function(e) {
+                const langCode = e.target.value;
+                if (!langCode) return;
+                
+                const googleSelect = document.querySelector('.goog-te-combo');
+                if (googleSelect) {
+                    googleSelect.value = langCode;
+                    googleSelect.dispatchEvent(new Event('change'));
+                }
+            });
+
+            // Live Digital Clock Functionality
             function updateClock() {
                 const now = new Date();
                 const hours = String(now.getHours()).padStart(2, '0');
