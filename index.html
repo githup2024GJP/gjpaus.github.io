@@ -238,7 +238,7 @@
             display:flex;
             justify-content:center;
             align-items:center;
-            gap:18px;
+            gap:15px;
             flex-wrap:wrap;
         }
 
@@ -272,6 +272,7 @@
     justify-content: center; /* จัดกลาง */
     align-items: center;
     flex-shrink: 0; /* ล็อกไว้ไม่ให้หดหรือขยายไปดันปุ่มอื่น */
+    width: 210px !important; /* ล็อกความกว้างคงที่ ไม่ให้ปุ่มอื่นขยับ */
 }
 
        /* 1. ล็อกขนาดกล่องภายนอกให้แน่นหนา ไม่ขยับเด็ดขาด */
@@ -284,6 +285,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
 }
 
 /* 2. ซ่อน Choices.js ไว้ก่อนจนกว่าจะโหลดเสร็จ เพื่อป้องกันตัวหนังสือเด้ง */
