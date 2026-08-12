@@ -264,14 +264,15 @@
 
         /* CUSTOM TRANSLATE DROPDOWN CONTAINER */
         .custom-translate-wrapper {
-            position: relative;
-            top: auto;
-            right: auto;
-            z-index: 1000;
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-        }
+    position: relative;
+    top: auto;
+    right: auto;
+    z-index: 1000;
+    display: flex;
+    justify-content: center; /* จัดกลาง */
+    align-items: center;
+    flex-shrink: 0; /* ล็อกไว้ไม่ให้หดหรือขยายไปดันปุ่มอื่น */
+}
 
        /* 1. ล็อกขนาดกล่องภายนอกให้แน่นหนา ไม่ขยับเด็ดขาด */
 .custom-translate-box {
