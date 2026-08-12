@@ -1,3 +1,5 @@
+<!doctype html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -6,442 +8,87 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Choices.js สำหรับช่องเลือกภาษาแบบพิมพ์ค้นหาได้ ไม่ตีกับ Google Translate -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css" />
 
     <style>
-                
+        /* ซ่อนตัว select ดั้งเดิม ไม่ให้เห็นกล่องขาวตอน Refresh */
+        #language-picker { opacity: 0; visibility: hidden; }
+
+        /* ซ่อนตัว Google Translate Original ไว้เบื้องหลังทั้งหมด */
+        #google_translate_element, .goog-te-banner-frame, .skiptranslate, .goog-te-spinner-pos {
+            display: none !important;
+            opacity: 0 !important;
+            visibility: hidden !important;
+        }
+        body { top: 0px !important; }
+
         /* The Journey */
-        .journey-container {
-            background-color: #0d0d0d;
-            color: #ffffff;
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-            padding: 60px 40px;
-            max-width: 900px;
-            margin: 0 auto;
-            text-align: center;
-        }
-        .journey-title {
-            color: #d4af37; /* Match your gold logo */
-            font-size: 3rem;
-            letter-spacing: 4px;
-            margin-bottom: 8px;
-        }
-        .journey-subtitle {
-            color: #ffffff;
-            font-size: 1.25rem;
-            letter-spacing: 1px;
-            font-weight: 300;
-        }
-        .gold-divider {
-            border: 0;
-            height: 1px;
-            background: linear-gradient(to right, transparent, #d4af37, transparent);
-            margin: 45px 0;
-        }
-        .core-pillars {
-            display: flex;
-            justify-content: space-around;
-            margin: 40px 0;
-        }
-        .pillar {
-            font-size: 1.35rem;
-            font-weight: bold;
-            letter-spacing: 2px;
-            color: #ffffff;
-        }
-        .philosophy-section {
-            margin: 10px 0;
-        }
-        .timeline-badge {
-            display: inline-block;
-            background-color: #d4af37;
-            color: #000000;
-            padding: 6px 18px;
-            font-weight: bold;
-            font-size: 1.15rem;
-            margin-bottom: 30px;
-            border-radius: 2px;
-            letter-spacing: 1px;
-        }
-        .waiting-text {
-            font-size: 1.55rem;
-            font-weight: bold;
-            color: #ffffff;
-            letter-spacing: 1px;
-            margin-bottom: 20px;
-        }
-        .core-quote {
-            font-size: 1.3rem;
-            font-style: italic;
-            color: #e5e5e5;
-            line-height: 1.5;
-        }
-        .deep-quote {
-            border-left: 2px solid #d4af37;
-            padding: 15px 25px;
-            margin: 40px auto;
-            max-width: 700px;
-            text-align: left;
-            font-size: 1.35rem;
-            background-color: #141414;
-            line-height: 1.6;
-            font-style: italic;
-        }
+        .journey-container { background-color: #0d0d0d; color: #ffffff; font-family: 'Helvetica Neue', Arial, sans-serif; padding: 60px 40px; max-width: 900px; margin: 0 auto; text-align: center; }
+        .journey-title { color: #d4af37; font-size: 3rem; letter-spacing: 4px; margin-bottom: 8px; }
+        .journey-subtitle { color: #ffffff; font-size: 1.25rem; letter-spacing: 1px; font-weight: 300; }
+        .gold-divider { border: 0; height: 1px; background: linear-gradient(to right, transparent, #d4af37, transparent); margin: 45px 0; }
+        .core-pillars { display: flex; justify-content: space-around; margin: 40px 0; }
+        .pillar { font-size: 1.35rem; font-weight: bold; letter-spacing: 2px; color: #ffffff; }
+        .philosophy-section { margin: 10px 0; }
+        .timeline-badge { display: inline-block; background-color: #d4af37; color: #000000; padding: 6px 18px; font-weight: bold; font-size: 1.15rem; margin-bottom: 30px; border-radius: 2px; letter-spacing: 1px; }
+        .waiting-text { font-size: 1.55rem; font-weight: bold; color: #ffffff; letter-spacing: 1px; margin-bottom: 20px; }
+        .core-quote { font-size: 1.3rem; font-style: italic; color: #e5e5e5; line-height: 1.5; }
+        .deep-quote { border-left: 2px solid #d4af37; padding: 15px 25px; margin: 40px auto; max-width: 700px; text-align: left; font-size: 1.35rem; background-color: #141414; line-height: 1.6; font-style: italic; }
         .gold-text { color: #d4af37; }
-        .process-text {
-            letter-spacing: 6px;
-            color: #d4af37;
-            font-weight: bold;
-            margin-top: 35px;
-            font-size: 0.95rem;
-        }
-        .mission-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 45px;
-            text-align: left;
-            margin-bottom: 35px;
-        }
-        .mission-box h3 {
-            color: #d4af37;
-            font-size: 1.45rem;
-            border-bottom: 1px solid #222;
-            padding-bottom: 8px;
-            margin-bottom: 14px;
-            letter-spacing: 1px;
-        }
-        .en-desc { 
-            font-size: 1.05rem; 
-            color: #cccccc; 
-            line-height: 1.5; 
-        }
-        .system-statement {
-            background-color: #141414;
-            padding: 25px 35px;
-            border-radius: 4px;
-            text-align: center;
-        }
-        .en-system { 
-            font-size: 1.1rem; 
-            color: #cccccc; 
-            line-height: 1.6; 
-        }
-        .action-words {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-bottom: 45px;
-            color: #555555;
-            font-weight: bold;
-            font-size: 0.9rem;
-            letter-spacing: 2px;
-        }
-        .final-impact {
-            color: #d4af37;
-            font-size: 2rem;
-            line-height: 1.5;
-            font-weight: bold;
-        }
-        
-        @media (max-width: 768px) {
-            .core-pillars, .mission-grid { grid-template-columns: 1fr; flex-direction: column; gap: 25px; }
-            .action-words { justify-content: center; gap: 20px; }
-            .journey-title { font-size: 2.3rem; }
-            .final-impact { font-size: 1.6rem; }
-        }
-      
-        .hero-image{
-            width:100%;
-            max-width:1000px;
-            height:auto;
-            display:block;
-            margin:0 auto;
-        }
-
-        :root{
-            --gold:#d4af37;
-            --light-gold:#fff7c2;
-            --dark:#050505;
-            --text:#d6d6d6;
-        }
-
-        *{
-            margin:0;
-            padding:0;
-            box-sizing:border-box;
-        }
-
-        html{
-            scroll-behavior:smooth;
-        }
-
-        body{
-            background:#050505;
-            color:#fff;
-            font-family:'Montserrat',sans-serif;
-            overflow-x:hidden;
-        }
-
-        /* BACKGROUND */
-        .bg-overlay{
-            position:fixed;
-            inset:0;
-            background: #000000;
-            z-index:-1;
-        }
-
-        /* TOP */
-        .top-bar{
-            padding:28px 20px 12px;
-            display:flex;
-            flex-direction:column;
-            align-items:center;
-            justify-content:center;
-            text-align:center;
-        }
-
-        .signature{
-            display:inline-flex;
-            align-items:center;
-            justify-content:center;
-            padding:10px 18px;
-            border-radius:999px;
-            text-decoration:none;
-            font:600 14px 'Montserrat',sans-serif;
-            letter-spacing:2px;
-            background:#ff4e20;
-            color:#fff;
-            transition:.35s ease;
-            white-space:nowrap;
-        }
-
-        .signature:hover{
-            background:#ff4e20;
-            box-shadow:0 0 18px rgba(255,78,32,.28);
-        }
-
-        #counter{
-            margin-top:12px;
-            font-size:12px;
-            letter-spacing:2px;
-            color:rgba(212,175,55,.62);
-            white-space:nowrap;
-            font-variant-numeric:tabular-nums;
-        }
-
-        /* HERO */
-        .hero{
-            max-width:1200px;
-            margin:auto;
-            padding:80px 20px 70px;
-            text-align:center;
-        }
-
-        h1{
-            font-family:'Cinzel',serif;
-            font-size:clamp(3.6rem,10vw,7rem);
-            letter-spacing:4px;
-            margin-bottom:16px;
-            background: linear-gradient(to bottom, var(--light-gold) 0%, #f4d96b 35%, var(--gold) 60%, #8a6d19 100%);
-            -webkit-background-clip:text;
-            -webkit-text-fill-color:transparent;
-            filter:drop-shadow(0 0 24px rgba(212,175,55,.28));
-        }
-
-        .tagline{
-            font-size:clamp(14px,2vw,24px);
-            letter-spacing:6px;
-            text-transform:uppercase;
-            color:var(--gold);
-            margin-bottom:24px;
-        }
-
-        .sub-message{
-            font-size:13px;
-            letter-spacing:4px;
-            text-transform:uppercase;
-            color:#8a8a8a;
-            margin-bottom:44px;
-            line-height:2;
-            text-align: center;
-        }
-
-        /* BUTTONS */
-        .cta-buttons{
-            display:flex;
-            justify-content:center;
-            align-items:center;
-            gap:18px;
-            flex-wrap:wrap;
-        }
-
-        .btn-outline{
-            display:inline-flex;
-            align-items:center;
-            justify-content:center;
-            padding:12px 22px;
-            border:1px solid rgba(255,255,255,.18);
-            border-radius:999px;
-            text-decoration:none;
-            font-size:13px;
-            letter-spacing:2px;
-            color:white;
-            transition:.35s;
-            white-space:nowrap;
-        }
-
-        .btn-outline:hover{
-            border-color:var(--gold);
-            color:var(--gold);
-        }
-
-        /* MAIN */
-        .features{
-            max-width:1050px;
-            margin:auto;
-            padding:0 20px 80px;
-            display:grid;
-            gap:26px;
-            grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));
-            justify-items:center;
-            text-align:center;
-        }
-
-        .card{
-            background:rgba(255,255,255,.02);
-            border:1px solid rgba(212,175,55,.10);
-            border-radius:18px;
-            padding:46px 34px;
-            text-align:center;
-            width: 100%;
-        }
-
-        .section-title{
-            font-family:'Cinzel',serif;
-            font-size:clamp(24px,4vw,34px);
-            letter-spacing:4px;
-            color:var(--gold);
-            margin-bottom:26px;
-            text-transform:uppercase;
-        }
-
-        .section-text{
-            color:var(--text);
-            line-height:2;
-            font-size:15px;
-            font-weight:300;
-        }
-
-        /* FLAGS */
-        .flag-row{
-            display:flex;
-            justify-content:center;
-            align-items:center;
-            gap:16px;
-            flex-wrap:nowrap;
-            overflow-x:auto;
-            overflow-y:hidden;
-            white-space:nowrap;
-            padding:0 12px;
-            scrollbar-width:none;
-            margin-top:14px;
-            opacity:.88;
-        }
-
-        .flag-row::-webkit-scrollbar{
-            display:none;
-        }
-
-        .flag-item{
-            flex:0 0 auto;
-            width:44px;
-        }
-
-        .flag-frame{
-            width:100%;
-            border-radius:4px;
-            overflow:hidden;
-            border:1px solid rgba(255,255,255,.08);
-            box-shadow:0 4px 12px rgba(0,0,0,.38);
-        }
-
-        .flag-frame img{
-            width:100%;
-            display:block;
-            object-fit:cover;
-        }
-
-        /* DIGITAL CLOCK */
-        .datetime-wrap{
-            width:100%;
-            display:flex;
-            justify-content:center;
-            align-items:center;
-            gap:12px;
-            flex-wrap:nowrap;
-            margin:30px auto;
-            padding:0 12px;
-            white-space:nowrap;
-            overflow:hidden;
-        }
-
-        .time-box{
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            padding:0;
-            border:none;
-            background:none;
-            flex-shrink:0;
-        }
-
-        #live-time{
-            font-family:'Lucida Console',monospace;
-            font-size:clamp(10px,2.5vw,17px);
-            letter-spacing:1.5px;
-            color:#d4af37;
-            text-shadow:0 0 8px rgba(212,175,55,.28);
-            font-variant-numeric:tabular-nums;
-        }
-
-        #live-date{
-            font-size:clamp(10px,2.2vw,14px);
-            letter-spacing:1.5px;
-            color:rgba(212,175,55,.58);
-            text-transform:uppercase;
-            overflow:hidden;
-            text-overflow:ellipsis;
-        }
-
-        /* FOOTER */
-        footer{
-            text-align:center;
-            padding:70px 20px;
-            font-size:12px;
-            letter-spacing:1px;
-            text-transform:uppercase;
-            color:rgba(212,175,55,.52);
-            line-height:2;
-        }
-
-        /* MOBILE */
-        @media(max-width:768px){
-            .hero{
-                padding-top:60px;
-            }
-            .card{
-                padding:36px 24px;
-            }
-            .sub-message{
-                letter-spacing:1px;
-            }
-            .features{
-                grid-template-columns:1fr;
-                justify-items:center;
-            }
-        }
+        .process-text { letter-spacing: 6px; color: #d4af37; font-weight: bold; margin-top: 35px; font-size: 0.95rem; }
+        .mission-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 45px; text-align: left; margin-bottom: 35px; }
+        .mission-box h3 { color: #d4af37; font-size: 1.45rem; border-bottom: 1px solid #222; padding-bottom: 8px; margin-bottom: 14px; letter-spacing: 1px; }
+        .en-desc { font-size: 1.05rem; color: #cccccc; line-height: 1.5; }
+        .system-statement { background-color: #141414; padding: 25px 35px; border-radius: 4px; text-align: center; }
+        .en-system { font-size: 1.1rem; color: #cccccc; line-height: 1.6; }
+        .action-words { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 15px; margin-bottom: 45px; color: #555555; font-weight: bold; font-size: 0.9rem; letter-spacing: 2px; }
+        .final-impact { color: #d4af37; font-size: 2rem; line-height: 1.5; font-weight: bold; }
+        @media (max-width: 768px) { .core-pillars, .mission-grid { grid-template-columns: 1fr; flex-direction: column; gap: 25px; } .action-words { justify-content: center; gap: 20px; } .journey-title { font-size: 2.3rem; } .final-impact { font-size: 1.6rem; } }
+        .hero-image{ width:100%; max-width:1000px; height:auto; display:block; margin:0 auto; }
+        :root{ --gold:#d4af37; --light-gold:#fff7c2; --dark:#050505; --text:#d6d6d6; }
+        *{ margin:0; padding:0; box-sizing:border-box; }
+        html{ scroll-behavior:smooth; }
+        body{ background:#050505; color:#fff; font-family:'Montserrat',sans-serif; overflow-x:hidden; position: relative; }
+        .bg-overlay{ position:fixed; inset:0; background: #000000; z-index:-1; }
+        .hero{ max-width:1200px; margin:auto; padding:80px 20px 70px; text-align:center; }
+        .sub-message{ font-size:13px; letter-spacing:4px; text-transform:uppercase; color:#8a8a8a; margin-bottom:44px; line-height:2; text-align: center; }
+        .cta-buttons{ display:flex; justify-content:center; align-items:center; gap:15px; flex-wrap:wrap; }
+        .btn-outline{ display:inline-flex; align-items:center; justify-content:center; padding:12px 22px; border:1px solid rgba(255,255,255,.18); border-radius:999px; text-decoration:none; font-size:13px; letter-spacing:2px; color:white; transition:.35s; white-space:nowrap; }
+        .btn-outline:hover{ border-color:var(--gold); color:var(--gold); }
+        .custom-translate-wrapper { position: relative; top: auto; right: auto; z-index: 1000; display: flex; justify-content: center; align-items: center; flex-shrink: 0; width: 210px !important; }
+        .custom-translate-box { position: relative; width: 210px !important; height: 42px !important; min-width: 210px !important; min-height: 42px !important; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .custom-translate-box .choices { width: 100% !important; margin-bottom: 0 !important; opacity: 0; transition: opacity 0.2s ease-in-out; }
+        .custom-translate-box .choices.is-open, .custom-translate-box .choices.is-focused, .custom-translate-box .choices[data-type*="select-one"] { opacity: 1; }
+        .custom-translate-box .choices.is-ready { opacity: 1; }
+        .globe-icon { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); z-index: 1001; color: #00d2ff !important; font-size: 16px; filter: drop-shadow(0 0 6px rgba(0, 210, 255, 0.8)); pointer-events: none; }
+        .choices { margin-bottom: 0 !important; }
+        .choices__inner { background-color: #111111 !important; border: 2px solid #FFD700 !important; border-radius: 999px !important; min-height: 42px !important; padding: 4px 16px 4px 38px !important; display: flex !important; align-items: center !important; color: #ffffff !important; box-shadow: 0 0 12px rgba(255, 215, 0, 0.4), inset 0 0 6px rgba(255, 215, 0, 0.2) !important; }
+        .choices__list--single { padding: 0 !important; font-size: 12px !important; font-weight: 700 !important; letter-spacing: 1.5px !important; text-transform: uppercase !important; color: #FFD700 !important; }
+        .choices[data-type*="select-one"]::after { border-color: #FFD700 transparent transparent transparent !important; border-width: 6px !important; right: 16px !important; }
+        .choices[data-type*="select-one"].is-open::after { border-color: transparent transparent #FFD700 transparent !important; }
+        .choices__list--dropdown { background-color: #111111 !important; border: 2px solid #FFD700 !important; border-radius: 14px !important; color: #ffffff !important; margin-top: 6px !important; box-shadow: 0 8px 20px rgba(0,0,0,0.9), 0 0 10px rgba(255,215,0,0.3) !important; max-height: 300px !important; }
+        .choices__input { background-color: #1c1c1c !important; color: #ffffff !important; font-size: 12px !important; border-bottom: 1px solid #FFD700 !important; margin-bottom: 6px !important; padding: 8px !important; }
+        .choices__list--dropdown .choices__item--selectable.is-highlighted { background-color: #FFD700 !important; color: #000000 !important; font-weight: 700 !important; }
+        .choices__list--dropdown .choices__item { font-size: 12px !important; padding: 10px 15px !important; color: #ffffff !important; }
+        .features{ max-width:1050px; margin:auto; padding:0 20px 80px; display:grid; gap:26px; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); justify-items:center; text-align:center; }
+        .card{ background:rgba(255,255,255,.02); border:1px solid rgba(212,175,55,.10); border-radius:18px; padding:46px 34px; text-align:center; width: 100%; }
+        .section-title{ font-family:'Cinzel',serif; font-size:clamp(24px,4vw,34px); letter-spacing:4px; color:var(--gold); margin-bottom:26px; text-transform:uppercase; }
+        .flag-row{ display:flex; justify-content:center; align-items:center; gap:16px; flex-wrap:nowrap; overflow-x:auto; overflow-y:hidden; white-space:nowrap; padding:0 12px; scrollbar-width:none; margin-top:14px; opacity:.88; }
+        .flag-row::-webkit-scrollbar{ display:none; }
+        .flag-item{ flex:0 0 auto; width:44px; }
+        .flag-frame{ width:100%; border-radius:4px; overflow:hidden; border:1px solid rgba(255,255,255,.08); box-shadow:0 4px 12px rgba(0,0,0,.38); }
+        .flag-frame img{ width:100%; display:block; object-fit:cover; }
+        .datetime-wrap{ width:100%; display:flex; justify-content:center; align-items:center; gap:12px; flex-wrap:nowrap; margin:30px auto; padding:0 12px; white-space:nowrap; overflow:hidden; }
+        .time-box{ display:flex; align-items:center; justify-content:center; padding:0; border:none; background:none; flex-shrink:0; }
+        #live-time{ font-family:'Lucida Console',monospace; font-size:clamp(10px,2.5vw,17px); letter-spacing:1.5px; color:#d4af37; text-shadow:0 0 8px rgba(212,175,55,.28); font-variant-numeric:tabular-nums; }
+        #live-date{ font-size:clamp(10px,2.2vw,14px); letter-spacing:1.5px; color:rgba(212,175,55,.58); text-transform:uppercase; overflow:hidden; text-overflow:ellipsis; }
+        footer{ text-align:center; padding:70px 20px; font-size:12px; letter-spacing:1px; text-transform:uppercase; color:rgba(212,175,55,.52); line-height:2; }
+        @media(max-width:768px){ .hero{ padding-top:75px; } .custom-translate-wrapper { top: 12px; right: 12px; } .custom-translate-box { width: 175px; } .globe-icon { font-size: 14px; left: 12px; } .choices__inner { padding-left: 32px !important; } .card{ padding:36px 24px; } .sub-message{ letter-spacing:1px; } .features{ grid-template-columns:1fr; justify-items:center; } }
     </style>
 </head>
 
@@ -450,142 +97,225 @@
     <div class="bg-overlay"></div>
 
     <!-- HERO -->
-    <section class="hero" style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; width: 100%; margin: 0 auto; padding: 40px 20px 10px; background: #000000;">
+    <section class="hero" style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; width: 100%; margin: 0 auto; padding: 40px 20px 10px;">
         <img src="GJPAUS_logo.png" alt="GJPAUS - Pause. Protect Your Power." class="hero-image" style="display: block; margin: 0 auto; width: 100%; max-width: 420px; height: auto; background: #000000;">
     </section>
 
-    <div class="sub-message">
-        STRONG MIND · STRONG ENERGY · STRONG LIFE
+    <div class="sub-message">STRONG MIND · STRONG ENERGY · STRONG LIFE</div>
+
+    <!-- CTA BUTTONS (รวมกล่องเลือกภาษาไว้ข้างหน้าสุด) -->
+    <div class="cta-buttons" style="margin-bottom: 50px;">
+        <div class="custom-translate-box" style="margin-right:6px;">
+            <i class="fas fa-globe globe-icon"></i>
+            <select id="language-picker" class="notranslate" translate="no">
+                <option value="">SELECT LANGUAGE</option>
+                <option value="af">Afrikaans</option>
+                <option value="sq">Albanian (Shqip)</option>
+                <option value="am">Amharic (አማርኛ)</option>
+                <option value="ar">Arabic (العربية)</option>
+                <option value="hy">Armenian (Հայերեն)</option>
+                <option value="as">Assamese (অসমীয়া)</option>
+                <option value="ay">Aymara</option>
+                <option value="az">Azerbaijani (Azərbaycan)</option>
+                <option value="bm">Bambara</option>
+                <option value="eu">Basque (Euskara)</option>
+                <option value="be">Belarusian</option>
+                <option value="bn">Bengali</option>
+                <option value="bho">Bhojpuri</option>
+                <option value="bs">Bosnian (Bosanski)</option>
+                <option value="bg">Bulgarian (Български)</option>
+                <option value="ca">Catalan (Català)</option>
+                <option value="ceb">Cebuano</option>
+                <option value="ny">Chichewa</option>
+                <option value="zh-CN">Chinese Simplified (简体中文)</option>
+                <option value="zh-TW">Chinese Traditional (繁體中文)</option>
+                <option value="co">Corsican</option>
+                <option value="hr">Croatian (Hrvatski)</option>
+                <option value="cs">Czech (Čeština)</option>
+                <option value="da">Danish (Dansk)</option>
+                <option value="dv">Divehi</option>
+                <option value="doi">Dogri</option>
+                <option value="nl">Dutch (Nederlands)</option>
+                <option value="en">English</option>
+                <option value="eo">Esperanto</option>
+                <option value="et">Estonian (Eesti)</option>
+                <option value="ee">Ewe</option>
+                <option value="tl">Filipino (Tagalog)</option>
+                <option value="fi">Finnish (Suomi)</option>
+                <option value="fr">French (Français)</option>
+                <option value="fy">Frisian</option>
+                <option value="gl">Galician (Galego)</option>
+                <option value="ka">Georgian (ქართული)</option>
+                <option value="de">German (Deutsch)</option>
+                <option value="el">Greek (Ελληνικά)</option>
+                <option value="gn">Guarani</option>
+                <option value="gu">Gujarati (ગુજરાતી)</option>
+                <option value="ht">Haitian Creole</option>
+                <option value="ha">Hausa</option>
+                <option value="haw">Hawaiian</option>
+                <option value="iw">Hebrew (עברית)</option>
+                <option value="hi">Hindi (हिन्दी)</option>
+                <option value="hmn">Hmong</option>
+                <option value="hu">Hungarian (Magyar)</option>
+                <option value="is">Icelandic (Íslenska)</option>
+                <option value="ig">Igbo</option>
+                <option value="ilo">Ilocano</option>
+                <option value="id">Indonesian (Bahasa Indonesia)</option>
+                <option value="ga">Irish (Gaeilge)</option>
+                <option value="it">Italian (Italiano)</option>
+                <option value="ja">Japanese (日本語)</option>
+                <option value="jw">Javanese</option>
+                <option value="kn">Kannada</option>
+                <option value="kk">Kazakh</option>
+                <option value="km">Khmer</option>
+                <option value="rw">Kinyarwanda</option>
+                <option value="gom">Konkani</option>
+                <option value="ko">Korean (한국어)</option>
+                <option value="kri">Krio</option>
+                <option value="ku">Kurdish (Kurmancî)</option>
+                <option value="ckb">Kurdish (Sorani)</option>
+                <option value="ky">Kyrgyz (Кыргызча)</option>
+                <option value="lo">Lao (ภาษาลาว)</option>
+                <option value="la">Latin</option>
+                <option value="lv">Latvian (Latviešu)</option>
+                <option value="ln">Lingala</option>
+                <option value="lt">Lithuanian (Lietuvių)</option>
+                <option value="lg">Luganda</option>
+                <option value="lb">Luxembourgish</option>
+                <option value="mk">Macedonian (Македонски)</option>
+                <option value="mai">Maithili</option>
+                <option value="mg">Malagasy</option>
+                <option value="ms">Malay (Bahasa Melayu)</option>
+                <option value="ml">Malayalam</option>
+                <option value="mt">Maltese</option>
+                <option value="mi">Maori</option>
+                <option value="mr">Marathi</option>
+                <option value="mni-Mtei">Meiteilon (Manipuri)</option>
+                <option value="lus">Mizo</option>
+                <option value="mn">Mongolian (Монгол)</option>
+                <option value="my">Myanmar (Burmese)</option>
+                <option value="ne">Nepali (नेपाली)</option>
+                <option value="no">Norwegian (Norsk)</option>
+                <option value="or">Odia (Oriya)</option>
+                <option value="om">Oromo</option>
+                <option value="ps">Pashto</option>
+                <option value="fa">Persian (فارسی)</option>
+                <option value="pl">Polish (Polski)</option>
+                <option value="pt">Portuguese (Português)</option>
+                <option value="pa">Punjabi</option>
+                <option value="qu">Quechua</option>
+                <option value="ro">Romanian (Română)</option>
+                <option value="ru">Russian (Русский)</option>
+                <option value="sm">Samoan</option>
+                <option value="sa">Sanskrit</option>
+                <option value="gd">Scots Gaelic</option>
+                <option value="nso">Sepedi</option>
+                <option value="sr">Serbian (Српски)</option>
+                <option value="st">Sesotho</option>
+                <option value="sn">Shona</option>
+                <option value="sd">Sindhi</option>
+                <option value="si">Sinhala</option>
+                <option value="sk">Slovak (Slovenčina)</option>
+                <option value="sl">Slovenian (Slovenščina)</option>
+                <option value="so">Somali</option>
+                <option value="es">Spanish (Español)</option>
+                <option value="su">Sundanese</option>
+                <option value="sw">Swahili (Kiswahili)</option>
+                <option value="sv">Swedish (Svenska)</option>
+                <option value="tg">Tajik</option>
+                <option value="ta">Tamil</option>
+                <option value="tt">Tatar</option>
+                <option value="te">Telugu</option>
+                <option value="th">ไทย</option>
+                <option value="ti">Tigrinya</option>
+                <option value="ts">Tsonga</option>
+                <option value="tr">Turkish (Türkçe)</option>
+                <option value="tk">Turkmen</option>
+                <option value="ak">Twi</option>
+                <option value="uk">Ukrainian (Українська)</option>
+                <option value="ur">Urdu (اردو)</option>
+                <option value="ug">Uyghur</option>
+                <option value="uz">Uzbek (O'zbek)</option>
+                <option value="vi">Vietnamese (Tiếng Việt)</option>
+                <option value="cy">Welsh (Cymraeg)</option>
+                <option value="xh">Xhosa</option>
+                <option value="yi">Yiddish</option>
+                <option value="yo">Yoruba</option>
+                <option value="zu">Zulu</option>
+            </select>
+        </div>
+
+        <a href="https://youtube.com/@gp9434" target="_blank" class="btn-outline" style="background:#ff4e20; border:none;">
+            <i class="fab fa-youtube"></i>&nbsp; @GP9434
+        </a>
+        <a href="#book" class="btn-outline">THE HUMAN BEHIND THE PRIZE</a>
     </div>
 
-    <div class="cta-buttons" style="margin-bottom: 50px;">
-           
-       
-       <div class="bg-overlay"></div>
-        <a href="#book" class="btn-outline">
-            THE HUMAN BEHIND THE PRIZE
-        </a>
-       <div  id="google_translate_element" style="margin-top: 15px;"></div>
-<a href="https://youtube.com/@gp9434" target="_blank" class="signature">
-    <i class="fab fa-youtube"></i>&nbsp; @GP9434
-</a>
-
     <!-- MAIN -->
-
-           <!-- THE JOURNEY -->
+    <main class="features">
+        <!-- THE JOURNEY -->
         <div class="card">
             <h2 class="section-title" style="margin-bottom: 20px;">THE JOURNEY</h2>
-            
-            <p style="color: #ffffff; font-size: 16px; font-weight: 500; line-height: 1.8; letter-spacing: 1px; margin-bottom: 12px;">
-                A journey through discipline clarity self-respect and personal power.
-            </p>
-            
-            <p style="color: #8a8a8a; font-size: 14px; font-weight: 400; line-height: 1.8; letter-spacing: 1px; text-transform: uppercase;">
-                Built slowly. Built honestly. Built to last.
-            </p>
+            <p style="color: #ffffff; font-size: 16px; font-weight: 500; line-height: 1.8; letter-spacing: 1px; margin-bottom: 12px;">A journey through discipline clarity self-respect and personal power.</p>
+            <p style="color: #8a8a8a; font-size: 14px; font-weight: 400; line-height: 1.8; letter-spacing: 1px; text-transform: uppercase;">Built slowly. Built honestly. Built to last.</p>
 
-            <div class="philosophy-section">
-                <!-- YEAR BADGE -->
-                <div style="background-color: #FFD700; color: #000000; font-weight: bold; padding: 5px 15px; display: inline-block; margin: 0 auto 25px auto; font-size: 0.9rem; letter-spacing: 1px;">
-                    2015 – 2026
-                </div>
-
-                <!-- QUOTE BLOCK WITH GOLD LEFT BORDER -->
-                <div style="background-color: rgba(255, 255, 255, 0.02); border-left: 4px solid #FFD700; padding: 25px 30px; margin: 0 auto 35px auto; text-align: left; max-width: 850px;">
-                    <p style="color: #FFFFFF; font-size: 1.25rem; font-weight: 500; line-height: 1.5; letter-spacing: 0.5px; margin: 0;">
-                        “The heart may burn. The mind may grow numb.<br>
-                        But memory and conscience <span style="color: #FFD700;">never forget what is right.</span>”
-                    </p>
+            <div class="philosophy-section" style="margin-top: 30px;">
+                <div style="background-color: #FFD700; color: #000000; font-weight: bold; padding: 5px 15px; display: inline-block; margin: 0 auto 25px auto; font-size: 0.9rem; letter-spacing: 1px;">2015 – 2026</div>
+                <div style="background-color: rgba(255, 255, 255, 0.02); border-left: 4px solid #FFD700; padding: 25px 20px; margin: 0 auto 35px auto; text-align: left; max-width: 850px;">
+                    <p style="color: #FFFFFF; font-size: 1.15rem; font-weight: 500; line-height: 1.5; letter-spacing: 0.5px; margin: 0;">“The heart may burn. The mind may grow numb.<br>But memory and conscience <span style="color: #FFD700;">never forget what is right.</span>”</p>
                 </div>
             </div>
 
-            <hr class="gold-divider">
+            <hr style="border: 0; height: 1px; background: linear-gradient(to right, transparent, #d4af37, transparent); margin: 35px 0;">
 
-            <div class="mission-grid">
-                <div class="mission-box">
-                    <h3>The Purpose</h3>
-                    <p class="en-desc">Every service exists to help people recover, move forward, and to return to life with dignity.</p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 30px; text-align: left; margin-bottom: 35px;">
+                <div>
+                    <h3 style="color: #d4af37; font-size: 1.3rem; border-bottom: 1px solid #222; padding-bottom: 8px; margin-bottom: 14px; letter-spacing: 1px;">The Purpose</h3>
+                    <p style="font-size: 1rem; color: #cccccc; line-height: 1.5;">Every service exists to help people recover, move forward, and to return to life with dignity.</p>
                 </div>
-
-                <div class="mission-box">
-                    <h3>Accountability</h3>
-                    <p class="en-desc">Every responsibility requires accountability. Every decision has the power to change a life.</p>
+                <div>
+                    <h3 style="color: #d4af37; font-size: 1.3rem; border-bottom: 1px solid #222; padding-bottom: 8px; margin-bottom: 14px; letter-spacing: 1px;">Accountability</h3>
+                    <p style="font-size: 1rem; color: #cccccc; line-height: 1.5;">Every responsibility requires accountability. Every decision has the power to change a life.</p>
                 </div>
             </div>
 
-            <div class="system-statement">
-                <p class="en-system">When a system fulfils its purpose, people are given the opportunity to begin again. <br>
-                When a system fails its purpose, it must be reviewed. Improved. Held accountable.</p>
+            <div style="background-color: #141414; padding: 25px 20px; border-radius: 4px; text-align: center; margin-bottom: 35px;">
+                <p style="font-size: 1rem; color: #cccccc; line-height: 1.6;">When a system fulfils its purpose, people are given the opportunity to begin again. <br>When a system fails its purpose, it must be reviewed. Improved. Held accountable.</p>
             </div>
 
-            <hr class="gold-divider">
+            <hr style="border: 0; height: 1px; background: linear-gradient(to right, transparent, #d4af37, transparent); margin: 35px 0;">
 
             <div class="manifesto-footer">
-        <div class="action-words" style="display: flex; justify-content: center; gap: 40px; text-align: center;">
-            <div>
-                <span>DO WHAT IS RIGHT.</span><br><br>
-                <span>PROTECT INTEGRITY.</span>
-            </div>
-            <div>
-                <span>TAKE RESPONSIBILITY.</span><br><br>
-                <span>RESPECT HUMAN DIGNITY.</span>
+                <div style="display: flex; justify-content: center; gap: 30px; text-align: center; flex-wrap: wrap; margin-bottom: 40px; color: #777; font-weight: bold; font-size: 0.85rem;">
+                    <div><span>DO WHAT IS RIGHT.</span><br><br><span>PROTECT INTEGRITY.</span></div>
+                    <div><span>TAKE RESPONSIBILITY.</span><br><br><span>RESPECT HUMAN DIGNITY.</span></div>
+                </div>
+               <h2 class="final-impact" style="font-weight: 300; font-size: 0.95rem; line-height: 1.9; letter-spacing: 1px; text-transform: uppercase;">“EVERY ACTION LEAVES AN IMPACT.<br>EVERY DECISION SHAPES SOMEONE’S FUTURE.<br>EVERY INACTION LEAVES A SCAR.”</h2>
             </div>
         </div>
-                
-                <h2 class="final-impact" style="font-weight: 300; font-size: 0.95rem; line-height: 1.9; letter-spacing: 1px; text-transform: uppercase;">
-    “EVERY ACTION LEAVES AN IMPACT.<br>
-    EVERY DECISION SHAPES SOMEONE’S FUTURE.<br>
-    EVERY INACTION LEAVES A SCAR.”
-</h2>
-            </div>
-        </div>
-
 
         <!-- BOOK -->
         <div class="card" id="book">
             <section>
-                <h2 style="font-family:'Cinzel',serif; font-size:32px; letter-spacing:3px; color:#d4af37; margin-bottom:18px;">
-                    THE HUMAN BEHIND THE PRIZE
-                </h2>
-                <p style="color:#d6d6d6; font-size:15px; margin-bottom:26px;">
-                    Behind every number is a story.<br>
-                    Behind every prize is a human being.<br>
-                    Life lessons. Sacrifices. Purpose.<br>
-                    Every scar has a meaning.
-                </p>
+                <h2 style="font-family:'Cinzel',serif; font-size:32px; letter-spacing:3px; color:#d4af37; margin-bottom:18px;">THE HUMAN BEHIND THE PRIZE</h2>
+                <p style="color:#d6d6d6; font-size:15px; margin-bottom:26px;">Behind every number is a story.<br>Behind every prize is a human being.<br>Life lessons. Sacrifices. Purpose.<br>Every scar has a meaning.</p>
 
-                <p style="color:#ffffff; font-size:20px; font-family:'Cinzel',serif; font-weight:600; text-shadow: 0 0 2px #ffffff, 0 0 6px rgba(255,255,255,.9), 0 0 12px rgba(255,255,255,.7), 0 0 24px rgba(255,255,255,.5);">
-                    From Pain to Purpose.<br>
-                </p>
-            </section> 
+                <p style="color:#ffffff; font-size:20px; font-family:'Cinzel',serif; font-weight:600; text-shadow: 0 0 2px #ffffff, 0 0 6px rgba(255,255,255,.9), 0 0 12px rgba(255,255,255,.7);">From Pain to Purpose.<br></p>
+            </section>
 
             <!-- Recognition & Gratitude Section -->
             <section style="background:#0d0d0d; color:#e0e0e0; padding:50px 20px; display:flex; justify-content:center;">
                 <div style="max-width:750px; background:#141414; border-left:3px solid #d4af37; border-radius:6px; padding:35px;">
-                    <div style="font-size:0.85rem; letter-spacing:3px; color:#d4af37; margin-bottom:15px; font-weight:600;">
-                        RECOGNITION &amp; GRATITUDE
-                    </div>
+                    <div style="font-size:0.85rem; letter-spacing:3px; color:#d4af37; margin-bottom:15px; font-weight:600;">RECOGNITION &amp; GRATITUDE</div>
                     
-                    <p style="font-size:0.95rem; line-height:1.8; color:#d1d1d1; font-weight:300; margin-bottom:25px; letter-spacing:0.5px; text-transform:none;">
-                        &ldquo;Through navigating severe trauma and PTSD, Encountered profound respect, honesty, and kindness. Deeply grateful for the genuine care, compassion, and sincerity shown during the most difficult times, such as :&rdquo;
-                    </p>
+                   <p style="font-size:0.95rem; line-height:1.8; color:#d1d1d1; font-weight:300; margin-bottom:25px; letter-spacing:0.2px; text-transform:none;">&ldquo;Through navigating severe trauma and PTSD, Encountered profound respect, honesty, and kindness. Deeply grateful for the genuine care, compassion, and sincerity shown during the most difficult times.&rdquo;</p>
                     
                     <ul style="list-style-type: none; padding-left: 0; margin: 20px auto; max-width: 600px; line-height: 1.6; text-align: center;">
-                        <li style="color: #d4af37; font-size: 1.1rem; font-weight: 500; margin-bottom: 12px; letter-spacing: 1px;">
-                            POLICE CAPTAIN CHANUNT
-                        </li>
-                        <li style="color: #d4af37; font-size: 1.1rem; font-weight: 500; margin-bottom: 12px; letter-spacing: 1px;">
-                            TAIS
-                        </li>
-                        <li style="color: #d4af37; font-size: 1.1rem; font-weight: 500; margin-bottom: 12px; letter-spacing: 1px;">
-                            GENERAL PRACTITIONER DR. TINT
-                        </li>
-                        <li style="color: #d4af37; font-size: 1.1rem; font-weight: 500; margin-bottom: 12px; letter-spacing: 1px;">
-                            DARCY
-                        </li>
-                        <li style="color: #d4af37; font-size: 1.1rem; font-weight: 500; margin-bottom: 12px; letter-spacing: 1px;">
-                            PSYCHOLOGIST DR. PB
-                        </li>
+                        <li style="color: #d4af37; font-size: 1.1rem; font-weight: 500; margin-bottom: 12px; letter-spacing: 1px;">POLICE CAPTAIN CHANUNT</li>
+                        <li style="color: #d4af37; font-size: 1.1rem; font-weight: 500; margin-bottom: 12px; letter-spacing: 1px;">TAIS</li>
+                        <li style="color: #d4af37; font-size: 1.1rem; font-weight: 500; margin-bottom: 12px; letter-spacing: 1px;">GENERAL PRACTITIONER DR. TINT</li>
+                        <li style="color: #d4af37; font-size: 1.1rem; font-weight: 500; margin-bottom: 12px; letter-spacing: 1px;">DARCY</li>
+                        <li style="color: #d4af37; font-size: 1.1rem; font-weight: 500; margin-bottom: 12px; letter-spacing: 1px;">PSYCHOLOGIST DR. PB</li>
                     </ul>
                     
                     <div style="color:#d4af37; opacity:0.6; letter-spacing:4px;">•••</div>
@@ -594,69 +324,31 @@
 
             <!-- STORY -->
             <div class="card" style="margin-top: 50px;">
-                <h2 class="section-title" style="text-shadow: 0 0 14px rgba(212,175,55,0.45), 0 0 28px rgba(212,175,55,0.32), 0 0 48px rgba(212,175,55,0.22), 0 0 70px rgba(212,175,55,0.15); filter: drop-shadow(0 0 12px rgba(212,175,55,0.25));">
-                    BEHIND THE STORY
-                </h2>
+                <h2 class="section-title">BEHIND THE STORY</h2>
 
-                <div style="background:#141414; border-left:2px solid #d4af37; padding:24px 20px; font-family:'Montserrat',sans-serif; color:#d6d6d6; line-height:1.7; font-weight:300; text-align:left; max-width:650px; margin:20px auto; text-transform:none;">   
-                    <p style="margin-bottom:14px; font-size:0.92rem; letter-spacing:0.5px;">
-                        For the past six years in Thailand, a period of deep hardship, isolation, and silent suffering was endured with no space to speak and no one to listen with honesty, respect, and care.
-                    </p>
-                    <p style="margin-bottom:14px; font-size:0.92rem; letter-spacing:0.5px;">
-                        Life has reached a profound turning point through the dignified care and support I have received in Australia. Even when faced with moments of disrespect toward one's humanity, the strength of the law has protected this journey, though the responsibility for that neglect remains.
-                    </p>
-                    <p style="margin-bottom:0; font-size:0.92rem; letter-spacing:0.5px;">
-                        Today, <strong style="color:#fff;">27 July 2026</strong>, this journey from pain to purpose has truly given a new life and a renewed sense of hope, transforming silent endurance into a future built on safety and care.
-                    </p>
+                <div style="background:#141414; border-left:2px solid #d4af37; padding:24px 20px; font-family:'Montserrat',sans-serif; color:#d6d6d6; line-height:1.7; font-weight:300; text-align:left;">
+                    <p style="margin-bottom:14px; font-size:0.92rem; letter-spacing:0.5px;">For the past six years in Thailand, a period of deep hardship, isolation, and silent suffering was endured with no space to speak and no one to listen with honesty, respect, and care.</p>
+                    <p style="margin-bottom:14px; font-size:0.92rem; letter-spacing:0.5px;">Life has reached a profound turning point through the dignified care and support I have received in Australia. Even when faced with moments of disrespect toward one's humanity, there were people who showed kindness.</p>
+                    <p style="margin-bottom:0; font-size:0.92rem; letter-spacing:0.5px;">Today, <strong style="color:#fff;">27 July 2026</strong>, this journey from pain to purpose has truly given a new life and a renewed sense of hope, transforming silent endurance into purpose.</p>
                 </div>
 
                 <!-- CLOCK -->
                 <div class="datetime-wrap">
-                    <div class="time-box">
-                        <span id="live-time"></span>
-                    </div>
+                    <div class="time-box"><span id="live-time"></span></div>
                     <div id="live-date"></div>
                 </div>
 
                 <!-- FLAGS -->
                 <div class="flag-row">
-                    <div class="flag-item">
-                        <div class="flag-frame">
-                            <img src="https://flagcdn.com/w80/au.png" alt="Australia">
-                        </div>
-                    </div>
-                    <div class="flag-item">
-                        <div class="flag-frame">
-                            <img src="https://flagcdn.com/w80/th.png" alt="Thailand">
-                        </div>
-                    </div>
-                    <div class="flag-item">
-                        <div class="flag-frame">
-                            <img src="https://flagcdn.com/w80/us.png" alt="USA">
-                        </div>
-                    </div>
-                    <div class="flag-item">
-                        <div class="flag-frame">
-                            <img src="https://flagcdn.com/w80/vn.png" alt="Vietnam">
-                        </div>
-                    </div>
-                    <div class="flag-item">
-                        <div class="flag-frame">
-                            <img src="https://flagcdn.com/w80/la.png" alt="Laos">
-                        </div>
-                    </div>
-                    <div class="flag-item">
-                        <div class="flag-frame">
-                            <img src="https://flagcdn.com/w80/my.png" alt="Malaysia">
-                        </div>
-                    </div>
+                    <div class="flag-item"><div class="flag-frame"><img src="https://flagcdn.com/w80/au.png" alt="Australia"></div></div>
+                    <div class="flag-item"><div class="flag-frame"><img src="https://flagcdn.com/w80/th.png" alt="Thailand"></div></div>
+                    <div class="flag-item"><div class="flag-frame"><img src="https://flagcdn.com/w80/us.png" alt="USA"></div></div>
+                    <div class="flag-item"><div class="flag-frame"><img src="https://flagcdn.com/w80/vn.png" alt="Vietnam"></div></div>
+                    <div class="flag-item"><div class="flag-frame"><img src="https://flagcdn.com/w80/la.png" alt="Laos"></div></div>
+                    <div class="flag-item"><div class="flag-frame"><img src="https://flagcdn.com/w80/my.png" alt="Malaysia"></div></div>
                 </div>
 
-                <div class="cta-buttons" style="margin-top:34px;">
-                    <a href="https://youtube.com/@gp9434" target="_blank" class="signature">
-                        <i class="fab fa-youtube"></i>&nbsp; @GP9434
-                    </a>
-                </div>
+                <div class="cta-buttons" style="margin-top:34px;"><a href="https://youtube.com/@gp9434" target="_blank" class="btn-outline" style="background:#ff4e20; border:none;"><i class="fab fa-youtube"></i>&nbsp; @GP9434</a></div>
 
                 <div id="counter" style="display:none;"></div>
             </div>
@@ -665,20 +357,15 @@
 
     <!-- FOOTER -->
     <footer style="display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;">
-        <div>
-            Sydney, Australia · GJPAUS™
-        </div>
-
-        <div style="text-align:center !important;opacity:.55;">
-            © 2026 GJPAUS™ · ALL RIGHTS RESERVED
-        </div>
-
+        <div>Sydney, Australia · GJPAUS™</div>
+        <div style="text-align:center !important;opacity:.55;">© 2026 GJPAUS™ · ALL RIGHTS RESERVED</div>
         <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(212,175,55,0.4); text-align: center;">
-            <p style="color: #ffffff; font-size: 13px; font-weight: 600; letter-spacing: 0.5px; line-height: 1.6; text-shadow: 2px 2px 6px rgba(0,0,0,0.8), 0 0 10px rgba(255,255,255,0.6); position: relative;">
-                THANK YOU TO THE TRADITIONAL OWNERS OF THE LAND AND THIS COUNTRY FOR GIVING ME A PLACE TO LIVE. HAVE A GOOD LIFE. APPRECIATE IT.
-            </p>
+            <p style="color: #ffffff; font-size: 13px; font-weight: 600; letter-spacing: 0.5px; line-height: 1.6; text-shadow: 2px 2px 6px rgba(0,0,0,0.8), 0 0 10px rgba(255,255,255,0.6);">THANK YOU TO THE TRADITIONAL OWNERS OF THE LAND AND THIS COUNTRY FOR GIVING ME A PLACE TO LIVE. HAVE A GOOD LIFE. APPRECIATE IT.</p>
         </div>
     </footer>
+
+    <!-- JS สำหรับ Choices.js -->
+    <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
 
     <!-- COUNTER SCRIPT -->
     <script>
@@ -704,26 +391,48 @@
     <script>
         function updateDateTime(){
             const now = new Date();
-            const time = now.toLocaleTimeString('en-AU',{
-                hour:'2-digit',
-                minute:'2-digit',
-                second:'2-digit'
-            }).toUpperCase();
-
-            const date = now.toLocaleDateString('en-AU',{
-                weekday:'long',
-                day:'numeric',
-                month:'long',
-                year:'numeric'
-            }).replace(',','');
-
+            const time = now.toLocaleTimeString('en-AU',{ hour:'2-digit', minute:'2-digit', second:'2-digit' }).toUpperCase();
+            const date = now.toLocaleDateString('en-AU',{ weekday:'long', day:'numeric', month:'long', year:'numeric' }).replace(',','');
             document.getElementById('live-time').innerHTML = time;
             document.getElementById('live-date').innerHTML = date;
         }
-
         updateDateTime();
         setInterval(updateDateTime,1000);
     </script>
+
+    <!-- GOOGLE TRANSLATE BRIDGE SCRIPT -->
+    <!-- Hidden container so Google's widget can initialize (we keep it visually hidden) -->
+    <div id="google_translate_element" style="display:none"></div>
+
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({ pageLanguage: 'en', autoDisplay: false }, 'google_translate_element');
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const element = document.getElementById('language-picker');
+            const choices = new Choices(element, { searchEnabled: true, searchPlaceholderValue: 'Search language...', itemSelectText: '', shouldSort: false });
+
+            try{
+                const choicesEl = element.parentElement.querySelector('.choices');
+                if(choicesEl) choicesEl.classList.add('is-ready');
+            }catch(e){ /* ignore */ }
+
+            element.addEventListener('change', function(e) {
+                const lang = element.value || (e && e.detail && e.detail.value) || (e.target && e.target.value);
+                if (!lang) return;
+
+                const googleCombo = document.querySelector('.goog-te-combo');
+                if (googleCombo) {
+                    googleCombo.value = lang;
+                    googleCombo.dispatchEvent(new Event('change'));
+                } else {
+                    setTimeout(function(){ const gc = document.querySelector('.goog-te-combo'); if (gc) { gc.value = lang; gc.dispatchEvent(new Event('change')); } }, 600);
+                }
+            });
+        });
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 </body>
 </html>
