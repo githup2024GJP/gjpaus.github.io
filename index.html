@@ -227,13 +227,16 @@
             text-align: center;
         }
 
-        /* BUTTONS & ACTIONS ROW */
+        /* BUTTONS & ACTIONS ROW - จัดระเบียบให้โลโก้ส้มอยู่ตรงกลางและไม่ขยับเมื่อเปลี่ยนภาษา */
         .cta-buttons{
             display:flex;
             justify-content:center;
             align-items:center;
             gap:18px;
             flex-wrap:wrap;
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
         }
 
         .btn-outline{
@@ -249,11 +252,16 @@
             color:white;
             transition:.35s;
             white-space:nowrap;
+            min-width: 240px; /* ล็อกขนาดเพื่อความสมดุล */
         }
 
         .btn-outline:hover{
             border-color:var(--gold);
             color:var(--gold);
+        }
+
+        .btn-youtube {
+            min-width: auto; /* ปล่อยให้ขนาดของปุ่ม YouTube พอดีกับตัวหนังสือ */
         }
 
         /* CUSTOM TRANSLATE DROPDOWN CONTAINER */
@@ -265,31 +273,24 @@
             align-items: center;
         }
 
-        /* 1. ล็อกขนาดกล่องภายนอกให้แน่นหนา ไม่ขยับเด็ดขาด */
+        /* 1. ล็อกขนาดกล่องภายนอกให้ยาวขึ้นป้องกันลูกศรทับตัวหนังสือ และไม่ขยับเมื่อเปลี่ยนภาษา */
         .custom-translate-box {
             position: relative;
-            width: 210px !important;
+            width: 240px !important;
             height: 42px !important;
-            min-width: 210px !important;
+            min-width: 240px !important;
+            max-width: 240px !important;
             min-height: 42px !important;
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
-        /* 2. ซ่อน Choices.js ไว้ก่อนจนกว่าจะโหลดเสร็จ เพื่อป้องกันตัวหนังสือเด้ง */
+        /* 2. จัดการ Choices.js ไม่ให้หายหรือกะพริบตอน Refresh */
         .custom-translate-box .choices {
             width: 100% !important;
             margin-bottom: 0 !important;
-            opacity: 0;
-            transition: opacity 0.2s ease-in-out;
-        }
-
-        /* 3. เมื่อ Choices.js พร้อมทำงาน ให้ค่อยๆ แสดงผลแบบนุ่มนวล */
-        .custom-translate-box .choices.is-open,
-        .custom-translate-box .choices.is-focused,
-        .custom-translate-box .choices[data-type*="select-one"] {
-            opacity: 1;
+            opacity: 1 !important;
         }
 
         /* ไอคอนโลกสีขาว */
@@ -309,7 +310,7 @@
             color: var(--gold) !important;
         }
 
-        /* Custom Styling สำหรับ Choices.js ปรับให้สไตล์เหมือนกล่องแรก */
+        /* Custom Styling สำหรับ Choices.js */
         .choices {
             margin-bottom: 0 !important;
         }
@@ -318,12 +319,15 @@
             border: 1px solid rgba(255,255,255,.18) !important;
             border-radius: 999px !important;
             min-height: 42px !important;
-            padding: 4px 16px 4px 38px !important;
+            height: 42px !important;
+            padding: 0 32px 0 38px !important; /* เพิ่ม Padding ขวาป้องกันลูกศรทับตัวหนังสือ */
             display: flex !important;
             align-items: center !important;
             color: #ffffff !important;
             box-shadow: none !important;
             transition: .35s !important;
+            line-height: 1 !important;
+            overflow: hidden !important;
         }
         .choices:hover .choices__inner {
             border-color: var(--gold) !important;
@@ -332,10 +336,15 @@
             padding: 0 !important;
             font-size: 13px !important;
             font-weight: 400 !important;
-            letter-spacing: 2px !important;
+            letter-spacing: 1px !important;
             text-transform: uppercase !important;
             color: #ffffff !important;
             transition: .35s;
+            line-height: 1 !important;
+            white-space: nowrap !important;
+            overflow: hidden !important;
+            text-overflow: ellipsis !important;
+            width: 100% !important;
         }
         .choices:hover .choices__list--single {
             color: var(--gold) !important;
@@ -343,7 +352,7 @@
         .choices[data-type*="select-one"]::after {
             border-color: #ffffff transparent transparent transparent !important;
             border-width: 5px !important;
-            right: 16px !important;
+            right: 14px !important;
             transition: .35s;
         }
         .choices:hover.choices[data-type*="select-one"]::after {
@@ -507,7 +516,8 @@
 
         @media(max-width:768px){
             .hero{ padding-top:75px; }
-            .custom-translate-box { width: 175px !important; }
+            .custom-translate-box { width: 220px !important; min-width: 220px !important; }
+            .btn-outline { min-width: 220px; }
             .globe-icon { font-size: 14px; left: 12px; }
             .choices__inner { padding-left: 32px !important; }
             .card{ padding:36px 24px; }
@@ -519,7 +529,7 @@
 
 <body>
 
-      <!-- GOOGLE TRANSLATE (ถูกซ่อนไว้เบื้องหลัง) -->
+    <!-- GOOGLE TRANSLATE (ถูกซ่อนไว้เบื้องหลัง) -->
     <div id="google_translate_element"></div>
     <div class="bg-overlay"></div>
     
@@ -532,16 +542,17 @@
         STRONG MIND · STRONG ENERGY · STRONG LIFE
     </div>
 
-<div class="cta-buttons">
+    <div class="cta-buttons">
         <a href="#book" class="btn-outline">THE HUMAN BEHIND THE PRIZE</a>
 
-        <a href="https://youtube.com/@gp9434" target="_blank" class="btn-outline" style="background:#ff4e20; border:none;">
+        <!-- ปุ่ม YouTube ตรงกลางแนวเดียวกับโลโก้ -->
+        <a href="https://youtube.com/@gp9434" target="_blank" class="btn-outline btn-youtube" style="background:#ff4e20; border:none; padding:12px 28px;">
             <i class="fab fa-youtube"></i>&nbsp; @GP9434
         </a>
         
-    <!-- CUSTOM TRANSLATE SELECTOR -->
-                <div class="custom-translate-wrapper">
-                <div class="custom-translate-box">
+        <!-- CUSTOM TRANSLATE SELECTOR -->
+        <div class="custom-translate-wrapper">
+            <div class="custom-translate-box">
                 <i class="fas fa-globe globe-icon"></i>
                 <select id="language-picker" class="notranslate" translate="no">
                     <option value="">Select language</option>
@@ -678,10 +689,9 @@
                     <option value="yi">Yiddish</option>
                     <option value="yo">Yoruba</option>
                     <option value="zu">Zulu</option>
-    
-            </select>
+                </select>
+            </div>
         </div>
-    </div>
     </div>
 
     <!-- MAIN -->
@@ -818,7 +828,7 @@
         </div>
     </footer>
 
-  <!-- JS SCRIPTS -->
+    <!-- JS SCRIPTS -->
     <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
     <script type="text/javascript">
         // Google Translate Engine
