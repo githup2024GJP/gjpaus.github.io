@@ -522,29 +522,9 @@
         <!-- CUSTOM TRANSLATE SELECTOR (ย้ายมาอยู่หน้าสุดด้านซ้ายของปุ่ม YouTube) -->
         <div class="custom-translate-wrapper">
 
-#language-picker {
-  -webkit-appearance: none; /* ซ่อนลูกศรเดิมของเบราว์เซอร์ */
-  -moz-appearance: none;
-  appearance: none;
-  background-color: transparent;
-  color: #d4af37;
-  border: 1px solid #d4af37;
-  border-radius: 50px;
-  padding: 10px 24px;
-  font-size: 12px;
-  cursor: pointer;
-  outline: none;
-  text-align: center;
-}
-
-#language-picker:focus,
-#language-picker:hover {
-  border-color: #f3e5ab;
-  box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
-}
+<select id="language-picker" class="notranslate btn-outline" translate="no">
 
 
-            
                     <option value="">Select language</option>
                     <option value="af">Afrikaans</option>
                     <option value="sq">Albanian (Shqip)</option>
