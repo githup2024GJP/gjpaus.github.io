@@ -7,7 +7,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <!-- Choices.js สำหรับช่องเลือกภาษาแบบพิมพ์ค้นหาได้ ไม่ตีกับ Google Translate -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css" />
  <style>
         #language-picker {
@@ -16,8 +15,11 @@
         }
               #google_translate_element, 
         .goog-te-banner-frame, 
-        .goog-te-spinner-pos {
-            display: none !important;
+       .skiptranslate,
+.goog-te-spinner-pos {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
          }
             body {
             top: 0px !important;
@@ -536,7 +538,7 @@
 
     <div class="cta-buttons">
         <a href="#book" class="btn-outline">THE HUMAN BEHIND THE PRIZE</a>
-<a href="https://youtube.com/@gp9434" target="_blank" class="btn-outline btn-youtube" style="background:#ff4e20; border:none; padding:12px 28px; font-family:'Montserrat', sans-serif; font-weight:600; letter-spacing:2px;">            
+<a href="https://youtube.com/@gp9434" target="_blank" class="btn-outline btn-youtube" style="background:#ff4e20; border:none; padding:12px 28px;">    
     <i class="fab fa-youtube"></i>&nbsp; @GP9434
         </a>
         
