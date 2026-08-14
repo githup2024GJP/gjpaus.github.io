@@ -10,13 +10,11 @@
     <!-- Choices.js สำหรับช่องเลือกภาษาแบบพิมพ์ค้นหาได้ ไม่ตีกับ Google Translate -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css" />
  <style>
-        /* ซ่อนตัว select ดั้งเดิม ไม่ให้เห็นกล่องขาวตอน Refresh */
         #language-picker {
             opacity: 0;
             visibility: hidden;
         }
-        /* ซ่อนตัว Google Translate Original ไว้เบื้องหลังทั้งหมด */
-        #google_translate_element, 
+              #google_translate_element, 
         .goog-te-banner-frame, 
         .skiptranslate,
         .goog-te-spinner-pos {
@@ -227,7 +225,6 @@
             text-align: center;
         }
 
-        /* BUTTONS & ACTIONS ROW - จัดระเบียบให้โลโก้ส้มอยู่ตรงกลางและไม่ขยับเมื่อเปลี่ยนภาษา */
         .cta-buttons{
             display:flex;
             justify-content:center;
@@ -252,7 +249,7 @@
             color:white;
             transition:.35s;
             white-space:nowrap;
-            min-width: 240px; /* ล็อกขนาดเพื่อความสมดุล */
+            min-width: 240px; 
         }
 
         .btn-outline:hover{
@@ -261,7 +258,7 @@
         }
 
         .btn-youtube {
-            min-width: auto; /* ปล่อยให้ขนาดของปุ่ม YouTube พอดีกับตัวหนังสือ */
+            min-width: auto; 
         }
 
         /* CUSTOM TRANSLATE DROPDOWN CONTAINER */
@@ -273,8 +270,7 @@
             align-items: center;
         }
 
-        /* 1. ล็อกขนาดกล่องภายนอกให้ยาวขึ้นป้องกันลูกศรทับตัวหนังสือ และไม่ขยับเมื่อเปลี่ยนภาษา */
-        .custom-translate-box {
+          .custom-translate-box {
             position: relative;
             width: 240px !important;
             height: 42px !important;
@@ -286,14 +282,13 @@
             justify-content: center;
         }
 
-        /* 2. จัดการ Choices.js ไม่ให้หายหรือกะพริบตอน Refresh */
-        .custom-translate-box .choices {
+         .custom-translate-box .choices {
             width: 100% !important;
             margin-bottom: 0 !important;
             opacity: 1 !important;
         }
 
-        /* ไอคอนโลกสีขาว */
+     
         .globe-icon {
             position: absolute;
             left: 15px;
@@ -310,7 +305,7 @@
             color: var(--gold) !important;
         }
 
-        /* Custom Styling สำหรับ Choices.js */
+        /* Custom Styling  Choices.js */
         .choices {
             margin-bottom: 0 !important;
         }
@@ -320,7 +315,7 @@
             border-radius: 999px !important;
             min-height: 42px !important;
             height: 42px !important;
-            padding: 0 32px 0 38px !important; /* เพิ่ม Padding ขวาป้องกันลูกศรทับตัวหนังสือ */
+            padding: 0 32px 0 38px !important;
             display: flex !important;
             align-items: center !important;
             color: #ffffff !important;
@@ -791,7 +786,8 @@
                 <h2 class="section-title">BEHIND THE STORY</h2>
 
                 <div style="background:#141414; border-left:2px solid #d4af37; padding:24px 20px; font-family:'Montserrat',sans-serif; color:#d6d6d6; line-height:1.7; font-weight:300; text-align:left;">
-                    <p style="margin-bottom:14px; font-size:0.92rem; letter-spacing:0.5px;">For the past six years in Thailand, a period of deep hardship, isolation, and silent suffering was endured with no space to speak and no one to listen with honesty, respect, and care.</p>
+                    <p style="margin-bottom:14px; font-size:0.92rem; letter-spacing:0.5px;">
+                        For the past six years in Thailand, a period of deep hardship, isolation, and silent suffering was endured — marked by relentless oppression, severe degradation, and the most extreme dehumanization, where human worth was rendered invisible and met with complete contempt, with no space to speak and no one to listen with honesty, respect, and care.</p>
                     <p style="margin-bottom:14px; font-size:0.92rem; letter-spacing:0.5px;">Life has reached a profound turning point through the dignified care and support I have received in Australia. Even when faced with moments of disrespect toward one's humanity, there were people who showed kindness.</p>
                     <p style="margin-bottom:0; font-size:0.92rem; letter-spacing:0.5px;">Today, <strong style="color:#fff;">27 July 2026</strong>, this journey from pain to purpose has truly given a new life and a renewed sense of hope, transforming silent endurance into purpose.</p>
                 </div>
