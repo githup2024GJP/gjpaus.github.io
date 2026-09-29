@@ -525,47 +525,55 @@
             .features{ grid-template-columns:1fr; justify-items:center; }
         }  
      
-/* Mobile Vertical Alignment Fix for gjpaus.com */
+/* Footer & Quote Single-Line Alignment Fix for gjpaus.com */
   @media screen and (max-width: 768px) {
-    /* 1. จัดระเบียบโครงสร้างหลักให้กึ่งกลางตรงกันทั้งหมด */
-    body {
-      display: flex !important;
-      flex-direction: column !important;
-      align-items: center !important;
-      justify-content: flex-start !important;
-      width: 100% !important;
-      margin: 0 auto !important;
-      padding: 0 !important;
+    /* 1. แก้ไขส่วน Behind The Story ไม่ให้ดันล้นขวา */
+    .card,
+    [class*="behind"],
+    [class*="story"],
+    .card * {
+      max-width: 100% !important;
+      box-sizing: border-box !important;
+      word-break: break-word !important;
+      overflow-wrap: break-word !important;
     }
 
-    /* 2. คุมความกว้างของทุกส่วน (Hero, Buttons, Main Features, Cards) ให้เท่ากันเป๊ะ */
-    .hero,
-    .cta-buttons,
-    .sub-message,
-    .features,
     .card {
-      width: 100% !important;
-      max-width: 100% !important;
       margin-left: auto !important;
       margin-right: auto !important;
+      padding-left: 15px !important;
+      padding-right: 15px !important;
+    }
+
+    /* 2. ปรับขนาดตัวอักษร Quote ท้ายสุด ให้พอดีขอบจอ ไม่ตกหล่นบรรทัดเดียว */
+    [class*="scar"], 
+    .card p:last-child,
+    .quote-footer {
+      font-size: 0.85rem !important;
+      line-height: 1.5 !important;
+      text-align: center !important;
+      padding: 0 10px !important;
+    }
+
+    /* 3. จัดระเบียบ Footer ด้านล่างสุดให้อยู่ตรงกลางและพอดีแนวขอบ */
+    footer,
+    .footer,
+    body > div:last-child {
+      width: 100% !important;
+      max-width: 100% !important;
+      padding-left: 20px !important;
+      padding-right: 20px !important;
+      text-align: center !important;
       box-sizing: border-box !important;
     }
 
-    /* 3. ปรับก้อนเนื้อหา Features & Card ให้อยู่กึ่งกลางตรงกับโลโก้ด้านบน */
-    .features {
-      padding: 0 15px 40px 15px !important;
-      display: flex !important;
-      flex-direction: column !important;
-      align-items: center !important;
+    footer p, .footer p {
+      font-size: 0.8rem !important;
+      line-height: 1.4 !important;
+      word-break: break-word !important;
     }
 
-    .card {
-      padding: 30px 20px !important;
-      margin: 0 auto 25px auto !important;
-      text-align: center !important;
-    }
-
-    /* 4. ปรับปุ่มกดให้อยู่ตรงกลางและมีความกว้างเท่ากันเรียงสวยงาม */
+    /* 4. ชุดปุ่มกดด้านบนจัดเรียงกึ่งกลาง */
     .cta-buttons {
       display: flex !important;
       flex-direction: column !important;
@@ -579,9 +587,7 @@
     .custom-translate-box {
       width: 260px !important;
       max-width: 260px !important;
-      min-width: 260px !important;
       margin: 0 auto !important;
-      text-align: center !important;
       box-sizing: border-box !important;
     }
   }
