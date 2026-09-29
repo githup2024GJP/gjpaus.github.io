@@ -523,7 +523,40 @@
             .card{ padding:36px 24px; }
             .sub-message{ letter-spacing:1px; }
             .features{ grid-template-columns:1fr; justify-items:center; }
-        }
+        }  /* Refactored CSS for gjpaus.com Mobile Grid Alignment */
+  @media screen and (max-width: 768px) {
+    /* 1. Prevent Horizontal Overflow & Standardize Containers */
+    .journey-container,
+    [class*="journey"],
+    [class*="content-block"] {
+      width: 100% !important;
+      max-width: 100% !important;
+      margin-inline: auto !important;
+      padding-inline: 15px !important;
+      box-sizing: border-box;
+      float: none !important;
+      text-align: left;
+    }
+
+    /* 2. Stack Grid & Row Layouts */
+    .row, .grid, .flex-container,
+    [class*="row"], [class*="grid"] {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: stretch !important;
+      width: 100% !important;
+      box-sizing: border-box;
+    }
+
+    /* 3. Center Language & Social Containers */
+    [class*="language"], 
+    [class*="social"] {
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+      margin: 15px auto !important;
+    }
+  }
     </style>
 </head>
 
